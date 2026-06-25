@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amelo Design — Marketing Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple: #6D28D9;
+    --purple-light: #8B5CF6;
+    --blue: #2563EB;
+    --cyan: #0891B2;
+    --dark: #0D0D1A;
+    --dark2: #1A1A2E;
+    --gray: #64748B;
+    --light: #F5F4FF;
+    --white: #ffffff;
+    --grad: linear-gradient(135deg, #6D28D9 0%, #0891B2 100%);
+    --grad-subtle: linear-gradient(135deg, rgba(109,40,217,0.08) 0%, rgba(8,145,178,0.06) 100%);
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+    --shadow-purple: 0 12px 40px rgba(109,40,217,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 18px 72px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(109,40,217,0.07);
+    box-shadow: 0 1px 20px rgba(0,0,0,0.04);
+  }
+
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-img { height: 44px; width: auto; object-fit: contain; }
+
+  .nav-right { display: flex; align-items: center; gap: 40px; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--gray); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--purple); }
+
+  /* LANG SWITCHER */
+  .lang-switcher {
+    display: flex; align-items: center;
+    background: rgba(124,58,237,0.08);
+    border-radius: 100px;
+    padding: 4px;
+    gap: 2px;
+  }
+  .lang-btn {
+    padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 700;
+    border: none; cursor: pointer; transition: all 0.2s;
+    background: transparent; color: var(--gray); letter-spacing: 0.5px;
+  }
+  .lang-btn.active { background: var(--grad); color: white; }
+
+  .nav-cta {
+    background: var(--grad); color: white; padding: 12px 28px;
+    border-radius: 100px; font-weight: 600; font-size: 14px;
+    text-decoration: none; transition: opacity 0.2s, transform 0.2s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 60px 80px; position: relative; overflow: hidden;
+    background: var(--light);
+    gap: 40px;
+    overflow: visible;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 50%, rgba(124,58,237,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(6,182,212,0.08) 0%, transparent 60%);
+  }
+  .hero-content { position: relative; z-index: 2; overflow: visible; padding-left: 2px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.2);
+    border-radius: 100px; padding: 8px 20px; font-size: 13px; font-weight: 500;
+    color: var(--purple); margin-bottom: 28px; white-space: nowrap;
+  }
+  .hero-badge .dot { width: 8px; height: 8px; background: var(--purple); border-radius: 50%; display: inline-block; flex-shrink: 0; }
+
+  h1 { font-size: clamp(44px, 5vw, 72px); font-weight: 800; line-height: 1.06; letter-spacing: -2.5px; color: var(--dark); margin-bottom: 28px; font-family: 'Playfair Display', serif; }
+  .grad-text { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-style: italic; }
+  .hero-sub { font-size: 17px; color: var(--gray); line-height: 1.8; margin-bottom: 48px; max-width: 460px; font-weight: 400; }
+
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--grad); color: white; padding: 17px 40px; border-radius: 100px;
+    font-weight: 600; font-size: 15px; text-decoration: none; letter-spacing: 0.2px;
+    transition: transform 0.25s, box-shadow 0.25s;
+    box-shadow: var(--shadow-purple);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(109,40,217,0.35); }
+  .btn-outline {
+    border: 1.5px solid rgba(109,40,217,0.25); color: var(--purple); padding: 17px 40px;
+    border-radius: 100px; font-weight: 600; font-size: 15px; text-decoration: none; transition: all 0.25s;
+    background: rgba(109,40,217,0.03);
+  }
+  .btn-outline:hover { border-color: var(--purple); background: rgba(109,40,217,0.07); transform: translateY(-2px); }
+
+  .hero-visual {
+    position: relative; right: auto; top: auto; transform: none;
+    width: 100%; height: 420px;
+    pointer-events: none;
+  }
+  .hero-orb { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.4; }
+  .orb1 { width: 300px; height: 300px; background: var(--purple); top: -50px; right: -50px; }
+  .orb2 { width: 200px; height: 200px; background: var(--cyan); bottom: 0; left: 100px; }
+
+  .hero-card {
+    position: absolute; background: white; border-radius: 20px; padding: 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.04);
+    border: 1px solid rgba(255,255,255,0.8);
+  }
+  .hero-card-main { width: 300px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  .hero-card-stat { width: 150px; }
+  .hero-card-stat:nth-child(2) { top: 10%; left: 0; }
+  .hero-card-stat:nth-child(3) { bottom: 10%; right: 0; }
+  .stat-num { font-size: 30px; font-weight: 800; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-label { font-size: 12px; color: var(--gray); margin-top: 4px; font-weight: 500; }
+  .card-icon { width: 44px; height: 44px; background: var(--grad); border-radius: 12px; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; }
+  .card-icon svg { width: 22px; height: 22px; fill: none; stroke: white; stroke-width: 2; }
+  .card-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .card-sub { font-size: 12px; color: var(--gray); line-height: 1.5; }
+
+  /* SECTIONS */
+  section { padding: 120px 72px; }
+  .section-label {
+    font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; margin-bottom: 16px; display: block;
+  }
+  h2 { font-size: clamp(32px, 3.5vw, 52px); font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; color: var(--dark); margin-bottom: 20px; font-family: 'Playfair Display', serif; }
+  .section-sub { font-size: 17px; color: var(--gray); line-height: 1.7; max-width: 560px; }
+
+  /* CLIENTS BAR */
+  .clients-bar { padding: 48px 0; border-top: 1px solid rgba(0,0,0,0.06); border-bottom: 1px solid rgba(0,0,0,0.06); overflow: hidden; background: #fff; }
+  .clients-label { text-align: center; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #CBD5E1; margin-bottom: 32px; }
+  .clients-track-wrap { overflow: hidden; position: relative; }
+  .clients-track-wrap::before, .clients-track-wrap::after {
+    content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none;
+  }
+  .clients-track-wrap::before { left: 0; background: linear-gradient(to right, white, transparent); }
+  .clients-track-wrap::after { right: 0; background: linear-gradient(to left, white, transparent); }
+  .clients-track {
+    display: flex; align-items: center; gap: 60px;
+    animation: scroll-logos 25s linear infinite;
+    width: max-content;
+  }
+  .clients-track:hover { animation-play-state: paused; }
+  .clients-track img { height: 65px; width: auto; object-fit: contain; opacity: 0.5; filter: grayscale(1); transition: opacity 0.3s, filter 0.3s; }
+  .clients-track img[alt="Device Consulting"] { height: 30px; }
+  .clients-track img[alt="Labsense"] { height: 50px; }
+  .clients-track img[alt="High Tech Solutions"] { height: 38px; }
+  .clients-track img[alt="Grgić Medicentar"] { height: 42px; }
+  .clients-track img[alt="FitStop"] { height: 55px; }
+  .clients-track img:hover { opacity: 1; filter: grayscale(0); }
+  @keyframes scroll-logos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; }
+  .about-img-wrap { border-radius: 24px; overflow: hidden; background: var(--grad); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; }
+  .about-img-placeholder { color: white; font-size: 22px; font-weight: 800; text-align: center; padding: 40px; line-height: 1.6; letter-spacing: -0.5px; }
+  .about-visual { position: relative; }
+  .about-pill {
+    position: absolute; background: white; border-radius: 100px; padding: 12px 20px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1); font-size: 13px; font-weight: 600;
+    display: flex; align-items: center; gap: 10px; white-space: nowrap;
+  }
+  .about-pill.p1 { bottom: -20px; left: -20px; }
+  .about-pill.p2 { top: -20px; right: -20px; }
+  .pill-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--grad); flex-shrink: 0; }
+  .about-text p { color: var(--gray); font-size: 16px; line-height: 1.8; margin-bottom: 18px; }
+  .about-values { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+  .value-chip { background: rgba(124,58,237,0.08); border: 1px solid rgba(124,58,237,0.15); border-radius: 100px; padding: 8px 20px; font-size: 13px; font-weight: 600; color: var(--purple); }
+
+  /* SERVICES */
+  .services { background: var(--light); }
+  .services-header { max-width: 1200px; margin: 0 auto 60px; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
+  .service-card {
+    background: white; border-radius: 24px; padding: 40px 36px; border: 1px solid rgba(0,0,0,0.055);
+    transition: all 0.35s cubic-bezier(0.4,0,0.2,1); cursor: pointer; position: relative; overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .service-card::before { content: ''; position: absolute; inset: 0; background: var(--grad); opacity: 0; transition: opacity 0.35s; z-index: 0; }
+  .service-card:hover::before { opacity: 1; }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 24px 70px rgba(109,40,217,0.22); }
+  .service-card:hover .s-title, .service-card:hover .s-desc { color: white; }
+  .service-card:hover .s-icon svg .grad-stroke { stroke: white; }
+  .service-card:hover .s-icon svg .grad-fill { fill: white; }
+  .service-card > * { position: relative; z-index: 1; }
+  .s-icon { width: 72px; height: 72px; display: flex; align-items: center; justify-content: center; margin-bottom: 28px; transition: transform 0.3s; flex-shrink: 0; background: none !important; }
+  .service-card:hover .s-icon { transform: scale(1.08); }
+  .s-icon svg { width: 64px; height: 64px; }
+  .s-title { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 10px; transition: color 0.3s; }
+  .s-desc { font-size: 14px; color: var(--gray); line-height: 1.6; transition: color 0.3s; }
+  .s-arrow { display: none; }
+
+  /* CTA */
+  .cta-wrap { padding: 0 60px 100px; }
+  .cta-banner { background: var(--grad); border-radius: 32px; padding: 96px 80px; text-align: center; max-width: 1200px; margin: 0 auto; position: relative; overflow: hidden; box-shadow: var(--shadow-purple); }
+  .cta-banner h2 { color: white; letter-spacing: -1px; margin-bottom: 16px; position: relative; }
+  .cta-banner p { color: rgba(255,255,255,0.8); font-size: 18px; margin-bottom: 40px; position: relative; }
+  .btn-white { background: white; color: var(--purple); padding: 16px 40px; border-radius: 100px; font-weight: 700; font-size: 15px; text-decoration: none; display: inline-block; transition: transform 0.2s, box-shadow 0.2s; position: relative; box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
+
+  /* WORK */
+  .work-header { max-width: 1200px; margin: 0 auto 60px; }
+  .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
+  .work-card { background: var(--light); border-radius: 20px; padding: 48px 32px 32px; border: 1px solid rgba(0,0,0,0.06); transition: all 0.3s; text-align: center; }
+  .work-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+  .work-logo { height: 60px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+  .work-logo-text { font-size: 22px; font-weight: 800; color: var(--dark); }
+  .work-name { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+  .work-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .work-tag { background: white; border: 1.5px solid rgba(124,58,237,0.2); color: var(--purple); border-radius: 100px; padding: 5px 14px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+
+  /* CONTACT */
+  .contact { background: var(--light); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; max-width: 1200px; margin: 0 auto; align-items: start; }
+  .contact-info p { color: var(--gray); font-size: 16px; line-height: 1.7; margin-bottom: 40px; }
+  .contact-detail { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+  .contact-detail-icon { width: 44px; height: 44px; background: var(--grad); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-detail-icon svg { width: 18px; height: 18px; fill: none; stroke: white; stroke-width: 2; }
+  .contact-detail-text { font-size: 15px; color: var(--dark); font-weight: 500; }
+  .contact-form { background: white; border-radius: 28px; padding: 52px; box-shadow: 0 8px 50px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.04); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px 16px; border: 1.5px solid #E5E7EB; border-radius: 12px; font-size: 14px; font-family: 'Inter', sans-serif; color: var(--dark); background: var(--light); transition: border-color 0.2s; outline: none; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--purple); background: white; }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .btn-submit { width: 100%; background: var(--grad); color: white; padding: 16px; border: none; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.2s; font-family: 'Inter', sans-serif; }
+  .btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer { background: #0A0A16; color: white; padding: 80px 72px 60px; }
+  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto 48px; }
+  .footer-brand p { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.7; margin-top: 16px; max-width: 260px; }
+  .footer-logo-text { color: white; font-size: 22px; font-weight: 800; }
+  .footer-col h4 { font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+  .footer-col a { display: block; text-decoration: none; color: rgba(255,255,255,0.65); font-size: 14px; margin-bottom: 12px; transition: color 0.2s; }
+  .footer-col a:hover { color: white; }
+  .social-links { display: flex; gap: 12px; margin-top: 4px; }
+  .social-link { width: 40px; height: 40px; background: rgba(255,255,255,0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; text-decoration: none; }
+  .social-link:hover { background: var(--purple); }
+  .social-link svg { width: 16px; height: 16px; fill: none; stroke: white; stroke-width: 2; }
+  .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; }
+  .footer-bottom p { color: rgba(255,255,255,0.35); font-size: 13px; }
+  .footer-bottom a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+  .footer-bottom a:hover { color: white; }
+
+  /* MOBILE */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: #1a1a2e; border-radius: 2px; transition: all 0.3s; }
+  .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #fff; z-index: 99998; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { font-size: 24px; font-weight: 600; color: #1a1a2e; text-decoration: none; }
+  .mobile-nav-close { position: absolute; top: 24px; right: 24px; font-size: 32px; background: none; border: none; cursor: pointer; color: #1a1a2e; }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links, .lang-switcher { display: none; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+
+    .hero { grid-template-columns: 1fr; padding: 100px 20px 40px; gap: 0; min-height: auto; }
+    .hero-visual { display: none; }
+    h1 { font-size: 36px; letter-spacing: -1.5px; }
+    .hero-sub { font-size: 15px; }
+    .hero-btns { flex-direction: column; }
+    .btn-primary, .btn-outline { text-align: center; }
+
+    section { padding: 60px 20px; }
+    .services-grid { grid-template-columns: 1fr; gap: 20px; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .team-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .stats-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-form { padding: 28px 20px; }
+    .form-row { grid-template-columns: 1fr; }
+
+    footer { padding: 48px 20px 32px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+    .footer-bottom div { flex-wrap: wrap; justify-content: center; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <img src="amelo-logo.svg" alt="Amelo" class="logo-img">
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="services.html" data-en="Services" data-hr="Usluge">Services</a></li>
+
+      <li><a href="#about" data-en="About Us" data-hr="O Nama">About Us</a></li>
+      <li><a href="contact.html" data-en="Contact Us" data-hr="Kontakt">Contact Us</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('hr')">HR</button>
+    </div>
+    <a href="#contact" class="nav-cta" data-en="Free Business Analysis" data-hr="Besplatna analiza poslovanja">Free Business Analysis</a>
+    <button class="hamburger" onclick="openMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()">×</button>
+  <a href="services.html" onclick="closeMobileNav()" data-en="Services" data-hr="Usluge">Services</a>
+  <a href="#about" onclick="closeMobileNav()" data-en="About Us" data-hr="O Nama">About Us</a>
+  <a href="contact.html" onclick="closeMobileNav()" data-en="Contact Us" data-hr="Kontakt">Contact Us</a>
+  <a href="#contact" onclick="closeMobileNav()" data-en="Free Business Analysis" data-hr="Besplatna analiza poslovanja" style="color:#6D28D9;">Free Business Analysis</a>
+  <div style="display:flex;gap:12px;margin-top:16px;">
+    <button class="lang-btn" onclick="setLang('en');closeMobileNav()" id="mob-lang-en" style="font-weight:600;">EN</button>
+    <button class="lang-btn" onclick="setLang('hr');closeMobileNav()" id="mob-lang-hr">HR</button>
+  </div>
+</div>
+<script>
+function openMobileNav(){ document.getElementById('mobileNav').classList.add('open'); }
+function closeMobileNav(){ document.getElementById('mobileNav').classList.remove('open'); }
+</script>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      <span data-en="Full-service marketinška agencija" data-hr="Full-service marketinška agencija">Full-service marketinška agencija</span>
+    </div>
+    <h1 data-en="Grow your <span class='grad-text'>revenue</span> and reach new heights." data-hr="Maksimizirajte svoje <span class='grad-text'>prihode</span> i ostvarite puni potencijal.">Grow your <span class="grad-text">revenue</span> and reach new heights.</h1>
+    <p class="hero-sub" data-en="We're a team of marketers, designers, and developers building brands and strategies that fuel sustainable, profitable growth." data-hr="Kao iskusan tim marketinških stručnjaka, dizajnera i programera, razvijamo snažne brendove i poslovne strategije za dugoročan i profitabilan razvoj.">We're a team of marketers, designers, and developers building brands and strategies that fuel sustainable, profitable growth.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary" data-en="Free Business Analysis" data-hr="Besplatna analiza poslovanja">Free Business Analysis</a>
+      <a href="#services" class="btn-outline" data-en="Our Services" data-hr="Naše Usluge">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
+    <div class="hero-card hero-card-stat" style="top:8%;left:0;">
+      <div class="stat-num">50+</div>
+      <div class="stat-label" data-en="Happy Clients" data-hr="Zadovoljnih Klijenata">Happy Clients</div>
+    </div>
+    <div class="hero-card hero-card-main">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+      <div class="card-title" data-en="Complete Marketing Support" data-hr="Kompletna podrška za tvoj marketing">Complete Marketing Support</div>
+      <div class="card-sub" data-en="Strategy, design, digital, PR and video — all under one roof." data-hr="Strategija, dizajn, digitalni marketing, PR i video — sve na jednom mjestu.">Strategy, design, digital, PR and video — all under one roof.</div>
+    </div>
+    <div class="hero-card hero-card-stat" style="bottom:8%;right:0;">
+      <div class="stat-num">10+</div>
+      <div class="stat-label" data-en="Years of Experience" data-hr="Godina Iskustva">Years of Experience</div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS BAR -->
+<div class="clients-bar">
+  <p class="clients-label" data-en="SOME OF THE BRANDS TRUSTING OUR SERVICES" data-hr="NEKI OD BRENDOVA KOJI NAM VJERUJU">SOME OF THE BRANDS TRUSTING OUR SERVICES</p>
+  <div class="clients-track-wrap">
+    <div class="clients-track">
+      <img src="klijenti/poliklinika-grgic-logo.png" alt="Grgić Medicentar">
+      <img src="klijenti/FITSTOP-300x300.png" alt="FitStop">
+      <img src="klijenti/Katarina Mamic design novi logo.png" alt="Katarina Mamić">
+      <img src="klijenti/dlm studio .jpeg" alt="DLM Studio">
+      <img src="klijenti/device consulting.svg" alt="Device Consulting">
+      <img src="klijenti/hi tech solutions.png" alt="High Tech Solutions">
+      <img src="klijenti/labsense logo .png" alt="Labsense">
+      <img src="klijenti/doktor zekic.png" alt="Doktor Žekić">
+      <img src="klijenti/medestetica-logo.png" alt="Medestetica" style="mix-blend-mode: multiply;">
+      <img src="klijenti/Botun_black-01.jpg" alt="Botun" style="mix-blend-mode: multiply;">
+      <!-- duplikati za beskonačni scroll -->
+      <img src="klijenti/poliklinika-grgic-logo.png" alt="Grgić Medicentar">
+      <img src="klijenti/FITSTOP-300x300.png" alt="FitStop">
+      <img src="klijenti/Katarina Mamic design novi logo.png" alt="Katarina Mamić">
+      <img src="klijenti/dlm studio .jpeg" alt="DLM Studio">
+      <img src="klijenti/device consulting.svg" alt="Device Consulting">
+      <img src="klijenti/hi tech solutions.png" alt="High Tech Solutions">
+      <img src="klijenti/labsense logo .png" alt="Labsense">
+      <img src="klijenti/doktor zekic.png" alt="Doktor Žekić">
+      <img src="klijenti/medestetica-logo.png" alt="Medestetica" style="mix-blend-mode: multiply;">
+      <img src="klijenti/Botun_black-01.jpg" alt="Botun" style="mix-blend-mode: multiply;">
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="about-img-wrap" style="background: transparent; overflow: visible;">
+        <img src="STRELICE.png" alt="Amelo team" style="width: 100%; height: auto; object-fit: contain;">
+      </div>
+      <div class="about-pill p1">
+        <div class="pill-dot"></div>
+        <span data-en="Trusted by 50+ brands" data-hr="Povjerenje 50+ brandova">Trusted by 50+ brands</span>
+      </div>
+      <div class="about-pill p2">
+        <div class="pill-dot"></div>
+        <span data-en="Results-driven strategy" data-hr="Strategija usmjerena na rezultate">Results-driven strategy</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="section-label" data-en="About Us" data-hr="O Nama">About Us</span>
+      <h2 data-en="We make your brand impossible to ignore." data-hr="Što nas pokreće? Ambicija, inovacija, autentičnost i rezultati.">We make your brand impossible to ignore.</h2>
+      <p data-en="Our team is made up of marketers, designers, and developers that build brands and create strategies that fuel sustainable, profitable growth." data-hr="Mi smo svestran tim kreativaca i programera koji stvara snažne brendove i pametne strategije za vaš dugoročni poslovni uspjeh.">Our team is made up of marketers, designers, and developers that build brands and create strategies that fuel sustainable, profitable growth.</p>
+      <p data-en="Since each channel has its own advantages, they work best when strategically paired. That's why we offer a fully integrated marketing service — PR, design, web, digital, video, and social — all working together for faster results and lower costs." data-hr="Svaki marketinški kanal ima svoju snagu, ali prava se magija događa u njihovoj kombinaciji. Zato smo sve vaše marketinške potrebe objedinili na jednom mjestu. Pokrivamo PR, dizajn, web, digitalno oglašavanje, video i društvene mreže — za maksimalan učinak uz pametniju investiciju.">Since each channel has its own advantages, they work best when strategically paired. That's why we offer a fully integrated marketing service — PR, design, web, digital, video, and social — all working together for faster results and lower costs.</p>
+      <p data-en="Amelo describes our approach: ambitious in goals, innovative in solutions, different in the market and fully focused on your results. That is the formula we bring to every project." data-hr="Amelo opisuje naš pristup: ambiciozni u ciljevima, inovativni u rješenjima, drugačiji na tržištu i potpuno orijentirani na vaše rezultate. To je formula koju unosimo u svaki projekt.">Amelo opisuje naš pristup: ambiciozni u ciljevima, inovativni u rješenjima, drugačiji na tržištu i potpuno orijentirani na vaše rezultate. To je formula koju unosimo u svaki projekt.</p>
+      <div class="about-values">
+        <span class="value-chip" data-en="Ambitious" data-hr="Ambiciozni">Ambitious</span>
+        <span class="value-chip" data-en="Innovative" data-hr="Inovativni">Innovative</span>
+        <span class="value-chip" data-en="Authentic" data-hr="Autentični">Authentic</span>
+        <span class="value-chip" data-en="Results-driven" data-hr="Orijentirani na rezultate">Results-driven</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="services-header">
+    <span class="section-label" data-en="What We Do" data-hr="Što Radimo">What We Do</span>
+    <h2 data-en="Leave marketing to us, focus on growth." data-hr="Prepustite marketing nama, fokusirajte se na rast.">Leave marketing to us, focus on growth.</h2>
+    <p class="section-sub" data-en="We take over the entire process — from the first idea to final execution. We take care of your visibility, while you run what matters most: your business." data-hr="Preuzimamo cjelokupan proces – od prve ideje do konačne realizacije. Mi brinemo o vašoj vidljivosti, dok vi vodite ono najvažnije: svoje poslovanje.">We take over the entire process — from the first idea to final execution. We take care of your visibility, while you run what matters most: your business.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="s-icon"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g1" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6D28D9"/><stop offset="100%" stop-color="#0891B2"/></linearGradient></defs><path d="M8 56V24l16-12 16 12v32" stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 56V40h16v16" stroke="url(#g1)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 32h4M16 40h4M44 32h4M44 40h4" stroke="url(#g1)" stroke-width="3" stroke-linecap="round"/><circle cx="48" cy="20" r="8" stroke="url(#g1)" stroke-width="3"/><path d="M45 20l2 2 4-4" stroke="url(#g1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="s-title" data-en="Strategic Marketing Consultancy" data-hr="Strateško marketinško savjetovanje">Strategic Marketing Consultancy</div>
+      <div class="s-desc" data-en="Data-driven strategies tailored to your business goals, market position, and growth ambitions." data-hr="Odluke temeljene na podacima i planovi prilagođeni vašim dugoročnim poslovnim ambicijama.">Data-driven strategies tailored to your business goals, market position, and growth ambitions.</div>
+      <div class="s-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </div>
+    <div class="service-card">
+      <div class="s-icon"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g2" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6D28D9"/><stop offset="100%" stop-color="#0891B2"/></linearGradient></defs><circle cx="48" cy="16" r="7" stroke="url(#g2)" stroke-width="3.5"/><circle cx="16" cy="32" r="7" stroke="url(#g2)" stroke-width="3.5"/><circle cx="48" cy="48" r="7" stroke="url(#g2)" stroke-width="3.5"/><path d="M23 29l18-10M23 35l18 10" stroke="url(#g2)" stroke-width="3.5" stroke-linecap="round"/></svg></div>
+      <div class="s-title" data-en="Digital, Content & Social" data-hr="Digitalni Marketing, Sadržaj i Društvene Mreže">Digital, Content & Social</div>
+      <div class="s-desc" data-en="Compelling content and social media strategies that build audiences and drive meaningful engagement." data-hr="Strateški nastup na mrežama i kvalitetan sadržaj koji privlači kupce i potiče interakciju.">Compelling content and social media strategies that build audiences and drive meaningful engagement.</div>
+      <div class="s-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </div>
+    <div class="service-card">
+      <div class="s-icon"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g3" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6D28D9"/><stop offset="100%" stop-color="#0891B2"/></linearGradient></defs><path d="M28 12c0 0-4 2-4 10s4 10 4 10h-8L8 44V12h20z" stroke="url(#g3)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 22c0 0 4-2 8-2c8 0 16 4 16 12c0 4-2 7-5 9l2 8l-10-5c-1 0-2 0-3 0c-9 0-16-5-16-12" stroke="url(#g3)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="s-title" data-en="PR & Communications" data-hr="PR i Komunikacije">PR & Communications</div>
+      <div class="s-desc" data-en="Build your reputation, manage your story, and connect with the right audiences through strategic PR." data-hr="Oblikujte prepoznatljiv imidž na tržištu i ostvarite smislen dijalog s ciljanom javnošću.">Build your reputation, manage your story, and connect with the right audiences through strategic PR.</div>
+      <div class="s-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </div>
+    <div class="service-card">
+      <div class="s-icon"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g4" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6D28D9"/><stop offset="100%" stop-color="#0891B2"/></linearGradient></defs><circle cx="32" cy="28" r="10" stroke="url(#g4)" stroke-width="3.5"/><path d="M20 44c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="url(#g4)" stroke-width="3.5" stroke-linecap="round"/><path d="M44 18l4-4M44 22h5M40 14V9" stroke="url(#g4)" stroke-width="3" stroke-linecap="round"/><path d="M14 40l-4 4M10 36H5M18 44v5" stroke="url(#g4)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg></div>
+      <div class="s-title" data-en="Design & Branding" data-hr="Dizajn i Brendiranje">Design & Branding</div>
+      <div class="s-desc" data-en="Visual identities, brand systems, and creative assets that make your brand unforgettable." data-hr="Cjeloviti brending sustavi i vizualna rješenja koja stvaraju trajnu prepoznatljivost.">Visual identities, brand systems, and creative assets that make your brand unforgettable.</div>
+      <div class="s-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </div>
+    <div class="service-card">
+      <div class="s-icon"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g5" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6D28D9"/><stop offset="100%" stop-color="#0891B2"/></linearGradient></defs><circle cx="32" cy="32" r="22" stroke="url(#g5)" stroke-width="3.5"/><path d="M10 32h44M32 10c-6 8-9 14-9 22s3 14 9 22M32 10c6 8 9 14 9 22s-3 14-9 22" stroke="url(#g5)" stroke-width="3.5" stroke-linecap="round"/></svg></div>
+      <div class="s-title" data-en="Web Design & E-Commerce" data-hr="Web Dizajn i E-Commerce">Web Design & E-Commerce</div>
+      <div class="s-desc" data-en="Beautiful, conversion-focused websites and e-commerce stores built to perform and scale." data-hr="Estetski privlačne i funkcionalne online trgovine fokusirane na visoku stopu konverzije.">Beautiful, conversion-focused websites and e-commerce stores built to perform and scale.</div>
+      <div class="s-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </div>
+    <div class="service-card">
+      <div class="s-icon"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g6" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#6D28D9"/><stop offset="100%" stop-color="#0891B2"/></linearGradient></defs><rect x="6" y="18" width="40" height="30" rx="4" stroke="url(#g6)" stroke-width="3.5"/><path d="M6 26h40" stroke="url(#g6)" stroke-width="3.5" stroke-linecap="round"/><path d="M46 30l12-8v20l-12-8" stroke="url(#g6)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 18v-4M30 18v-4" stroke="url(#g6)" stroke-width="3" stroke-linecap="round"/></svg></div>
+      <div class="s-title" data-en="Filming & Video Production" data-hr="Snimanje i Video Produkcija">Filming & Video Production</div>
+      <div class="s-desc" data-en="High-quality video content — from concept to final cut — that tells your story and captivates audiences." data-hr="Profesionalne video priče koje privlače pažnju, bude emociju i predstavljaju vas u najboljem svjetlu.">High-quality video content — from concept to final cut — that tells your story and captivates audiences.</div>
+      <div class="s-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-wrap">
+  <div class="cta-banner">
+    <h2 data-en="Ready to grow your business?" data-hr="Spremni za rast vašeg poslovanja?">Ready to grow your business?</h2>
+    <p data-en="Speak with our marketing specialist and get a free personalized marketing analysis and strategy suggestion." data-hr="Razgovarajte s našim marketing stručnjakom i dobijte besplatnu personaliziranu analizu i prijedlog strategije.">Speak with our marketing specialist and get a free personalized marketing analysis and strategy suggestion.</p>
+    <a href="#contact" class="btn-white" data-en="Get Your Free Business Analysis" data-hr="Zakažite besplatnu analizu poslovanja">Get Your Free Business Analysis</a>
+  </div>
+</div>
+
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <span class="section-label" data-en="Contact Us" data-hr="Kontaktirajte Nas">Contact Us</span>
+      <h2 data-en="Let's have a chat!" data-hr="Preuzmite besplatnu analizu poslovanja">Let's have a chat!</h2>
+      <p data-en="Tell us about your project and we'll get back to you with a free personalized marketing strategy." data-hr="Recite nam više o svom projektu i ciljevima. Naš tim će skenirati vašu trenutnu online prisutnost i javiti vam se s potpuno besplatnom analizom i preporukama.">Tell us about your project and we'll get back to you with a free personalized marketing strategy.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+        <a class="contact-detail-text" href="mailto:info@amelodesign.com" style="text-decoration:none;color:inherit;">info@amelodesign.com</a>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.7 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013.62 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.6a16 16 0 006.29 6.29l.96-.96a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <a class="contact-detail-text" href="tel:+385981673268" style="text-decoration:none;color:inherit;">+385 98 167 3268</a>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon" style="background:#25D366;"><svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.99 2C6.476 2 2 6.477 2 11.99c0 1.77.463 3.43 1.27 4.877L2 22l5.267-1.248A9.947 9.947 0 0011.99 22C17.503 22 22 17.523 22 12.01 22 6.497 17.503 2 11.99 2zm0 18.19a8.163 8.163 0 01-4.162-1.14l-.299-.177-3.124.74.786-2.99-.194-.307A8.19 8.19 0 013.81 12c0-4.512 3.668-8.18 8.18-8.18 4.513 0 8.18 3.668 8.18 8.18 0 4.513-3.667 8.19-8.18 8.19z"/></svg></div>
+        <a class="contact-detail-text" href="https://wa.me/385981673268" target="_blank" style="text-decoration:none;color:inherit;">WhatsApp: +385 98 167 3268</a>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+        <span class="contact-detail-text">Samobor, Hrvatska</span>
+      </div>
+    </div>
+    <form class="contact-form" action="https://formspree.io/f/xbdvdgvj" method="POST">
+      <input type="hidden" name="_next" value="https://amelodesign.com/hvala.html">
+      <div class="form-row">
+        <div class="form-group">
+          <label data-en="First name" data-hr="Ime">First name</label>
+          <input type="text" name="ime" data-placeholder-en="John" data-placeholder-hr="Ivan" placeholder="John">
+        </div>
+        <div class="form-group">
+          <label data-en="Last name" data-hr="Prezime">Last name</label>
+          <input type="text" name="prezime" data-placeholder-en="Doe" data-placeholder-hr="Horvat" placeholder="Doe">
+        </div>
+      </div>
+      <div class="form-group">
+        <label data-en="Email address" data-hr="Email adresa">Email address</label>
+        <input type="email" name="email" placeholder="ivan@tvrtka.com" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-en="Company name" data-hr="Naziv tvrtke">Company name</label>
+          <input type="text" name="tvrtka" data-placeholder-en="Your Company" data-placeholder-hr="Vaša Tvrtka" placeholder="Your Company">
+        </div>
+        <div class="form-group">
+          <label data-en="Phone number" data-hr="Broj telefona">Phone number</label>
+          <input type="tel" name="telefon" placeholder="+385 ...">
+        </div>
+      </div>
+      <div class="form-group">
+        <label data-en="How did you hear about us?" data-hr="Kako ste čuli za nas?">How did you hear about us?</label>
+        <select name="kako_ste_culi">
+          <option value="" data-en="Select an option" data-hr="Odaberite opciju">Select an option</option>
+          <option data-en="Social media" data-hr="Društvene mreže">Društvene mreže</option>
+          <option data-en="Google search" data-hr="Google pretraživanje">Google pretraživanje</option>
+          <option data-en="Word of mouth" data-hr="Preporuka">Preporuka</option>
+          <option data-en="Other" data-hr="Ostalo">Ostalo</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label data-en="Your message" data-hr="Vaša poruka">Your message</label>
+        <textarea name="poruka" data-placeholder-en="Tell us about your project..." data-placeholder-hr="Recite nam o svom projektu..." placeholder="Tell us about your project..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit" data-en="Send Message" data-hr="Pošalji Poruku">Pošalji Poruku</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="amelo-logo.svg" alt="Amelo" class="logo-img" style="filter: brightness(0) invert(1);">
+      <p data-en="Ambitious, Playful and Different. A full-service marketing agency building brands and strategies that fuel sustainable growth." data-hr="Kao iskusan tim marketinških stručnjaka, dizajnera i programera, razvijamo snažne brendove i poslovne strategije za dugoročan i profitabilan razvoj.">Ambitious, Playful and Different. A full-service marketing agency building brands and strategies that fuel sustainable growth.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Links" data-hr="Poveznice">Links</h4>
+      <a href="#services" data-en="Services" data-hr="Usluge">Services</a>
+
+      <a href="#about" data-en="About Us" data-hr="O Nama">About Us</a>
+      <a href="#contact" data-en="Contact Us" data-hr="Kontakt">Contact Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-en="© Amelo Design 2025. All rights reserved." data-hr="© Amelo Design 2025. Sva prava pridržana.">© Amelo Design 2025. Sva prava pridržana.</p>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;">
+      <a href="pravila-privatnosti.html" data-en="Privacy Policy" data-hr="Pravila privatnosti">Pravila privatnosti</a>
+      <a href="uvjeti-koristenja.html" data-en="Terms of Use" data-hr="Uvjeti korištenja">Uvjeti korištenja</a>
+      <a href="pravila-kolacici.html" data-en="Cookie Policy" data-hr="Pravila o kolačićima">Pravila o kolačićima</a>
+      <a href="postavke-privatnosti.html" data-en="Privacy Settings" data-hr="Postavke privatnosti">Postavke privatnosti</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  let currentLang = 'en';
+
+  function setLang(lang) {
+    currentLang = lang;
+
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const text = el.getAttribute('data-' + lang);
+      if (text) {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          // handled below via data-placeholder-*
+        } else if (el.tagName === 'OPTION') {
+          el.textContent = text;
+        } else {
+          el.innerHTML = text;
+        }
+      }
+    });
+
+    document.querySelectorAll('[data-placeholder-en]').forEach(el => {
+      const ph = el.getAttribute('data-placeholder-' + lang);
+      if (ph) el.placeholder = ph;
+    });
+
+    document.documentElement.lang = lang;
+  }
+</script>
+
+<!-- Floating contact bar -->
+<div class="floating-bar" style="position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:9999;display:flex;flex-direction:column;gap:0;border-radius:16px 0 0 16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.18);">
+  <a href="mailto:info@amelodesign.com" title="Email" style="display:flex;align-items:center;justify-content:center;width:52px;height:52px;background:linear-gradient(135deg,#6D28D9,#8B5CF6);text-decoration:none;">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+  </a>
+  <a href="tel:+385981673268" title="Telefon" style="display:flex;align-items:center;justify-content:center;width:52px;height:52px;background:linear-gradient(135deg,#2563EB,#6D28D9);text-decoration:none;">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+  <a href="https://wa.me/385981673268" target="_blank" title="WhatsApp" style="display:flex;align-items:center;justify-content:center;width:52px;height:52px;background:#25D366;text-decoration:none;">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+</body>
+</html>
