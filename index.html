@@ -273,12 +273,12 @@
   .footer-bottom a:hover { color: white; }
 
   /* MOBILE */
-  @media (max-width: 768px) { body { padding-right: 48px; } .floating-bar a { width: 44px !important; height: 44px !important; } .floating-bar svg { width: 20px !important; height: 20px !important; } }
+  @media (max-width: 768px) { .floating-bar a { width: 44px !important; height: 44px !important; } .floating-bar svg { width: 20px !important; height: 20px !important; } .floating-bar { box-shadow: -2px 0 12px rgba(0,0,0,0.15) !important; } }
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
   .hamburger span { display: block; width: 24px; height: 2px; background: #1a1a2e; border-radius: 2px; transition: all 0.3s; }
   .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #fff; z-index: 99998; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
   .mobile-nav.open { display: flex; }
-  .mobile-nav a { font-size: 24px; font-weight: 600; color: #1a1a2e; text-decoration: none; }
+  .mobile-nav a { font-size: 18px; font-weight: 600; color: #1a1a2e; text-decoration: none; }
   .mobile-nav-close { position: absolute; top: 24px; right: 24px; font-size: 32px; background: none; border: none; cursor: pointer; color: #1a1a2e; }
 
   @media (max-width: 768px) {
