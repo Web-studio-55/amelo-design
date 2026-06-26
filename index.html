@@ -287,6 +287,7 @@
     .nav-links, .lang-switcher { display: none; }
     .nav-cta { display: none; }
     .hamburger { display: flex; }
+    .mobile-lang { display: flex !important; }
     .cta-wrap { padding: 0 16px 60px; }
     .cta-banner { padding: 48px 24px; border-radius: 24px; }
     .cta-banner h2 { font-size: 28px; }
@@ -337,6 +338,10 @@
       <button class="lang-btn" onclick="setLang('hr')">HR</button>
     </div>
     <a href="#contact" class="nav-cta" data-en="Free Business Analysis" data-hr="Besplatna analiza poslovanja">Free Business Analysis</a>
+    <div class="mobile-lang" style="display:none;align-items:center;background:rgba(124,58,237,0.08);border-radius:100px;padding:4px;gap:2px;">
+      <button class="lang-btn active" onclick="setLang('en')" id="mob-top-en">EN</button>
+      <button class="lang-btn" onclick="setLang('hr')" id="mob-top-hr">HR</button>
+    </div>
     <button class="hamburger" onclick="openMobileNav()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
