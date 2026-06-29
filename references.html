@@ -105,6 +105,10 @@
   .btn-primary { background: var(--grad); color: white; padding: 16px 36px; border-radius: 100px; font-weight: 700; font-size: 15px; text-decoration: none; display: inline-block; box-shadow: var(--shadow-purple); transition: opacity 0.2s, transform 0.2s; }
   .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
 
+  .logo-invert { filter: invert(1) grayscale(100%); mix-blend-mode: multiply; opacity: 0.7; transition: filter 0.3s, opacity 0.3s; }
+  .logo-invert-purple:hover { filter: invert(1) hue-rotate(150deg) saturate(5); mix-blend-mode: multiply; opacity: 1; }
+  .logo-invert-red:hover { filter: invert(1) hue-rotate(180deg) saturate(5); mix-blend-mode: multiply; opacity: 1; }
+
   /* FOOTER */
   footer { padding: 40px 72px; border-top: 1px solid rgba(109,40,217,0.08); display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--gray); }
   footer a { color: var(--gray); text-decoration: none; }
@@ -266,13 +270,13 @@
       <img src="klijenti/nn-home-design.png" alt="NN Home Design">
     </div>
     <div class="client-card">
-      <img src="klijenti/delivery-shots-2.png" alt="Delivery Shots 2" style="filter: invert(1) hue-rotate(150deg) saturate(5); mix-blend-mode: multiply;">
+      <img src="klijenti/delivery-shots-2.png" alt="Delivery Shots 2" class="logo-invert logo-invert-purple">
     </div>
     <div class="client-card">
       <span style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#94a3b8;text-align:center;">UDRUGA LJUDSKI POTENCIJALI</span>
     </div>
     <div class="client-card">
-      <img src="klijenti/v-and-a-design.jpg" alt="V and A Design" style="filter: invert(1) hue-rotate(180deg) saturate(5); mix-blend-mode: multiply;">
+      <img src="klijenti/v-and-a-design.jpg" alt="V and A Design" class="logo-invert logo-invert-red">
     </div>
     <div class="client-card">
       <img src="klijenti/download.jpeg" alt="Klijent">
@@ -282,6 +286,9 @@
     </div>
     <div class="client-card">
       <img src="klijenti/rv-tehnika.png" alt="RV Tehnika">
+    </div>
+    <div class="client-card">
+      <img src="klijenti/laboro.png" alt="Laboro">
     </div>
   </div>
 </section>
