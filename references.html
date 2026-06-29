@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>References — Amelo Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --purple: #6D28D9; --cyan: #0891B2; --dark: #0D0D1A; --gray: #64748B;
+    --light: #F5F4FF; --white: #fff;
+    --grad: linear-gradient(135deg, #6D28D9 0%, #0891B2 100%);
+    --shadow-purple: 0 12px 40px rgba(109,40,217,0.25);
+    --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 18px 72px; display: flex; align-items: center; justify-content: space-between;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(109,40,217,0.07); box-shadow: 0 1px 20px rgba(0,0,0,0.04);
+  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-img { height: 44px; width: auto; object-fit: contain; }
+  .nav-right { display: flex; align-items: center; gap: 40px; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--gray); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--purple); }
+  .lang-switcher { display: flex; align-items: center; background: rgba(124,58,237,0.08); border-radius: 100px; padding: 4px; gap: 2px; }
+  .lang-btn { background: none; border: none; padding: 6px 14px; border-radius: 100px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--gray); transition: all 0.2s; }
+  .lang-btn.active { background: var(--grad); color: white; }
+  .nav-cta { background: var(--grad); color: white; padding: 12px 28px; border-radius: 100px; font-weight: 600; font-size: 14px; text-decoration: none; white-space: nowrap; transition: opacity 0.2s; }
+  .nav-cta:hover { opacity: 0.88; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: #1a1a2e; border-radius: 2px; }
+  .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #fff; z-index: 99998; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { font-size: 18px; font-weight: 600; color: #1a1a2e; text-decoration: none; }
+  .mobile-nav-close { position: absolute; top: 24px; right: 24px; font-size: 32px; background: none; border: none; cursor: pointer; color: #1a1a2e; }
+  .mobile-lang { display: none; align-items: center; background: rgba(124,58,237,0.08); border-radius: 100px; padding: 4px; gap: 2px; }
+
+  /* HERO */
+  .page-hero {
+    padding: 160px 72px 80px;
+    background: var(--light);
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .page-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 60%, rgba(109,40,217,0.09) 0%, transparent 70%);
+  }
+  .page-hero > * { position: relative; z-index: 1; }
+  .section-label { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--purple); margin-bottom: 20px; }
+  .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px,5vw,60px); font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
+  .grad-text { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .page-hero p { font-size: 18px; color: var(--gray); line-height: 1.7; max-width: 560px; margin: 0 auto; }
+
+  /* CLIENTS GRID */
+  .clients-section { padding: 100px 72px; }
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+  }
+  .client-card {
+    background: var(--white);
+    border: 1px solid rgba(109,40,217,0.1);
+    border-radius: 20px;
+    padding: 36px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.25s, transform 0.25s;
+    min-height: 140px;
+  }
+  .client-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+  }
+  .client-card img {
+    max-width: 100%;
+    max-height: 80px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: filter 0.3s, opacity 0.3s;
+  }
+  .client-card:hover img { filter: grayscale(0%); opacity: 1; }
+
+  /* CTA SECTION */
+  .cta-section {
+    padding: 100px 72px;
+    background: var(--dark);
+    text-align: center;
+  }
+  .cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px,3.5vw,44px); font-weight: 800; color: white; margin-bottom: 20px; }
+  .cta-section p { font-size: 18px; color: rgba(255,255,255,0.6); margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .btn-primary { background: var(--grad); color: white; padding: 16px 36px; border-radius: 100px; font-weight: 700; font-size: 15px; text-decoration: none; display: inline-block; box-shadow: var(--shadow-purple); transition: opacity 0.2s, transform 0.2s; }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer { padding: 40px 72px; border-top: 1px solid rgba(109,40,217,0.08); display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--gray); }
+  footer a { color: var(--gray); text-decoration: none; }
+  footer a:hover { color: var(--purple); }
+
+  /* FLOATING BAR */
+  .floating-bar {
+    position: fixed; right: 0; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 0; z-index: 9999;
+    border-radius: 12px 0 0 12px; overflow: hidden;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.12);
+  }
+  .floating-bar a {
+    width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;
+    text-decoration: none; transition: opacity 0.2s;
+  }
+  .floating-bar a:hover { opacity: 0.85; }
+  .fb-call { background: #6D28D9; }
+  .fb-wa { background: #25D366; }
+  .fb-mail { background: #0891B2; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links, .lang-switcher { display: none; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .mobile-lang { display: flex !important; }
+    .page-hero { padding: 120px 24px 60px; }
+    .clients-section { padding: 60px 24px; }
+    .clients-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .client-card { padding: 24px 16px; min-height: 110px; }
+    .cta-section { padding: 64px 24px; }
+    footer { flex-direction: column; gap: 12px; padding: 32px 24px; text-align: center; }
+    section, footer { padding-right: 60px !important; }
+    .floating-bar a { width: 44px !important; height: 44px !important; }
+    .floating-bar svg { width: 20px !important; height: 20px !important; }
+  }
+  @media (max-width: 480px) {
+    .clients-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">
+    <img src="amelo-logo.svg" alt="Amelo Design" class="logo-img">
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="services.html" data-en="Services" data-hr="Usluge">Services</a></li>
+      <li><a href="references.html" class="active" data-en="References" data-hr="Reference">References</a></li>
+      <li><a href="#about" data-en="About Us" data-hr="O Nama">About Us</a></li>
+      <li><a href="contact.html" data-en="Contact Us" data-hr="Kontakt">Contact Us</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('hr')">HR</button>
+    </div>
+    <a href="contact.html" class="nav-cta" data-en="Free Business Analysis" data-hr="Besplatna analiza poslovanja">Free Business Analysis</a>
+    <div class="mobile-lang" style="display:none;align-items:center;background:rgba(124,58,237,0.08);border-radius:100px;padding:4px;gap:2px;">
+      <button class="lang-btn active" onclick="setLang('en')" id="mob-top-en">EN</button>
+      <button class="lang-btn" onclick="setLang('hr')" id="mob-top-hr">HR</button>
+    </div>
+    <button class="hamburger" onclick="openMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()">×</button>
+  <a href="services.html" onclick="closeMobileNav()" data-en="Services" data-hr="Usluge">Services</a>
+  <a href="references.html" onclick="closeMobileNav()" data-en="References" data-hr="Reference">References</a>
+  <a href="index.html#about" onclick="closeMobileNav()" data-en="About Us" data-hr="O Nama">About Us</a>
+  <a href="contact.html" onclick="closeMobileNav()" data-en="Contact Us" data-hr="Kontakt">Contact Us</a>
+  <div style="display:flex;gap:8px;align-items:center;background:rgba(124,58,237,0.08);border-radius:100px;padding:4px;">
+    <button class="lang-btn active" onclick="setLang('en');closeMobileNav()" id="mob-en">EN</button>
+    <button class="lang-btn" onclick="setLang('hr');closeMobileNav()" id="mob-hr">HR</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <p class="section-label" data-en="Our clients" data-hr="Naši klijenti">Our clients</p>
+  <h1 data-en="Some of our <span class='grad-text'>clients</span>" data-hr="Neki od naših <span class='grad-text'>klijenata</span>">Some of our <span class="grad-text">clients</span></h1>
+  <p data-en="We are proud to have worked with brands across various industries — from healthcare and legal services to fitness and design." data-hr="Ponosni smo što smo surađivali s brendovima iz različitih industrija — od zdravstva i pravnih usluga do fitnessa i dizajna.">We are proud to have worked with brands across various industries — from healthcare and legal services to fitness and design.</p>
+</section>
+
+<!-- CLIENTS GRID -->
+<section class="clients-section">
+  <div class="clients-grid">
+    <div class="client-card">
+      <img src="klijenti/medestetica-logo.png" alt="Medestetica">
+    </div>
+    <div class="client-card">
+      <img src="klijenti/poliklinika-grgic-logo.png" alt="Poliklinika Grgić">
+    </div>
+    <div class="client-card">
+      <img src="klijenti/doktor-zekic.png" alt="Doktor Žekić">
+    </div>
+    <div class="client-card">
+      <img src="klijenti/hi-tech-solutions.png" alt="Hi-Tech Solutions">
+    </div>
+    <div class="client-card">
+      <img src="klijenti/labsense-logo-.png" alt="Labsense">
+    </div>
+    <div class="client-card">
+      <img src="klijenti/device-consulting.svg" alt="Device Consulting">
+    </div>
+    <div class="client-card">
+      <img src="klijenti/Katarina-Mamic-design-novi-logo.png" alt="Katarina Mamić Design">
+    </div>
+    <div class="client-card">
+      <img src="klijenti/dlm-studio-.jpeg" alt="DLM Studio">
+    </div>
+    <div class="client-card">
+      <img src="klijenti/Botun_black-01.jpg" alt="Botun">
+    </div>
+    <div class="client-card">
+      <img src="klijenti/FITSTOP-300x300.png" alt="Fitstop">
+    </div>
+    <div class="client-card">
+      <img src="klijenti/download.jpeg" alt="Klijent">
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 data-en="Ready to join them?" data-hr="Spremni ste postati dio naše priče?">Ready to join them?</h2>
+  <p data-en="Let's talk about how we can help grow your business." data-hr="Razgovarajmo o tome kako možemo pomoći rastu vašeg poslovanja.">Let's talk about how we can help grow your business.</p>
+  <a href="contact.html" class="btn-primary" data-en="Get in touch" data-hr="Kontaktirajte nas">Get in touch</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="logo">
+    <img src="amelo-logo.svg" alt="Amelo Design" style="height:32px;">
+  </a>
+  <span data-en="© 2025 Amelo Design. All rights reserved." data-hr="© 2025 Amelo Design. Sva prava pridržana.">© 2025 Amelo Design. All rights reserved.</span>
+  <div style="display:flex;gap:20px;">
+    <a href="index.html" data-en="Home" data-hr="Početna">Home</a>
+    <a href="services.html" data-en="Services" data-hr="Usluge">Services</a>
+    <a href="contact.html" data-en="Contact" data-hr="Kontakt">Contact</a>
+  </div>
+</footer>
+
+<!-- FLOATING BAR -->
+<div class="floating-bar">
+  <a href="tel:+385981673268" class="fb-call" title="Call us">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-.85a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>
+  </a>
+  <a href="https://wa.me/385981673268" class="fb-wa" title="WhatsApp" target="_blank">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+  <a href="mailto:sanela@amelodesign.com" class="fb-mail" title="Email">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+  </a>
+</div>
+
+<script>
+function openMobileNav(){ document.getElementById('mobileNav').classList.add('open'); }
+function closeMobileNav(){ document.getElementById('mobileNav').classList.remove('open'); }
+
+const translations = { 'en': {}, 'hr': {} };
+let currentLang = localStorage.getItem('lang') || 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.innerHTML = lang === 'hr' ? el.getAttribute('data-hr') : el.getAttribute('data-en');
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    if ((btn.textContent === 'EN' && lang === 'en') || (btn.textContent === 'HR' && lang === 'hr')) {
+      btn.classList.add('active');
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => setLang(currentLang));
+</script>
+</body>
+</html>
