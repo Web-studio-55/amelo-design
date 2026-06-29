@@ -105,8 +105,17 @@
   .btn-primary { background: var(--grad); color: white; padding: 16px 36px; border-radius: 100px; font-weight: 700; font-size: 15px; text-decoration: none; display: inline-block; box-shadow: var(--shadow-purple); transition: opacity 0.2s, transform 0.2s; }
   .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
 
-  .client-card img.logo-invert { filter: invert(1) !important; opacity: 1 !important; }
-  .client-card:hover img.logo-invert { filter: invert(1) !important; opacity: 1 !important; }
+  /* RV Tehnika - tamna pozadina → bijela, sivo, na hover inverted boje */
+  img[alt="RV Tehnika"] { filter: invert(1) grayscale(100%) !important; opacity: 0.7 !important; }
+  .client-card:hover img[alt="RV Tehnika"] { filter: invert(1) !important; opacity: 1 !important; }
+
+  /* Delivery Shots - sivo, na hover tamno ljubičasta umjesto zelene */
+  img[alt="Delivery Shots 2"] { filter: grayscale(100%) !important; opacity: 0.7 !important; }
+  .client-card:hover img[alt="Delivery Shots 2"] { filter: hue-rotate(160deg) saturate(4) brightness(0.5) !important; opacity: 1 !important; }
+
+  /* V&A - tamna pozadina → bijela, sivo, na hover žarko crveni & */
+  img[alt="V and A Design"] { filter: invert(1) grayscale(100%) !important; opacity: 0.7 !important; }
+  .client-card:hover img[alt="V and A Design"] { filter: invert(1) hue-rotate(180deg) saturate(4) !important; opacity: 1 !important; }
 
   /* FOOTER */
   footer { padding: 40px 72px; border-top: 1px solid rgba(109,40,217,0.08); display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--gray); }
