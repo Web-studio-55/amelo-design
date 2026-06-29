@@ -176,9 +176,19 @@
   .floating-bar a { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; text-decoration: none; transition: opacity 0.2s; }
   .floating-bar a:hover { opacity: 0.85; }
 
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: #1a1a2e; border-radius: 2px; }
+  .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #fff; z-index: 99998; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { font-size: 18px; font-weight: 600; color: #1a1a2e; text-decoration: none; }
+  .mobile-nav-close { position: absolute; top: 24px; right: 24px; font-size: 32px; background: none; border: none; cursor: pointer; color: #1a1a2e; }
+
   /* MOBILE */
   @media (max-width: 768px) {
     nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
     .hero { padding: 120px 24px 60px; }
     .birthday-banner { font-size: 13px; padding: 14px 20px; }
     section { padding: 64px 24px; }
@@ -204,8 +214,29 @@
   <a href="index.html" class="logo">
     <img src="amelo-logo.svg" alt="Amelo Design" class="logo-img">
   </a>
-  <a href="tel:+385981673268" class="nav-cta">📞 Nazovite nas</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="services.html">Usluge</a></li>
+      <li><a href="index.html#about">O nama</a></li>
+      <li><a href="contact.html">Kontakt</a></li>
+    </ul>
+    <a href="tel:+385981673268" class="nav-cta">📞 Nazovite nas</a>
+    <button class="hamburger" onclick="openMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()">×</button>
+  <a href="services.html" onclick="closeMobileNav()">Usluge</a>
+  <a href="index.html#about" onclick="closeMobileNav()">O nama</a>
+  <a href="contact.html" onclick="closeMobileNav()">Kontakt</a>
+  <a href="tel:+385981673268" onclick="closeMobileNav()" style="color:#6D28D9;">📞 Nazovite nas</a>
+</div>
+<script>
+function openMobileNav(){ document.getElementById('mobileNav').classList.add('open'); }
+function closeMobileNav(){ document.getElementById('mobileNav').classList.remove('open'); }
+</script>
 
 <!-- BIRTHDAY BANNER -->
 <div class="birthday-banner">
