@@ -438,6 +438,11 @@ function closeMobileNav(){ document.getElementById('mobileNav').classList.remove
   </a>
 </div>
 
-
+<script>
+  (function() {
+    var sb = window.innerWidth - document.documentElement.clientWidth;
+    if (sb > 0) { document.querySelector('nav').style.paddingRight = (72 + sb) + 'px'; }
+  })();
+</script>
 </body>
 </html>

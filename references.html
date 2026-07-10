@@ -374,6 +374,10 @@ function setLang(lang) {
 }
 
 document.addEventListener('DOMContentLoaded', () => setLang(currentLang));
+  (function() {
+    var sb = window.innerWidth - document.documentElement.clientWidth;
+    if (sb > 0) { document.querySelector('nav').style.paddingRight = (72 + sb) + 'px'; }
+  })();
 </script>
 </body>
 </html>
