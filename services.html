@@ -9,7 +9,7 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --purple: #7C3AED;
+    --purple: #4361EE;
     --cyan: #20B0E2;
     --green: #059669;
     --dark: #111827;
@@ -17,8 +17,8 @@
     --gray: #6B7280;
     --light: #F9FAFB;
     --white: #ffffff;
-    --grad: linear-gradient(135deg, #7C3AED 0%, #20B0E2 100%);
-    --grad-subtle: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(32,176,226,0.06) 100%);
+    --grad: linear-gradient(135deg, #4361EE 0%, #20B0E2 100%);
+    --grad-subtle: linear-gradient(135deg, rgba(67,97,238,0.08) 0%, rgba(32,176,226,0.06) 100%);
   }
 
   html { scroll-behavior: smooth; }
@@ -33,7 +33,7 @@
     display: flex; align-items: center; justify-content: space-between;
     background: rgba(255,255,255,0.9);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(124,58,237,0.08);
+    border-bottom: 1px solid rgba(67,97,238,0.08);
   }
 
   .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
@@ -44,7 +44,7 @@
   .nav-links a { text-decoration: none; color: var(--gray); font-size: 14px; font-weight: 500; transition: color 0.2s; }
   .nav-links a:hover, .nav-links a.active { color: var(--purple); }
 
-  .lang-switcher { display: flex; align-items: center; background: rgba(124,58,237,0.08); border-radius: 100px; padding: 4px; gap: 2px; }
+  .lang-switcher { display: flex; align-items: center; background: rgba(67,97,238,0.08); border-radius: 100px; padding: 4px; gap: 2px; }
   .lang-btn { padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 700; border: none; cursor: pointer; transition: all 0.2s; background: transparent; color: var(--gray); letter-spacing: 0.5px; }
   .lang-btn.active { background: var(--grad); color: white; }
 
@@ -63,7 +63,7 @@
   .page-hero::before {
     content: '';
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(124,58,237,0.1) 0%, transparent 70%);
+    background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(67,97,238,0.1) 0%, transparent 70%);
   }
 
   .section-label {
@@ -144,7 +144,7 @@
     font-weight: 600; font-size: 15px; text-decoration: none;
     display: inline-block;
     transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 8px 30px rgba(124,58,237,0.25);
+    box-shadow: 0 8px 30px rgba(67,97,238,0.25);
   }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(124,58,237,0.4); }
 
@@ -181,6 +181,7 @@
 
   @media (max-width: 768px) {
     nav { padding: 16px 20px; }
+    .logo-img { height: 35px; }
     .nav-links, .lang-switcher { display: none; }
     .nav-cta { display: none; }
     .hamburger { display: flex; }
@@ -251,7 +252,7 @@ function closeMobileNav(){ document.getElementById('mobileNav').classList.remove
   <!-- 1. Strategic Marketing -->
   <div class="service-block">
     <div class="service-visual">
-      <div class="service-visual-icon" style="background: linear-gradient(135deg, #7C3AED, #A855F7);">
+      <div class="service-visual-icon" style="background: linear-gradient(135deg, #4361EE, #A855F7);">
         <svg viewBox="0 0 24 24"><rect x="3" y="10" width="4" height="11" rx="1"/><rect x="10" y="6" width="4" height="15" rx="1"/><rect x="17" y="2" width="4" height="19" rx="1"/></svg>
       </div>
     </div>

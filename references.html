@@ -8,11 +8,11 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --purple: #7C3AED; --cyan: #20B0E2; --green: #059669; --dark: #111827;
+    --purple: #4361EE; --cyan: #20B0E2; --green: #059669; --dark: #111827;
     --dark2: #1F2937; --gray: #6B7280; --light: #F9FAFB; --white: #fff;
-    --grad: linear-gradient(135deg, #7C3AED 0%, #20B0E2 100%);
-    --grad-subtle: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(32,176,226,0.06) 100%);
-    --shadow-purple: 0 12px 40px rgba(124,58,237,0.2);
+    --grad: linear-gradient(135deg, #4361EE 0%, #20B0E2 100%);
+    --grad-subtle: linear-gradient(135deg, rgba(67,97,238,0.08) 0%, rgba(32,176,226,0.06) 100%);
+    --shadow-purple: 0 12px 40px rgba(67,97,238,0.2);
     --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
   }
   html { scroll-behavior: smooth; }
@@ -25,7 +25,7 @@
     position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 100;
     padding: 18px 72px; display: flex; align-items: center; justify-content: space-between;
     background: rgba(255,255,255,0.92); backdrop-filter: blur(24px);
-    border-bottom: 1px solid rgba(109,40,217,0.07); box-shadow: 0 1px 20px rgba(0,0,0,0.04);
+    border-bottom: 1px solid rgba(67,97,238,0.07); box-shadow: 0 1px 20px rgba(0,0,0,0.04);
   }
   .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
   .logo-img { height: 44px; width: auto; object-fit: contain; }
@@ -33,7 +33,7 @@
   .nav-links { display: flex; gap: 36px; list-style: none; }
   .nav-links a { text-decoration: none; color: var(--gray); font-size: 14px; font-weight: 500; transition: color 0.2s; }
   .nav-links a:hover, .nav-links a.active { color: var(--purple); }
-  .lang-switcher { display: flex; align-items: center; background: rgba(124,58,237,0.08); border-radius: 100px; padding: 4px; gap: 2px; }
+  .lang-switcher { display: flex; align-items: center; background: rgba(67,97,238,0.08); border-radius: 100px; padding: 4px; gap: 2px; }
   .lang-btn { background: none; border: none; padding: 6px 14px; border-radius: 100px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--gray); transition: all 0.2s; }
   .lang-btn.active { background: var(--grad); color: white; }
   .nav-cta { background: var(--grad); color: white; padding: 12px 28px; border-radius: 100px; font-weight: 600; font-size: 14px; text-decoration: none; white-space: nowrap; transition: opacity 0.2s; min-width: 210px; text-align: center; }
@@ -44,7 +44,7 @@
   .mobile-nav.open { display: flex; }
   .mobile-nav a { font-size: 18px; font-weight: 600; color: #1a1a2e; text-decoration: none; }
   .mobile-nav-close { position: absolute; top: 24px; right: 24px; font-size: 32px; background: none; border: none; cursor: pointer; color: #1a1a2e; }
-  .mobile-lang { display: none; align-items: center; background: rgba(124,58,237,0.08); border-radius: 100px; padding: 4px; gap: 2px; }
+  .mobile-lang { display: none; align-items: center; background: rgba(67,97,238,0.08); border-radius: 100px; padding: 4px; gap: 2px; }
 
   /* HERO */
   .page-hero {
@@ -55,7 +55,7 @@
   }
   .page-hero::before {
     content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse 60% 60% at 50% 60%, rgba(109,40,217,0.09) 0%, transparent 70%);
+    background: radial-gradient(ellipse 60% 60% at 50% 60%, rgba(67,97,238,0.09) 0%, transparent 70%);
   }
   .page-hero > * { position: relative; z-index: 1; }
   .section-label { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--purple); margin-bottom: 20px; }
@@ -73,7 +73,7 @@
   }
   .client-card {
     background: var(--white);
-    border: 1px solid rgba(109,40,217,0.1);
+    border: 1px solid rgba(67,97,238,0.1);
     border-radius: 20px;
     padding: 36px 28px;
     display: flex;
@@ -129,7 +129,7 @@
   .client-card:hover img[alt="V and A Design"] { filter: invert(1) hue-rotate(180deg) saturate(4) !important; opacity: 1 !important; }
 
   /* FOOTER */
-  footer { padding: 40px 72px; border-top: 1px solid rgba(109,40,217,0.08); display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--gray); }
+  footer { padding: 40px 72px; border-top: 1px solid rgba(67,97,238,0.08); display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--gray); }
   footer a { color: var(--gray); text-decoration: none; }
   footer a:hover { color: var(--purple); }
 
@@ -152,6 +152,7 @@
   /* MOBILE */
   @media (max-width: 768px) {
     nav { padding: 16px 20px; }
+    .logo-img { height: 35px; }
     .nav-links, .lang-switcher { display: none; }
     .nav-cta { display: none; }
     .hamburger { display: flex; }
@@ -190,7 +191,7 @@
       <button class="lang-btn" onclick="setLang('hr')">HR</button>
     </div>
     <a href="contact.html" class="nav-cta" data-en="Free Business Analysis" data-hr="Besplatna analiza poslovanja">Free Business Analysis</a>
-    <div class="mobile-lang" style="display:none;align-items:center;background:rgba(124,58,237,0.08);border-radius:100px;padding:4px;gap:2px;">
+    <div class="mobile-lang" style="display:none;align-items:center;background:rgba(67,97,238,0.08);border-radius:100px;padding:4px;gap:2px;">
       <button class="lang-btn active" onclick="setLang('en')" id="mob-top-en">EN</button>
       <button class="lang-btn" onclick="setLang('hr')" id="mob-top-hr">HR</button>
     </div>
@@ -206,7 +207,7 @@
   <a href="index.html#about" onclick="closeMobileNav()" data-en="About Us" data-hr="O Nama">About Us</a>
   <a href="references.html" onclick="closeMobileNav()" data-en="References" data-hr="Reference">References</a>
   <a href="contact.html" onclick="closeMobileNav()" data-en="Contact Us" data-hr="Kontakt">Contact Us</a>
-  <div style="display:flex;gap:8px;align-items:center;background:rgba(124,58,237,0.08);border-radius:100px;padding:4px;">
+  <div style="display:flex;gap:8px;align-items:center;background:rgba(67,97,238,0.08);border-radius:100px;padding:4px;">
     <button class="lang-btn active" onclick="setLang('en');closeMobileNav()" id="mob-en">EN</button>
     <button class="lang-btn" onclick="setLang('hr');closeMobileNav()" id="mob-hr">HR</button>
   </div>
