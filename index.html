@@ -10,9 +10,9 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --purple: #7C3AED;
+    --purple: #4361EE;
     --purple-light: #20B0E2;
-    --blue: #7C3AED;
+    --blue: #4361EE;
     --cyan: #20B0E2;
     --green: #059669;
     --dark: #111827;
@@ -20,12 +20,12 @@
     --gray: #6B7280;
     --light: #F9FAFB;
     --white: #ffffff;
-    --grad: linear-gradient(135deg, #7C3AED 0%, #20B0E2 100%);
-    --grad-subtle: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(32,176,226,0.06) 100%);
+    --grad: linear-gradient(135deg, #4361EE 0%, #20B0E2 100%);
+    --grad-subtle: linear-gradient(135deg, rgba(67,97,238,0.08) 0%, rgba(32,176,226,0.06) 100%);
     --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
     --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
     --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
-    --shadow-purple: 0 12px 40px rgba(109,40,217,0.25);
+    --shadow-purple: 0 12px 40px rgba(67,97,238,0.25);
   }
 
   html { scroll-behavior: smooth; }
@@ -41,7 +41,7 @@
     background: rgba(255,255,255,0.92);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border-bottom: 1px solid rgba(109,40,217,0.07);
+    border-bottom: 1px solid rgba(67,97,238,0.07);
     box-shadow: 0 1px 20px rgba(0,0,0,0.04);
   }
 
@@ -56,7 +56,7 @@
   /* LANG SWITCHER */
   .lang-switcher {
     display: flex; align-items: center;
-    background: rgba(124,58,237,0.08);
+    background: rgba(67,97,238,0.08);
     border-radius: 100px;
     padding: 4px;
     gap: 2px;
@@ -95,11 +95,11 @@
   .hero-content { position: relative; z-index: 2; overflow: visible; padding-left: 2px; }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.2);
+    background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.1);
     border-radius: 100px; padding: 8px 20px; font-size: 13px; font-weight: 500;
-    color: var(--purple); margin-bottom: 28px; white-space: nowrap;
+    color: var(--gray); margin-bottom: 28px; white-space: nowrap;
   }
-  .hero-badge .dot { width: 8px; height: 8px; background: var(--purple); border-radius: 50%; display: inline-block; flex-shrink: 0; }
+  .hero-badge .dot { width: 8px; height: 8px; background: var(--gray); border-radius: 50%; display: inline-block; flex-shrink: 0; }
 
   h1 { font-size: clamp(44px, 5vw, 72px); font-weight: 800; line-height: 1.06; letter-spacing: -2.5px; color: var(--dark); margin-bottom: 28px; font-family: 'Playfair Display', serif; }
   .grad-text { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-style: italic; }
@@ -112,13 +112,13 @@
     transition: transform 0.25s, box-shadow 0.25s;
     box-shadow: var(--shadow-purple);
   }
-  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(109,40,217,0.35); }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(67,97,238,0.35); }
   .btn-outline {
-    border: 1.5px solid rgba(109,40,217,0.25); color: var(--purple); padding: 17px 40px;
+    border: 1.5px solid rgba(67,97,238,0.25); color: var(--purple); padding: 17px 40px;
     border-radius: 100px; font-weight: 600; font-size: 15px; text-decoration: none; transition: all 0.25s;
-    background: rgba(109,40,217,0.03);
+    background: rgba(67,97,238,0.03);
   }
-  .btn-outline:hover { border-color: var(--purple); background: rgba(109,40,217,0.07); transform: translateY(-2px); }
+  .btn-outline:hover { border-color: var(--purple); background: rgba(67,97,238,0.07); transform: translateY(-2px); }
 
   .hero-visual {
     position: relative; right: auto; top: auto; transform: none;
@@ -197,7 +197,7 @@
   .pill-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--grad); flex-shrink: 0; }
   .about-text p { color: var(--gray); font-size: 16px; line-height: 1.8; margin-bottom: 18px; }
   .about-values { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
-  .value-chip { background: rgba(124,58,237,0.08); border: 1px solid rgba(124,58,237,0.15); border-radius: 100px; padding: 8px 20px; font-size: 13px; font-weight: 600; color: var(--purple); }
+  .value-chip { background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.1); border-radius: 100px; padding: 8px 20px; font-size: 13px; font-weight: 600; color: var(--gray); }
 
   /* SERVICES */
   .services { background: var(--light); }
@@ -210,7 +210,7 @@
   }
   .service-card::before { content: ''; position: absolute; inset: 0; background: var(--grad); opacity: 0; transition: opacity 0.35s; z-index: 0; }
   .service-card:hover::before { opacity: 1; }
-  .service-card:hover { transform: translateY(-6px); box-shadow: 0 24px 70px rgba(109,40,217,0.22); }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 24px 70px rgba(67,97,238,0.22); }
   .service-card:hover .s-title, .service-card:hover .s-desc { color: white; }
   .service-card:hover .s-icon svg .grad-stroke { stroke: white; }
   .service-card:hover .s-icon svg .grad-fill { fill: white; }
@@ -239,7 +239,7 @@
   .work-logo-text { font-size: 22px; font-weight: 800; color: var(--dark); }
   .work-name { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
   .work-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-  .work-tag { background: white; border: 1.5px solid rgba(124,58,237,0.2); color: var(--purple); border-radius: 100px; padding: 5px 14px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+  .work-tag { background: white; border: 1.5px solid rgba(67,97,238,0.2); color: var(--purple); border-radius: 100px; padding: 5px 14px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
 
   /* CONTACT */
   .contact { background: var(--light); }
@@ -342,7 +342,7 @@
       <button class="lang-btn" onclick="setLang('hr')">HR</button>
     </div>
     <a href="#contact" class="nav-cta" data-en="Free Business Analysis" data-hr="Besplatna analiza poslovanja">Free Business Analysis</a>
-    <div class="mobile-lang" style="display:none;align-items:center;background:rgba(124,58,237,0.08);border-radius:100px;padding:4px;gap:2px;">
+    <div class="mobile-lang" style="display:none;align-items:center;background:rgba(67,97,238,0.08);border-radius:100px;padding:4px;gap:2px;">
       <button class="lang-btn active" onclick="setLang('en')" id="mob-top-en">EN</button>
       <button class="lang-btn" onclick="setLang('hr')" id="mob-top-hr">HR</button>
     </div>
