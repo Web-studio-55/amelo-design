@@ -20,7 +20,7 @@
     --gray: #6B7280;
     --light: #F9FAFB;
     --white: #ffffff;
-    --grad: linear-gradient(135deg, #4361EE 0%, #20B0E2 100%);
+    --grad: linear-gradient(135deg, #7C3AED 0%, #4361EE 55%, #20B0E2 100%);
     --grad-subtle: linear-gradient(135deg, rgba(67,97,238,0.08) 0%, rgba(32,176,226,0.06) 100%);
     --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
     --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
@@ -102,7 +102,7 @@
   .hero-badge .dot { width: 8px; height: 8px; background: var(--gray); border-radius: 50%; display: inline-block; flex-shrink: 0; }
 
   h1 { font-size: clamp(44px, 5vw, 72px); font-weight: 800; line-height: 1.06; letter-spacing: -2.5px; color: var(--dark); margin-bottom: 28px; font-family: 'Playfair Display', serif; }
-  .grad-text { color: var(--dark); font-style: italic; }
+  .grad-text { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-style: italic; }
   .hero-sub { font-size: 17px; color: var(--gray); line-height: 1.8; margin-bottom: 48px; max-width: 460px; font-weight: 400; }
 
   .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
