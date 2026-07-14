@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Amelo Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple: #4361EE;
+    --cyan: #20B0E2;
+    --green: #059669;
+    --dark: #111827;
+    --dark2: #1F2937;
+    --gray: #6B7280;
+    --light: #F9FAFB;
+    --white: #ffffff;
+    --grad: linear-gradient(135deg, #7C3AED 0%, #4361EE 55%, #20B0E2 100%);
+    --grad-subtle: linear-gradient(135deg, rgba(67,97,238,0.08) 0%, rgba(32,176,226,0.06) 100%);
+  }
+
+  html { scroll-behavior: smooth; overflow-y: scroll; }
+  body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 100;
+    padding: 18px 72px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(67,97,238,0.08);
+  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-img { height: 44px; width: auto; object-fit: contain; }
+  .nav-right { display: flex; align-items: center; gap: 40px; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--gray); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--purple); }
+  .lang-switcher { display: flex; align-items: center; background: rgba(67,97,238,0.08); border-radius: 100px; padding: 4px; gap: 2px; }
+  .lang-btn { padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 700; border: none; cursor: pointer; transition: all 0.2s; background: transparent; color: var(--gray); letter-spacing: 0.5px; }
+  .lang-btn.active { background: var(--grad); color: white; }
+  .nav-cta { background: var(--grad); color: white; padding: 12px 28px; border-radius: 100px; font-weight: 600; font-size: 14px; text-decoration: none; transition: opacity 0.2s, transform 0.2s; white-space: nowrap; min-width: 210px; text-align: center; }
+  .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; }
+  .mobile-lang { display: none; }
+
+  /* MOBILE NAV */
+  .mobile-nav {
+    display: none; position: fixed; inset: 0; background: white; z-index: 200;
+    flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+    font-size: 20px; font-weight: 600;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { text-decoration: none; color: var(--dark); }
+  .mobile-nav-close { position: absolute; top: 24px; right: 28px; font-size: 32px; background: none; border: none; cursor: pointer; color: var(--dark); }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 120px 72px 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .page-header h1 {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 800;
+    letter-spacing: -3px;
+    line-height: 1;
+    color: var(--dark);
+  }
+
+  /* FILTER TABS */
+  .filter-wrap {
+    padding: 40px 72px 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .filter-tab {
+    padding: 9px 22px;
+    border-radius: 100px;
+    border: 1.5px solid rgba(0,0,0,0.15);
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    font-family: 'Inter', sans-serif;
+  }
+  .filter-tab:hover { border-color: var(--dark); color: var(--dark); }
+  .filter-tab.active {
+    background: var(--grad);
+    border-color: transparent;
+    color: white;
+  }
+
+  /* PROJECTS GRID */
+  .projects-wrap {
+    padding: 40px 72px 100px;
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  /* PROJECT CARD */
+  .project-card {
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding-bottom: 16px;
+  }
+  .project-card.hidden { display: none; }
+
+  .card-img-wrap {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--light);
+  }
+  .card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+  .project-card:hover .card-img-wrap img { transform: scale(1.04); }
+
+  /* placeholder when no image */
+  .card-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+  }
+  .card-placeholder img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 50% !important;
+    max-height: 50% !important;
+    object-fit: contain !important;
+    transform: none !important;
+    filter: grayscale(30%);
+  }
+  .project-card:hover .card-placeholder img { transform: none !important; }
+
+  .card-overlay { display: none; }
+
+  .card-body {
+    padding: 14px 4px 4px;
+  }
+  .card-category {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--purple);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.3;
+  }
+
+  /* FOOTER */
+  footer { background: var(--dark); color: white; padding: 60px 72px; }
+  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto 48px; }
+  .footer-brand p { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.7; margin-top: 16px; max-width: 260px; }
+  .footer-col h4 { font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+  .footer-col a { display: block; text-decoration: none; color: rgba(255,255,255,0.65); font-size: 14px; margin-bottom: 12px; transition: color 0.2s; }
+  .footer-col a:hover { color: white; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; max-width: none; }
+  .footer-bottom p { color: rgba(255,255,255,0.35); font-size: 13px; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .logo-img { height: 35px; }
+    .nav-links, .lang-switcher { display: none; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .mobile-lang { display: flex !important; }
+    .page-header { padding: 100px 20px 0; }
+    .filter-wrap { padding: 28px 20px 0; }
+    .projects-wrap { padding: 28px 20px 80px; }
+    .projects-grid { grid-template-columns: 1fr; gap: 20px; }
+    footer { padding: 48px 20px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+  @media (min-width: 769px) and (max-width: 1100px) {
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    .page-header, .filter-wrap, .projects-wrap { padding-left: 40px; padding-right: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <img src="amelo-logo.svg" alt="Amelo" class="logo-img">
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="services.html" data-en="Services" data-hr="Usluge">Services</a></li>
+      <li><a href="index.html#about" data-en="About Us" data-hr="O Nama">About Us</a></li>
+      <li><a href="references.html" data-en="References" data-hr="Reference">References</a></li>
+      <li><a href="projects.html" class="active" data-en="Projects" data-hr="Projekti">Projects</a></li>
+      <li><a href="contact.html" data-en="Contact Us" data-hr="Kontakt">Contact Us</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('hr')">HR</button>
+    </div>
+    <a href="contact.html" class="nav-cta" data-en="Free Business Analysis" data-hr="Besplatna analiza poslovanja">Free Business Analysis</a>
+    <div class="mobile-lang" style="display:none;align-items:center;background:rgba(67,97,238,0.08);border-radius:100px;padding:4px;gap:2px;">
+      <button class="lang-btn active" onclick="setLang('en')" id="mob-top-en">EN</button>
+      <button class="lang-btn" onclick="setLang('hr')" id="mob-top-hr">HR</button>
+    </div>
+    <button class="hamburger" onclick="openMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()">×</button>
+  <a href="services.html" onclick="closeMobileNav()" data-en="Services" data-hr="Usluge">Services</a>
+  <a href="index.html#about" onclick="closeMobileNav()" data-en="About Us" data-hr="O Nama">About Us</a>
+  <a href="references.html" onclick="closeMobileNav()" data-en="References" data-hr="Reference">References</a>
+  <a href="projects.html" onclick="closeMobileNav()" data-en="Projects" data-hr="Projekti">Projects</a>
+  <a href="contact.html" onclick="closeMobileNav()" data-en="Contact Us" data-hr="Kontakt">Contact Us</a>
+  <a href="contact.html" onclick="closeMobileNav()" data-en="Free Business Analysis" data-hr="Besplatna analiza poslovanja" style="color:#4361EE;">Free Business Analysis</a>
+  <div style="display:flex;gap:12px;margin-top:16px;">
+    <button class="lang-btn" onclick="setLang('en');closeMobileNav()" id="mob-lang-en" style="font-weight:600;">EN</button>
+    <button class="lang-btn" onclick="setLang('hr');closeMobileNav()" id="mob-lang-hr">HR</button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<div class="page-header">
+  <h1 data-en="Projects" data-hr="Projekti">Projects</h1>
+</div>
+
+<!-- FILTERS -->
+<div class="filter-wrap">
+  <button class="filter-tab active" onclick="filterProjects('all', this)" data-en="All" data-hr="Sve">All</button>
+  <button class="filter-tab" onclick="filterProjects('strategic', this)" data-en="Strategic Marketing Consultancy" data-hr="Strateški marketing">Strategic Marketing Consultancy</button>
+  <button class="filter-tab" onclick="filterProjects('digital', this)" data-en="Digital Content and Social" data-hr="Digitalni sadržaj i društvene mreže">Digital Content and Social</button>
+  <button class="filter-tab" onclick="filterProjects('pr', this)" data-en="PR and Communications" data-hr="PR i komunikacije">PR and Communications</button>
+  <button class="filter-tab" onclick="filterProjects('design', this)" data-en="Design and Branding" data-hr="Dizajn i branding">Design and Branding</button>
+</div>
+
+<!-- GRID -->
+<div class="projects-wrap">
+  <div class="projects-grid" id="projectsGrid">
+
+    <a class="project-card" href="project-snp.html" data-categories="strategic">
+            <div class="card-img-wrap">
+        <div class="card-placeholder"><img src="klijenti/snp-group.png" alt="SNP Group"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Strategic Marketing</div>
+        <div class="card-title">SNP Group</div>
+      </div>
+    </a>
+
+    <a class="project-card" href="#" data-categories="strategic pr">
+            <div class="card-img-wrap">
+        <div class="card-placeholder"><img src="klijenti/labsense-logo-.png" alt="Labsense"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Strategic Marketing · PR</div>
+        <div class="card-title">Labsense</div>
+      </div>
+    </a>
+
+    <a class="project-card" href="project-medestetica.html" data-categories="strategic">
+            <div class="card-img-wrap">
+        <div class="card-placeholder"><img src="klijenti/medestetica-logo.png" alt="Medestetica"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Strategic Marketing</div>
+        <div class="card-title">Medestetica</div>
+      </div>
+    </a>
+
+    <a class="project-card" href="#" data-categories="strategic">
+            <div class="card-img-wrap">
+        <div class="card-placeholder"><img src="klijenti/poliklinika-grgic-logo.png" alt="Poliklinika Grgić"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Strategic Marketing</div>
+        <div class="card-title">Poliklinika Grgić</div>
+      </div>
+    </a>
+
+    <a class="project-card" href="#" data-categories="strategic digital design">
+            <div class="card-img-wrap">
+        <div class="card-placeholder"><img src="klijenti/laboro.png" alt="Laboro"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Strategic · Digital · Design</div>
+        <div class="card-title">Laboro</div>
+      </div>
+    </a>
+
+    <a class="project-card" href="#" data-categories="strategic digital design">
+            <div class="card-img-wrap">
+        <div class="card-placeholder"><img src="klijenti/antonio-hase.png" alt="Antonio Hase Art"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Strategic · Digital · Design</div>
+        <div class="card-title">Antonio Hase Art</div>
+      </div>
+    </a>
+
+    <a class="project-card" href="project-botun.html" data-categories="digital design">
+            <div class="card-img-wrap">
+        <div class="card-placeholder"><img src="klijenti/botun-logo.png" alt="Botun Luxury Apartment"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Digital · Design</div>
+        <div class="card-title">Botun Luxury Apartment</div>
+      </div>
+    </a>
+
+    <a class="project-card" href="#" data-categories="digital design">
+            <div class="card-img-wrap">
+        <div class="card-placeholder"><img src="klijenti/FITSTOP-300x300.png" alt="Fitstop"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Digital · Design</div>
+        <div class="card-title">Fitstop</div>
+      </div>
+    </a>
+
+    <a class="project-card" href="#" data-categories="digital pr design">
+            <div class="card-img-wrap">
+        <div class="card-placeholder"><img src="klijenti/labelage.png" alt="Labelage"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Digital · PR · Design</div>
+        <div class="card-title">Labelage</div>
+      </div>
+    </a>
+
+    <a class="project-card" href="#" data-categories="digital design">
+            <div class="card-img-wrap">
+        <div class="card-placeholder"><img src="klijenti/olive-tree-villa-logo.png" alt="The Olive Tree Villa"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Digital · Design</div>
+        <div class="card-title">The Olive Tree Villa</div>
+      </div>
+    </a>
+
+    <a class="project-card" href="#" data-categories="digital design">
+            <div class="card-img-wrap">
+        <div class="card-placeholder"><img src="klijenti/sementa-spavacice.png" alt="Sementa"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Digital · Design</div>
+        <div class="card-title">Sementa</div>
+      </div>
+    </a>
+
+    <a class="project-card" href="#" data-categories="pr">
+            <div class="card-img-wrap">
+        <div class="card-placeholder"><img src="klijenti/MAJESTIC-GOLD-logo.png" alt="Majestic Gold"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">PR and Communications</div>
+        <div class="card-title">Majestic Gold</div>
+      </div>
+    </a>
+
+    <a class="project-card" href="#" data-categories="pr">
+            <div class="card-img-wrap">
+        <div class="card-placeholder"><img src="klijenti/billich-logo.webp" alt="Billich"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">PR and Communications</div>
+        <div class="card-title">Billich</div>
+      </div>
+    </a>
+
+    <a class="project-card" href="#" data-categories="pr">
+            <div class="card-img-wrap">
+        <div class="card-placeholder"><img src="klijenti/dlm-studio-.jpeg" alt="DLM Studio"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">PR and Communications</div>
+        <div class="card-title">DLM Studio</div>
+      </div>
+    </a>
+
+    <a class="project-card" href="project-katarina-mamic.html" data-categories="design">
+            <div class="card-img-wrap">
+        <div class="card-placeholder"><img src="klijenti/Katarina-Mamic-design-novi-logo.png" alt="Katarina Mamić Design"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Design and Branding</div>
+        <div class="card-title">Katarina Mamić Design</div>
+      </div>
+    </a>
+
+    <a class="project-card" href="project-boris-hnatjuk.html" data-categories="digital">
+      <div class="card-img-wrap">
+        <div class="card-placeholder" style="background:#0a0a0a;">
+          <span style="color:white;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">BORIS HNATJUK</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Digital Content and Social</div>
+        <div class="card-title">Boris Hnatjuk</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="amelo-logo.svg" alt="Amelo" class="logo-img" style="filter: brightness(0) invert(1);">
+      <p data-en="We're a full-service marketing agency building brands and strategies that fuel sustainable growth." data-hr="Agencija za cjeloviti marketing koja gradi brendove i strategije za održivi rast.">We're a full-service marketing agency building brands and strategies that fuel sustainable growth.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Pages" data-hr="Stranice">Pages</h4>
+      <a href="services.html" data-en="Services" data-hr="Usluge">Services</a>
+      <a href="projects.html" data-en="Projects" data-hr="Projekti">Projects</a>
+      <a href="references.html" data-en="References" data-hr="Reference">References</a>
+      <a href="contact.html" data-en="Contact Us" data-hr="Kontakt">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Contact" data-hr="Kontakt">Contact</h4>
+      <a href="mailto:info@amelodesign.com">info@amelodesign.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Amelo Design. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+function filterProjects(category, btn) {
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.project-card').forEach(card => {
+    if (category === 'all') {
+      card.classList.remove('hidden');
+    } else {
+      const cats = card.dataset.categories.split(' ');
+      card.classList.toggle('hidden', !cats.includes(category));
+    }
+  });
+}
+
+function openMobileNav() { document.getElementById('mobileNav').classList.add('open'); }
+function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); }
+
+function setLang(lang) {
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.innerHTML = lang === 'hr' ? el.dataset.hr : el.dataset.en;
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    if (btn.textContent.trim() === lang.toUpperCase()) btn.classList.add('active');
+  });
+  localStorage.setItem('lang', lang);
+}
+
+const savedLang = localStorage.getItem('lang');
+if (savedLang && savedLang !== 'en') setLang(savedLang);
+</script>
+</body>
+</html>
