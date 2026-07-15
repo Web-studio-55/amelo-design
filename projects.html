@@ -7,216 +7,145 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --purple: #4361EE;
-    --cyan: #20B0E2;
-    --green: #059669;
-    --dark: #111827;
-    --dark2: #1F2937;
-    --gray: #6B7280;
-    --light: #F9FAFB;
-    --white: #ffffff;
+    --purple: #4361EE; --dark: #111827; --gray: #6B7280; --light: #F9FAFB; --white: #fff;
     --grad: linear-gradient(135deg, #7C3AED 0%, #4361EE 55%, #20B0E2 100%);
-    --grad-subtle: linear-gradient(135deg, rgba(67,97,238,0.08) 0%, rgba(32,176,226,0.06) 100%);
   }
-
   html { scroll-behavior: smooth; overflow-y: scroll; }
   body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; }
 
   /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 100;
-    padding: 18px 72px;
-    display: flex; align-items: center; justify-content: space-between;
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(67,97,238,0.08);
-  }
-  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 18px 72px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(67,97,238,0.08); }
+  .logo { display: flex; align-items: center; text-decoration: none; }
   .logo-img { height: 44px; width: auto; object-fit: contain; }
   .nav-right { display: flex; align-items: center; gap: 40px; }
   .nav-links { display: flex; gap: 36px; list-style: none; }
   .nav-links a { text-decoration: none; color: var(--gray); font-size: 14px; font-weight: 500; transition: color 0.2s; }
   .nav-links a:hover, .nav-links a.active { color: var(--purple); }
   .lang-switcher { display: flex; align-items: center; background: rgba(67,97,238,0.08); border-radius: 100px; padding: 4px; gap: 2px; }
-  .lang-btn { padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 700; border: none; cursor: pointer; transition: all 0.2s; background: transparent; color: var(--gray); letter-spacing: 0.5px; }
+  .lang-btn { padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 700; border: none; cursor: pointer; transition: all 0.2s; background: transparent; color: var(--gray); }
   .lang-btn.active { background: var(--grad); color: white; }
-  .nav-cta { background: var(--grad); color: white; padding: 12px 28px; border-radius: 100px; font-weight: 600; font-size: 14px; text-decoration: none; transition: opacity 0.2s, transform 0.2s; white-space: nowrap; min-width: 210px; text-align: center; }
-  .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+  .nav-cta { background: var(--grad); color: white; padding: 12px 28px; border-radius: 100px; font-weight: 600; font-size: 14px; text-decoration: none; white-space: nowrap; min-width: 210px; text-align: center; }
   .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
   .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; }
-  .mobile-lang { display: none; }
-
-  /* MOBILE NAV */
-  .mobile-nav {
-    display: none; position: fixed; inset: 0; background: white; z-index: 200;
-    flex-direction: column; align-items: center; justify-content: center; gap: 32px;
-    font-size: 20px; font-weight: 600;
-  }
+  .mobile-nav { display: none; position: fixed; inset: 0; background: white; z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 32px; font-size: 20px; font-weight: 600; }
   .mobile-nav.open { display: flex; }
   .mobile-nav a { text-decoration: none; color: var(--dark); }
-  .mobile-nav-close { position: absolute; top: 24px; right: 28px; font-size: 32px; background: none; border: none; cursor: pointer; color: var(--dark); }
+  .mobile-nav-close { position: absolute; top: 24px; right: 28px; font-size: 32px; background: none; border: none; cursor: pointer; }
 
   /* PAGE HEADER */
-  .page-header {
-    padding: 120px 72px 0;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 40px;
-    flex-wrap: wrap;
-  }
-  .page-header h1 {
-    font-size: clamp(40px, 6vw, 72px);
-    font-weight: 800;
-    letter-spacing: -3px;
-    line-height: 1;
-    color: var(--dark);
-  }
+  .page-header { padding: 120px 72px 0; }
+  .page-header h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 800; letter-spacing: -3px; line-height: 1; color: var(--dark); }
 
   /* FILTER TABS */
-  .filter-wrap {
-    padding: 40px 72px 0;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .filter-tab {
-    padding: 9px 22px;
-    border-radius: 100px;
-    border: 1.5px solid rgba(0,0,0,0.15);
-    background: transparent;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--gray);
-    cursor: pointer;
-    transition: all 0.2s;
-    white-space: nowrap;
-    font-family: 'Inter', sans-serif;
-  }
+  .filter-wrap { padding: 36px 72px 0; display: flex; gap: 10px; flex-wrap: wrap; }
+  .filter-tab { padding: 9px 22px; border-radius: 100px; border: 1.5px solid rgba(0,0,0,0.15); background: transparent; font-size: 14px; font-weight: 600; color: var(--gray); cursor: pointer; transition: all 0.2s; white-space: nowrap; font-family: 'Inter', sans-serif; }
   .filter-tab:hover { border-color: var(--dark); color: var(--dark); }
-  .filter-tab.active {
-    background: var(--grad);
-    border-color: transparent;
-    color: white;
-  }
+  .filter-tab.active { background: var(--grad); border-color: transparent; color: white; }
 
-  /* PROJECTS GRID */
-  .projects-wrap {
-    padding: 40px 72px 100px;
-  }
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-
-  /* PROJECT CARD */
-  .project-card {
-    border-radius: 16px;
-    overflow: hidden;
-    cursor: pointer;
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    padding-bottom: 16px;
-  }
+  /* GRID VIEW */
+  .projects-wrap { padding: 36px 72px 100px; }
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .project-card { border-radius: 16px; overflow: hidden; cursor: pointer; display: block; text-decoration: none; color: inherit; padding-bottom: 16px; transition: transform 0.2s; }
+  .project-card:hover { transform: translateY(-2px); }
   .project-card.hidden { display: none; }
-
-  .card-img-wrap {
-    position: relative;
-    aspect-ratio: 4/3;
-    overflow: hidden;
-    background: var(--light);
-  }
-  .card-img-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-    display: block;
-  }
+  .card-img-wrap { position: relative; aspect-ratio: 4/3; overflow: hidden; background: var(--light); border-radius: 12px; }
+  .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
   .project-card:hover .card-img-wrap img { transform: scale(1.04); }
-
-  /* placeholder when no image */
-  .card-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-  }
-  .card-placeholder img {
-    width: auto !important;
-    height: auto !important;
-    max-width: 50% !important;
-    max-height: 50% !important;
-    object-fit: contain !important;
-    transform: none !important;
-    filter: grayscale(30%);
-  }
+  .card-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+  .card-placeholder img { width: auto !important; height: auto !important; max-width: 55% !important; max-height: 55% !important; object-fit: contain !important; transform: none !important; }
   .project-card:hover .card-placeholder img { transform: none !important; }
+  .card-body { padding: 14px 4px 4px; }
+  .card-category { font-size: 11px; font-weight: 600; color: var(--purple); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
+  .card-title { font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.3; }
 
-  .card-overlay { display: none; }
+  /* DETAIL PANEL */
+  .detail-panel { display: none; padding: 0 72px 100px; animation: fadeIn 0.3s ease; }
+  .detail-panel.open { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
-  .card-body {
-    padding: 14px 4px 4px;
-  }
-  .card-category {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--purple);
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-  .card-title {
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--dark);
-    line-height: 1.3;
-  }
+  .back-btn { display: inline-flex; align-items: center; gap: 8px; color: var(--gray); font-size: 14px; font-weight: 600; background: none; border: none; cursor: pointer; padding: 0; margin-bottom: 40px; font-family: 'Inter', sans-serif; transition: color 0.2s; }
+  .back-btn:hover { color: var(--dark); }
+  .back-btn svg { width: 16px; height: 16px; }
+
+  .detail-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+
+  /* LEFT: MEDIA */
+  .detail-media { position: sticky; top: 100px; }
+  .detail-logo-wrap { background: var(--light); border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; min-height: 160px; }
+  .detail-logo-wrap img { max-width: 200px; max-height: 100px; object-fit: contain; }
+  .detail-logo-wrap.dark-bg { background: #0a0a0a; }
+
+  .slideshow { position: relative; border-radius: 16px; overflow: hidden; background: var(--light); }
+  .slide { display: none; }
+  .slide.active { display: block; }
+  .slide img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+  .slide img.portrait { aspect-ratio: 3/4; }
+  .slide img.contain { object-fit: contain; background: var(--light); }
+
+  .slideshow-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
+  .slide-btn { width: 36px; height: 36px; border-radius: 50%; background: var(--light); border: 1.5px solid rgba(0,0,0,0.1); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+  .slide-btn:hover { background: var(--dark); border-color: var(--dark); }
+  .slide-btn:hover svg { stroke: white; }
+  .slide-btn svg { width: 14px; height: 14px; stroke: var(--dark); fill: none; }
+  .slide-dots { display: flex; gap: 6px; }
+  .slide-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(0,0,0,0.15); cursor: pointer; transition: all 0.2s; border: none; padding: 0; }
+  .slide-dot.active { background: var(--purple); width: 18px; border-radius: 3px; }
+
+  /* RIGHT: TEXT */
+  .detail-text {}
+  .detail-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
+  .detail-title { font-size: clamp(28px, 3vw, 42px); font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 24px; }
+  .detail-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
+  .detail-tag { font-size: 12px; font-weight: 600; color: var(--gray); background: var(--light); padding: 5px 14px; border-radius: 100px; }
+
+  .detail-section { margin-bottom: 32px; }
+  .detail-section h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+  .detail-section p { font-size: 15px; color: var(--gray); line-height: 1.8; }
+
+  .outcomes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 32px; }
+  .outcome-chip { background: var(--light); border-radius: 14px; padding: 18px 20px; border: 1px solid rgba(0,0,0,0.05); }
+  .outcome-icon { font-size: 20px; margin-bottom: 8px; }
+  .outcome-label { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+  .outcome-desc { font-size: 12px; color: var(--gray); line-height: 1.5; }
+
+  .detail-cta { margin-top: 40px; display: inline-block; background: var(--grad); color: white; padding: 14px 32px; border-radius: 100px; font-weight: 600; font-size: 14px; text-decoration: none; }
 
   /* FOOTER */
   footer { background: var(--dark); color: white; padding: 60px 72px; }
-  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto 48px; }
+  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
   .footer-brand p { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.7; margin-top: 16px; max-width: 260px; }
   .footer-col h4 { font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
-  .footer-col a { display: block; text-decoration: none; color: rgba(255,255,255,0.65); font-size: 14px; margin-bottom: 12px; transition: color 0.2s; }
-  .footer-col a:hover { color: white; }
-  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; max-width: none; }
+  .footer-col a { display: block; text-decoration: none; color: rgba(255,255,255,0.65); font-size: 14px; margin-bottom: 12px; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 32px; display: flex; justify-content: space-between; }
   .footer-bottom p { color: rgba(255,255,255,0.35); font-size: 13px; }
 
   /* MOBILE */
   @media (max-width: 768px) {
-    nav { padding: 16px 20px; }
-    .logo-img { height: 35px; }
-    .nav-links, .lang-switcher { display: none; }
-    .nav-cta { display: none; }
-    .hamburger { display: flex; }
-    .mobile-lang { display: flex !important; }
+    nav { padding: 16px 20px; } .logo-img { height: 35px; }
+    .nav-links, .lang-switcher, .nav-cta { display: none; } .hamburger { display: flex; }
     .page-header { padding: 100px 20px 0; }
-    .filter-wrap { padding: 28px 20px 0; }
-    .projects-wrap { padding: 28px 20px 80px; }
+    .filter-wrap { padding: 24px 20px 0; }
+    .projects-wrap { padding: 24px 20px 80px; }
     .projects-grid { grid-template-columns: 1fr; gap: 20px; }
+    .detail-panel { padding: 0 20px 80px; }
+    .detail-inner { grid-template-columns: 1fr; gap: 40px; }
+    .detail-media { position: static; }
+    .outcomes { grid-template-columns: 1fr; }
     footer { padding: 48px 20px; }
     .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    .footer-bottom { flex-direction: column; gap: 12px; }
   }
   @media (min-width: 769px) and (max-width: 1100px) {
     .projects-grid { grid-template-columns: repeat(2, 1fr); }
-    .page-header, .filter-wrap, .projects-wrap { padding-left: 40px; padding-right: 40px; }
+    nav, .page-header, .filter-wrap, .projects-wrap, .detail-panel { padding-left: 40px; padding-right: 40px; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="logo">
-    <img src="amelo-logo.svg" alt="Amelo" class="logo-img">
-  </a>
+  <a href="index.html" class="logo"><img src="amelo-logo.svg" alt="Amelo" class="logo-img"></a>
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="services.html" data-en="Services" data-hr="Usluge">Services</a></li>
@@ -229,29 +158,18 @@
       <button class="lang-btn active" onclick="setLang('en')">EN</button>
       <button class="lang-btn" onclick="setLang('hr')">HR</button>
     </div>
-    <a href="contact.html" class="nav-cta" data-en="Free Business Analysis" data-hr="Besplatna analiza poslovanja">Free Business Analysis</a>
-    <div class="mobile-lang" style="display:none;align-items:center;background:rgba(67,97,238,0.08);border-radius:100px;padding:4px;gap:2px;">
-      <button class="lang-btn active" onclick="setLang('en')" id="mob-top-en">EN</button>
-      <button class="lang-btn" onclick="setLang('hr')" id="mob-top-hr">HR</button>
-    </div>
-    <button class="hamburger" onclick="openMobileNav()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="contact.html" class="nav-cta">Free Business Analysis</a>
+    <button class="hamburger" onclick="openMobileNav()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
 <div class="mobile-nav" id="mobileNav">
   <button class="mobile-nav-close" onclick="closeMobileNav()">×</button>
-  <a href="services.html" onclick="closeMobileNav()" data-en="Services" data-hr="Usluge">Services</a>
-  <a href="index.html#about" onclick="closeMobileNav()" data-en="About Us" data-hr="O Nama">About Us</a>
-  <a href="references.html" onclick="closeMobileNav()" data-en="References" data-hr="Reference">References</a>
-  <a href="projects.html" onclick="closeMobileNav()" data-en="Projects" data-hr="Projekti">Projects</a>
-  <a href="contact.html" onclick="closeMobileNav()" data-en="Contact Us" data-hr="Kontakt">Contact Us</a>
-  <a href="contact.html" onclick="closeMobileNav()" data-en="Free Business Analysis" data-hr="Besplatna analiza poslovanja" style="color:#4361EE;">Free Business Analysis</a>
-  <div style="display:flex;gap:12px;margin-top:16px;">
-    <button class="lang-btn" onclick="setLang('en');closeMobileNav()" id="mob-lang-en" style="font-weight:600;">EN</button>
-    <button class="lang-btn" onclick="setLang('hr');closeMobileNav()" id="mob-lang-hr">HR</button>
-  </div>
+  <a href="services.html" onclick="closeMobileNav()">Services</a>
+  <a href="index.html#about" onclick="closeMobileNav()">About Us</a>
+  <a href="references.html" onclick="closeMobileNav()">References</a>
+  <a href="projects.html" onclick="closeMobileNav()">Projects</a>
+  <a href="contact.html" onclick="closeMobileNav()">Contact Us</a>
 </div>
 
 <!-- HEADER -->
@@ -260,180 +178,133 @@
 </div>
 
 <!-- FILTERS -->
-<div class="filter-wrap">
-  <button class="filter-tab active" onclick="filterProjects('all', this)" data-en="All" data-hr="Sve">All</button>
-  <button class="filter-tab" onclick="filterProjects('strategic', this)" data-en="Strategic Marketing Consultancy" data-hr="Strateški marketing">Strategic Marketing Consultancy</button>
-  <button class="filter-tab" onclick="filterProjects('digital', this)" data-en="Digital Content and Social" data-hr="Digitalni sadržaj i društvene mreže">Digital Content and Social</button>
-  <button class="filter-tab" onclick="filterProjects('pr', this)" data-en="PR and Communications" data-hr="PR i komunikacije">PR and Communications</button>
-  <button class="filter-tab" onclick="filterProjects('design', this)" data-en="Design and Branding" data-hr="Dizajn i branding">Design and Branding</button>
+<div class="filter-wrap" id="filterWrap">
+  <button class="filter-tab active" onclick="filterProjects('all', this)">All</button>
+  <button class="filter-tab" onclick="filterProjects('strategic', this)">Strategic Marketing Consultancy</button>
+  <button class="filter-tab" onclick="filterProjects('digital', this)">Digital Content and Social</button>
+  <button class="filter-tab" onclick="filterProjects('pr', this)">PR and Communications</button>
+  <button class="filter-tab" onclick="filterProjects('design', this)">Design and Branding</button>
 </div>
 
 <!-- GRID -->
-<div class="projects-wrap">
+<div class="projects-wrap" id="gridWrap">
   <div class="projects-grid" id="projectsGrid">
 
-    <a class="project-card" href="project-snp.html" data-categories="strategic">
-            <div class="card-img-wrap">
-        <div class="card-placeholder"><img src="klijenti/snp-group.png" alt="SNP Group"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-category">Strategic Marketing</div>
-        <div class="card-title">SNP Group</div>
-      </div>
-    </a>
+    <div class="project-card" data-categories="strategic" onclick="openProject('snp')">
+      <div class="card-img-wrap"><div class="card-placeholder"><img src="klijenti/snp-group.png" alt="SNP Group"></div></div>
+      <div class="card-body"><div class="card-category">Strategic Marketing</div><div class="card-title">SNP Group</div></div>
+    </div>
 
-    <a class="project-card" href="#" data-categories="strategic pr">
-            <div class="card-img-wrap">
-        <div class="card-placeholder"><img src="klijenti/labsense-logo-.png" alt="Labsense"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-category">Strategic Marketing · PR</div>
-        <div class="card-title">Labsense</div>
-      </div>
-    </a>
+    <div class="project-card" data-categories="strategic pr" onclick="openProject('labsense')">
+      <div class="card-img-wrap"><div class="card-placeholder"><img src="klijenti/labsense-logo-.png" alt="Labsense"></div></div>
+      <div class="card-body"><div class="card-category">Strategic Marketing · Design</div><div class="card-title">Labsense</div></div>
+    </div>
 
-    <a class="project-card" href="project-medestetica.html" data-categories="strategic">
-            <div class="card-img-wrap">
-        <div class="card-placeholder"><img src="klijenti/medestetica-logo.png" alt="Medestetica"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-category">Strategic Marketing</div>
-        <div class="card-title">Medestetica</div>
-      </div>
-    </a>
+    <div class="project-card" data-categories="strategic design" onclick="openProject('medestetica')">
+      <div class="card-img-wrap"><div class="card-placeholder"><img src="klijenti/medestetica-logo.png" alt="Medestetica"></div></div>
+      <div class="card-body"><div class="card-category">Strategic Marketing · Design</div><div class="card-title">Medestetica</div></div>
+    </div>
 
-    <a class="project-card" href="#" data-categories="strategic">
-            <div class="card-img-wrap">
-        <div class="card-placeholder"><img src="klijenti/poliklinika-grgic-logo.png" alt="Poliklinika Grgić"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-category">Strategic Marketing</div>
-        <div class="card-title">Poliklinika Grgić</div>
-      </div>
-    </a>
+    <div class="project-card" data-categories="strategic" onclick="openProject('poliklinika')">
+      <div class="card-img-wrap"><div class="card-placeholder"><img src="klijenti/poliklinika-grgic-logo.png" alt="Poliklinika Grgić"></div></div>
+      <div class="card-body"><div class="card-category">Strategic Marketing</div><div class="card-title">Poliklinika Grgić</div></div>
+    </div>
 
-    <a class="project-card" href="#" data-categories="strategic digital design">
-            <div class="card-img-wrap">
-        <div class="card-placeholder"><img src="klijenti/laboro.png" alt="Laboro"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-category">Strategic · Digital · Design</div>
-        <div class="card-title">Laboro</div>
-      </div>
-    </a>
+    <div class="project-card" data-categories="strategic digital design" onclick="openProject('laboro')">
+      <div class="card-img-wrap"><div class="card-placeholder"><img src="klijenti/laboro.png" alt="Laboro"></div></div>
+      <div class="card-body"><div class="card-category">Strategic · Digital · Design</div><div class="card-title">Laboro</div></div>
+    </div>
 
-    <a class="project-card" href="#" data-categories="strategic digital design">
-            <div class="card-img-wrap">
-        <div class="card-placeholder"><img src="klijenti/antonio-hase.png" alt="Antonio Hase Art"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-category">Strategic · Digital · Design</div>
-        <div class="card-title">Antonio Hase Art</div>
-      </div>
-    </a>
+    <div class="project-card" data-categories="strategic digital design" onclick="openProject('antonio')">
+      <div class="card-img-wrap"><div class="card-placeholder"><img src="klijenti/antonio-hase.png" alt="Antonio Hase Art"></div></div>
+      <div class="card-body"><div class="card-category">Strategic · Digital · Design</div><div class="card-title">Antonio Hase Art</div></div>
+    </div>
 
-    <a class="project-card" href="project-botun.html" data-categories="digital design">
-            <div class="card-img-wrap">
-        <div class="card-placeholder"><img src="klijenti/botun-logo.png" alt="Botun Luxury Apartment"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-category">Digital · Design</div>
-        <div class="card-title">Botun Luxury Apartment</div>
-      </div>
-    </a>
+    <div class="project-card" data-categories="digital design" onclick="openProject('botun')">
+      <div class="card-img-wrap"><div class="card-placeholder"><img src="klijenti/botun-logo.png" alt="Botun Luxury Apartment"></div></div>
+      <div class="card-body"><div class="card-category">Digital · Design</div><div class="card-title">Botun Luxury Apartment</div></div>
+    </div>
 
-    <a class="project-card" href="#" data-categories="digital design">
-            <div class="card-img-wrap">
-        <div class="card-placeholder"><img src="klijenti/FITSTOP-300x300.png" alt="Fitstop"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-category">Digital · Design</div>
-        <div class="card-title">Fitstop</div>
-      </div>
-    </a>
+    <div class="project-card" data-categories="digital design" onclick="openProject('fitstop')">
+      <div class="card-img-wrap"><div class="card-placeholder"><img src="klijenti/FITSTOP-300x300.png" alt="Fitstop"></div></div>
+      <div class="card-body"><div class="card-category">Digital · Design</div><div class="card-title">Fitstop</div></div>
+    </div>
 
-    <a class="project-card" href="#" data-categories="digital pr design">
-            <div class="card-img-wrap">
-        <div class="card-placeholder"><img src="klijenti/labelage.png" alt="Labelage"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-category">Digital · PR · Design</div>
-        <div class="card-title">Labelage</div>
-      </div>
-    </a>
+    <div class="project-card" data-categories="digital pr design" onclick="openProject('labelage')">
+      <div class="card-img-wrap"><div class="card-placeholder"><img src="klijenti/labelage.png" alt="Labelage"></div></div>
+      <div class="card-body"><div class="card-category">Digital · PR · Design</div><div class="card-title">Labelage</div></div>
+    </div>
 
-    <a class="project-card" href="#" data-categories="digital design">
-            <div class="card-img-wrap">
-        <div class="card-placeholder"><img src="klijenti/olive-tree-villa-logo.png" alt="The Olive Tree Villa"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-category">Digital · Design</div>
-        <div class="card-title">The Olive Tree Villa</div>
-      </div>
-    </a>
+    <div class="project-card" data-categories="digital design" onclick="openProject('olivetree')">
+      <div class="card-img-wrap"><div class="card-placeholder"><img src="klijenti/olive-tree-villa-logo.png" alt="The Olive Tree Villa"></div></div>
+      <div class="card-body"><div class="card-category">Digital · Design</div><div class="card-title">The Olive Tree Villa</div></div>
+    </div>
 
-    <a class="project-card" href="#" data-categories="digital design">
-            <div class="card-img-wrap">
-        <div class="card-placeholder"><img src="klijenti/sementa-spavacice.png" alt="Sementa"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-category">Digital · Design</div>
-        <div class="card-title">Sementa</div>
-      </div>
-    </a>
+    <div class="project-card" data-categories="digital design" onclick="openProject('sementa')">
+      <div class="card-img-wrap"><div class="card-placeholder"><img src="klijenti/sementa-spavacice.png" alt="Sementa"></div></div>
+      <div class="card-body"><div class="card-category">Digital · Design</div><div class="card-title">Sementa</div></div>
+    </div>
 
-    <a class="project-card" href="#" data-categories="pr">
-            <div class="card-img-wrap">
-        <div class="card-placeholder"><img src="klijenti/MAJESTIC-GOLD-logo.png" alt="Majestic Gold"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-category">PR and Communications</div>
-        <div class="card-title">Majestic Gold</div>
-      </div>
-    </a>
+    <div class="project-card" data-categories="pr" onclick="openProject('majestic')">
+      <div class="card-img-wrap"><div class="card-placeholder"><img src="klijenti/MAJESTIC-GOLD-logo.png" alt="Majestic Gold"></div></div>
+      <div class="card-body"><div class="card-category">PR and Communications</div><div class="card-title">Majestic Gold</div></div>
+    </div>
 
-    <a class="project-card" href="#" data-categories="pr">
-            <div class="card-img-wrap">
-        <div class="card-placeholder"><img src="klijenti/billich-logo.webp" alt="Billich"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-category">PR and Communications</div>
-        <div class="card-title">Billich</div>
-      </div>
-    </a>
+    <div class="project-card" data-categories="pr" onclick="openProject('billich')">
+      <div class="card-img-wrap"><div class="card-placeholder"><img src="klijenti/billich-logo.webp" alt="Billich"></div></div>
+      <div class="card-body"><div class="card-category">PR and Communications</div><div class="card-title">Billich</div></div>
+    </div>
 
-    <a class="project-card" href="#" data-categories="pr">
-            <div class="card-img-wrap">
-        <div class="card-placeholder"><img src="klijenti/dlm-studio-.jpeg" alt="DLM Studio"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-category">PR and Communications</div>
-        <div class="card-title">DLM Studio</div>
-      </div>
-    </a>
+    <div class="project-card" data-categories="pr" onclick="openProject('dlm')">
+      <div class="card-img-wrap"><div class="card-placeholder"><img src="klijenti/dlm-studio-.jpeg" alt="DLM Studio"></div></div>
+      <div class="card-body"><div class="card-category">PR and Communications</div><div class="card-title">DLM Studio</div></div>
+    </div>
 
-    <a class="project-card" href="project-katarina-mamic.html" data-categories="design">
-            <div class="card-img-wrap">
-        <div class="card-placeholder"><img src="klijenti/Katarina-Mamic-design-novi-logo.png" alt="Katarina Mamić Design"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-category">Design and Branding</div>
-        <div class="card-title">Katarina Mamić Design</div>
-      </div>
-    </a>
+    <div class="project-card" data-categories="design" onclick="openProject('katarina')">
+      <div class="card-img-wrap"><div class="card-placeholder"><img src="klijenti/Katarina-Mamic-design-novi-logo.png" alt="Katarina Mamić Design"></div></div>
+      <div class="card-body"><div class="card-category">Design and Branding</div><div class="card-title">Katarina Mamić Design</div></div>
+    </div>
 
-    <a class="project-card" href="project-boris-hnatjuk.html" data-categories="digital">
-      <div class="card-img-wrap">
-        <div class="card-placeholder" style="background:#0a0a0a;">
-          <span style="color:white;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">BORIS HNATJUK</span>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-category">Digital Content and Social</div>
-        <div class="card-title">Boris Hnatjuk</div>
-      </div>
-    </a>
+    <div class="project-card" data-categories="digital" onclick="openProject('boris')">
+      <div class="card-img-wrap" style="background:#0a0a0a;"><div class="card-placeholder" style="background:#0a0a0a;"><span style="color:white;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">BORIS HNATJUK</span></div></div>
+      <div class="card-body"><div class="card-category">Digital Content and Social</div><div class="card-title">Boris Hnatjuk</div></div>
+    </div>
 
+  </div>
+</div>
+
+<!-- DETAIL PANEL -->
+<div class="detail-panel" id="detailPanel">
+  <button class="back-btn" onclick="closeProject()">
+    <svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to Projects
+  </button>
+  <div class="detail-inner">
+    <!-- LEFT -->
+    <div class="detail-media">
+      <div class="detail-logo-wrap" id="detailLogoWrap">
+        <img id="detailLogo" src="" alt="">
+      </div>
+      <div class="slideshow" id="slideshow"></div>
+      <div class="slideshow-nav" id="slideshowNav" style="display:none;">
+        <button class="slide-btn" onclick="prevSlide()">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="slide-dots" id="slideDots"></div>
+        <button class="slide-btn" onclick="nextSlide()">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+    <!-- RIGHT -->
+    <div class="detail-text">
+      <div class="detail-label" id="detailLabel"></div>
+      <div class="detail-title" id="detailTitle"></div>
+      <div class="detail-tags" id="detailTags"></div>
+      <div id="detailSections"></div>
+      <div class="outcomes" id="detailOutcomes"></div>
+      <a href="contact.html" class="detail-cta">Start a project together</a>
+    </div>
   </div>
 </div>
 
@@ -441,17 +312,17 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <img src="amelo-logo.svg" alt="Amelo" class="logo-img" style="filter: brightness(0) invert(1);">
-      <p data-en="We're a full-service marketing agency building brands and strategies that fuel sustainable growth." data-hr="Agencija za cjeloviti marketing koja gradi brendove i strategije za održivi rast.">We're a full-service marketing agency building brands and strategies that fuel sustainable growth.</p>
+      <p>We're a full-service marketing agency building brands and strategies that fuel sustainable growth.</p>
     </div>
     <div class="footer-col">
-      <h4 data-en="Pages" data-hr="Stranice">Pages</h4>
-      <a href="services.html" data-en="Services" data-hr="Usluge">Services</a>
-      <a href="projects.html" data-en="Projects" data-hr="Projekti">Projects</a>
-      <a href="references.html" data-en="References" data-hr="Reference">References</a>
-      <a href="contact.html" data-en="Contact Us" data-hr="Kontakt">Contact Us</a>
+      <h4>Pages</h4>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="references.html">References</a>
+      <a href="contact.html">Contact Us</a>
     </div>
     <div class="footer-col">
-      <h4 data-en="Contact" data-hr="Kontakt">Contact</h4>
+      <h4>Contact</h4>
       <a href="mailto:info@amelodesign.com">info@amelodesign.com</a>
     </div>
   </div>
@@ -461,7 +332,611 @@
 </footer>
 
 <script>
+/* ── PROJECT DATA ── */
+const PROJECTS = {
+  snp: {
+    label: 'Strategic Marketing Consultancy',
+    label_hr: 'Strateški marketing',
+    title: 'SNP Group',
+    tags: ['Strategic Marketing', 'International Partnerships', 'Investor Relations', 'Event Management'],
+    tags_hr: ['Strateški marketing', 'Međunarodna partnerstva', 'Investor Relations', 'Upravljanje događajima'],
+    logo: 'klijenti/snp-group.png',
+    images: [],
+    sections: [
+      { h: 'About the Client', p: 'SNP Group is an internationally recognised technology company specialising in software solutions for complex business transformations. With a strong presence across Europe and beyond, SNP serves global enterprises navigating digital change at scale.' },
+      { h: 'Our Work Together', p: 'Amelo Design partnered with SNP Group to elevate their international visibility and support their expansion into new markets. We developed a comprehensive marketing strategy tailored to their global ambitions — creating a unified brand narrative that resonated with international audiences, from potential partners to institutional investors. A key pillar was the preparation and management of high-profile investor events, from concept to execution.' }
+    ],
+    sections_hr: [
+      { h: 'O klijentu', p: 'SNP Group je međunarodno prepoznata tehnološka kompanija specijalizirana za softverska rješenja za složene poslovne transformacije. S jakim prisustvom diljem Europe i šire, SNP služi globalnim poduzećima koja navigiraju digitalnim promjenama u velikom razmjeru.' },
+      { h: 'Naša suradnja', p: 'Amelo Design partnerirao je s SNP Groupom kako bi podigao njihovu međunarodnu vidljivost i podržao ekspanziju na nova tržišta. Razvili smo sveobuhvatnu marketinšku strategiju prilagođenu njihovim globalnim ambicijama — kreirajući jedinstvenu brand naraciju koja odgovara međunarodnoj publici, od potencijalnih partnera do institucionalnih investitora. Ključni stup bila je priprema i upravljanje visokoprofilnim investitorskim događajima, od koncepta do izvršenja.' }
+    ],
+    outcomes: [
+      { icon: '🌍', label: 'Global Reach', desc: 'International partnership development across multiple markets' },
+      { icon: '🎤', label: 'Investor Events', desc: 'High-profile investor events planned and executed end-to-end' },
+      { icon: '📈', label: 'Brand Awareness', desc: 'Long-term brand awareness strategy built for global scale' },
+      { icon: '🤝', label: 'New Markets', desc: 'Outreach campaigns that opened doors to new collaborators' }
+    ],
+    outcomes_hr: [
+      { icon: '🌍', label: 'Globalni doseg', desc: 'Razvoj međunarodnih partnerstava na više tržišta' },
+      { icon: '🎤', label: 'Investitorski događaji', desc: 'Visokoprofilni investitorski događaji planirani i izvršeni od A do Ž' },
+      { icon: '📈', label: 'Brand svijest', desc: 'Dugoročna strategija brand prepoznatljivosti za globalne razmjere' },
+      { icon: '🤝', label: 'Nova tržišta', desc: 'Kampanje outreacha koje su otvorile vrata novim suradnicima' }
+    ]
+  },
+  labsense: {
+    label: 'Strategic Marketing · Design and Branding',
+    label_hr: 'Strateški marketing · Dizajn i branding',
+    title: 'Labsense',
+    tags: ['Logo Design', 'Brand Identity', 'Strategic Marketing', 'Event Materials'],
+    tags_hr: ['Dizajn loga', 'Brand identitet', 'Strateški marketing', 'Materijali za događaje'],
+    logo: 'klijenti/labsense-logo-.png',
+    images: [
+      { src: 'Our work/Labsense logo /labsense logo .jpg', cls: 'contain' },
+      { src: 'Our work/Labsense logo /lalbsense konferencija.jpeg', cls: 'portrait' }
+    ],
+    sections: [
+      { h: 'About the Client', p: 'Labsense is a Croatian technology company specialising in customised laboratory solutions — from IoT sensor integration and LIMS to process automation and digitalisation. Their tagline: Make a difference. Choose customization.' },
+      { h: 'Brand Identity', p: 'We developed the complete visual identity for Labsense from the ground up. The logo brings together four circles in a 2×2 grid — referencing laboratory wells, data points, and modular thinking, while remaining clean and versatile. The deep blue palette communicates technical authority and scientific credibility.' },
+      { h: 'From Brand to Stage', p: 'The identity was deployed across a full suite of conference and event materials — roll-up banners, table displays, and brochures — giving Labsense a powerful presence at industry events and international exhibitions.' }
+    ],
+    sections_hr: [
+      { h: 'O klijentu', p: 'Labsense je hrvatska tehnološka kompanija specijalizirana za prilagođena laboratorijska rješenja — od IoT senzorske integracije i LIMS sustava do automatizacije procesa i digitalizacije. Njihov moto: Make a difference. Choose customization.' },
+      { h: 'Brand identitet', p: 'Razvili smo potpuni vizualni identitet za Labsense od nule. Logo spaja četiri kruga u mreži 2×2 — referirajući se na laboratorijske bunare, podatkovne točke i modularno razmišljanje, ostajući pritom čist i svestran. Tamnoplava paleta komunicira tehničku autoritet i znanstvenu vjerodostojnost.' },
+      { h: 'Od branda do pozornice', p: 'Identitet je primijenjen na cjelokupni set konferencijskih i event materijala — roll-up banneri, stolni displaji i brošure — dajući Labsenseu snažno prisustvo na industrijskim događajima i međunarodnim izložbama.' }
+    ],
+    outcomes: [
+      { icon: '🎨', label: 'Complete Brand Identity', desc: 'Logo, colours, typography, and brand guidelines delivered' },
+      { icon: '🏢', label: 'Conference Ready', desc: 'Roll-ups, table cards, and brochures for international events' },
+      { icon: '🔬', label: 'Scientific Authority', desc: 'Visual identity that builds trust in a precision-focused sector' },
+      { icon: '🌐', label: 'Market Positioning', desc: 'Brand positioned for both domestic and international markets' }
+    ],
+    outcomes_hr: [
+      { icon: '🎨', label: 'Kompletan brand identitet', desc: 'Logo, boje, tipografija i brand smjernice isporučeni' },
+      { icon: '🏢', label: 'Spreman za konferencije', desc: 'Roll-upovi, stolne kartice i brošure za međunarodne događaje' },
+      { icon: '🔬', label: 'Znanstveni autoritet', desc: 'Vizualni identitet koji gradi povjerenje u preciznom sektoru' },
+      { icon: '🌐', label: 'Tržišno pozicioniranje', desc: 'Brand pozicioniran za domaća i međunarodna tržišta' }
+    ]
+  },
+  medestetica: {
+    label: 'Design and Branding · Strategic Marketing',
+    label_hr: 'Dizajn i branding · Strateški marketing',
+    title: 'Medestetica',
+    tags: ['Logo Design', 'Brand Identity', 'Medical Aesthetics', 'Rebranding'],
+    tags_hr: ['Dizajn loga', 'Brand identitet', 'Medicinska estetika', 'Rebranding'],
+    logo: 'klijenti/medestetica-logo.png',
+    images: [
+      { src: 'Our work/Medestetica logo /medestetica logo stari .jpg', cls: 'contain' },
+      { src: 'Our work/Medestetica logo /Medestetica-Logo-500px.png', cls: 'contain' }
+    ],
+    sections: [
+      { h: 'About the Client', p: 'Medestetica is a leading medical aesthetics clinic offering a range of transformative surgical and non-surgical procedures. With a reputation built on results and patient trust, the clinic sought a visual identity that reflected both medical precision and dedication to personal transformation.' },
+      { h: 'The Design Concept', p: 'The new logo centres on the M|M monogram. The two letters represent a patient\'s journey: the left M symbolises the patient before the procedure, the right M after. Between them, the vertical line references the precise incision used in surgery — a subtle nod to the clinical mastery at the heart of the brand.' }
+    ],
+    sections_hr: [
+      { h: 'O klijentu', p: 'Medestetica je vodeća klinika za medicinsku estetiku koja nudi niz transformativnih kirurških i nekirurških zahvata. S reputacijom izgrađenom na rezultatima i povjerenju pacijenata, klinika je tražila vizualni identitet koji odražava medicinsku preciznost i posvećenost osobnoj transformaciji.' },
+      { h: 'Dizajn koncept', p: 'Novi logo središnji je monogram M|M. Dva slova predstavljaju put pacijenta: lijevo M simbolizira pacijenta prije zahvata, desno M nakon. Između njih, vertikalna linija referira se na precizni rez koji se koristi u kirurgiji — suptilna referenca na kliničku stručnost u srcu branda.' }
+    ],
+    outcomes: [
+      { icon: '✨', label: 'Premium Positioning', desc: 'Brand repositioned in the premium medical aesthetics segment' },
+      { icon: '💡', label: 'Meaningful Design', desc: 'Logo concept rooted in the patient transformation journey' },
+      { icon: '📐', label: 'Versatile Identity', desc: 'Mark that works across digital, print, and clinical environments' },
+      { icon: '🏆', label: 'Market Differentiation', desc: 'Stands out in a crowded medical aesthetics market' }
+    ],
+    outcomes_hr: [
+      { icon: '✨', label: 'Premium pozicioniranje', desc: 'Brand repozicioniran u premium segmentu medicinske estetike' },
+      { icon: '💡', label: 'Smislen dizajn', desc: 'Koncept loga utemeljen na putu transformacije pacijenta' },
+      { icon: '📐', label: 'Svestrani identitet', desc: 'Znak koji funkcionira u digitalnom, tiskanom i kliničkom okruženju' },
+      { icon: '🏆', label: 'Tržišna diferencijacija', desc: 'Ističe se na prepunom tržištu medicinske estetike' }
+    ]
+  },
+  botun: {
+    label: 'Design and Branding',
+    label_hr: 'Dizajn i branding',
+    title: 'Botun Luxury Apartment',
+    tags: ['Logo Design', 'Brand Identity', 'Luxury', 'Heritage'],
+    tags_hr: ['Dizajn loga', 'Brand identitet', 'Luksuz', 'Baština'],
+    logo: 'klijenti/botun-logo.png',
+    images: [
+      { src: 'Our work/Botun /sibenksi botun .jpeg', cls: '' },
+      { src: 'Our work/Botun /Botun_gold-01.jpg', cls: '' },
+      { src: 'Our work/Botun /Botun_w_g-01.jpg', cls: '' },
+      { src: 'Our work/Botun /20200714_223744000_iOS.jpg', cls: '' },
+      { src: 'Our work/Botun /20200714_223745000_iOS.jpg', cls: '' },
+      { src: 'Our work/Botun /20200714_223746000_iOS.jpg', cls: '' }
+    ],
+    sections: [
+      { h: 'About the Client', p: 'Botun Luxury Apartment is a premium accommodation in Šibenik, Croatia — a city renowned for its rich Dalmatian heritage and UNESCO-protected old town. The client sought a visual identity reflecting both the luxury of the property and its connection to local culture.' },
+      { h: 'The Design Concept', p: 'The logo draws direct inspiration from the Šibenik botun — a traditional piece of Dalmatian jewellery crafted in the region for centuries. We translated this heritage object into a contemporary logo mark: clean, elegant, and instantly recognisable to anyone familiar with the Dalmatian coast.' }
+    ],
+    sections_hr: [
+      { h: 'O klijentu', p: 'Botun Luxury Apartment je premium smještaj u Šibeniku, gradu poznatom po bogatoj dalmatinskoj baštini i UNESCO-om zaštićenoj staroj gradskoj jezgri. Klijent je tražio vizualni identitet koji odražava luksuz nekretnine i njenu povezanost s lokalnom kulturom.' },
+      { h: 'Dizajn koncept', p: 'Logo se izravno inspirira šibenskim botunom — tradicionalnim dalmatinskim nakitom koji se u ovoj regiji izrađuje stoljećima. Taj baštinski objekt preveli smo u suvremeni logo: čist, elegantan i odmah prepoznatljiv svima koji poznaju dalmatinsku obalu.' }
+    ],
+    outcomes: [
+      { icon: '🏛️', label: 'Heritage Rooted', desc: 'Identity directly inspired by authentic local Dalmatian culture' },
+      { icon: '✨', label: 'Luxury Feel', desc: 'Gold and white variants perform beautifully on all backgrounds' },
+      { icon: '📍', label: 'Sense of Place', desc: 'Immediately communicates Šibenik and Dalmatia to any viewer' },
+      { icon: '🖨️', label: 'Versatile Application', desc: 'Works across print, signage, digital, and physical brand touchpoints' }
+    ],
+    outcomes_hr: [
+      { icon: '🏛️', label: 'Ukorjenjen u baštini', desc: 'Identitet izravno inspiriran autentičnom lokalnom dalmatinskom kulturom' },
+      { icon: '✨', label: 'Luksuzni dojam', desc: 'Zlatna i bijela varijanta loga izgledaju savršeno na svim pozadinama' },
+      { icon: '📍', label: 'Osjećaj mjesta', desc: 'Odmah komunicira Šibenik i Dalmaciju svakom promatraču' },
+      { icon: '🖨️', label: 'Svestrana primjena', desc: 'Funkcionira na tisku, natpisima, digitalnim i fizičkim brand touchpointima' }
+    ]
+  },
+  katarina: {
+    label: 'Design and Branding',
+    label_hr: 'Dizajn i branding',
+    title: 'Katarina Mamić Design',
+    tags: ['Logo Design', 'Brand Identity', 'Fashion', 'Visual Identity'],
+    tags_hr: ['Dizajn loga', 'Brand identitet', 'Moda', 'Vizualni identitet'],
+    logo: 'klijenti/Katarina-Mamic-design-novi-logo.png',
+    images: [
+      { src: 'Our work/Katarina mamic/93374119_3127114487311763_8857986825248047104_n.jpg', cls: '' },
+      { src: 'Our work/Katarina mamic/03.jpg', cls: '' },
+      { src: 'Our work/Katarina mamic/04.jpg', cls: '' },
+      { src: 'Our work/Katarina mamic/05.jpg', cls: '' },
+      { src: 'Our work/Katarina mamic/06.jpg', cls: '' },
+      { src: 'Our work/Katarina mamic/07.jpg', cls: '' }
+    ],
+    sections: [
+      { h: 'About the Client', p: 'Katarina Mamić is a Croatian fashion designer whose work blends elegance with personal storytelling. Her brand is built around authenticity, femininity, and a strong emotional connection with her audience.' },
+      { h: 'Brand Concept', p: 'The centrepiece of the identity is a custom logo merging two meaningful elements: the letter K for Katarina, and a heart shape — the brand\'s signature protective symbol. The heart was built into the very structure of the letterform, making the logo instantly recognisable and deeply personal.' }
+    ],
+    sections_hr: [
+      { h: 'O klijentu', p: 'Katarina Mamić je hrvatska modna dizajnerica čiji rad spaja eleganciju s osobnim pričama. Njen brand temelji se na autentičnosti, ženstvenosti i snažnoj emocionalnoj povezanosti s publikom.' },
+      { h: 'Brand koncept', p: 'Središnji element identiteta je prilagođeni logo koji spaja dva značajna elementa: slovo K za Katarinu i oblik srca — zaštitni simbol branda. Srce je ugrađeno u samu strukturu slovnog oblika, čineći logo odmah prepoznatljivim i duboko osobnim.' }
+    ],
+    outcomes: [
+      { icon: '💛', label: 'Emotional Identity', desc: 'Heart motif woven directly into the letterform of the logo' },
+      { icon: '👗', label: 'Fashion Forward', desc: 'Visual system that scales across digital and physical fashion contexts' },
+      { icon: '🎨', label: 'Full Brand System', desc: 'Logo, palette, typography, and brand guidelines delivered' },
+      { icon: '✨', label: 'Personal Storytelling', desc: 'Identity that authentically reflects the designer\'s philosophy' }
+    ],
+    outcomes_hr: [
+      { icon: '💛', label: 'Emocionalni identitet', desc: 'Motiv srca utkkan izravno u slovni oblik loga' },
+      { icon: '👗', label: 'Modno naprijed', desc: 'Vizualni sustav koji se skalira kroz digitalni i fizički modni kontekst' },
+      { icon: '🎨', label: 'Kompletan brand sustav', desc: 'Logo, paleta, tipografija i brand smjernice isporučeni' },
+      { icon: '✨', label: 'Osobno pripovijedanje', desc: 'Identitet koji autentično odražava filozofiju dizajnerice' }
+    ]
+  },
+  boris: {
+    label: 'Digital Content and Social',
+    label_hr: 'Digitalni sadržaj i društvene mreže',
+    title: 'Boris Hnatjuk',
+    tags: ['Web Design', 'Web Development', 'Client Portal', 'Photography'],
+    tags_hr: ['Web dizajn', 'Web razvoj', 'Klijentski portal', 'Fotografija'],
+    logo: 'klijenti/boris-hnatjuk.png',
+    logoDark: true,
+    images: [
+      { src: 'Our work/Boris/Screenshot 2026-07-14 at 17.18.03.png', cls: '' },
+      { src: 'Our work/Boris/Screenshot 2026-07-14 at 17.18.40.png', cls: '' },
+      { src: 'Our work/Boris/Screenshot 2026-07-14 at 17.19.17.png', cls: '' }
+    ],
+    sections: [
+      { h: 'About the Client', p: 'Boris Hnatjuk is a professional photographer based in Croatia, known for his striking black-and-white work and architectural photography. His portfolio spans multiple disciplines — from fine art projects to commissioned architectural documentation.' },
+      { h: 'Our Solution', p: 'We designed and built a custom portfolio website serving two distinct audiences. For the public: a gallery format with a minimal, high-contrast aesthetic. For private clients: a secure, password-protected area where they can review and select images from their sessions, with Boris receiving a consolidated list of their choices.' }
+    ],
+    sections_hr: [
+      { h: 'O klijentu', p: 'Boris Hnatjuk je profesionalni fotograf iz Hrvatske, poznat po upečatljivim crno-bijelim radovima i arhitektonskoj fotografiji. Njegov portfelj obuhvaća više disciplina — od likovnih projekata do naručene arhitektonske dokumentacije.' },
+      { h: 'Naše rješenje', p: 'Dizajnirali i razvili smo prilagođenu portfolio web stranicu koja služi dvjema različitim skupinama korisnika. Za javnost: galerijski format s minimalističkom, visokokontrastnom estetikom. Za privatne klijente: siguran, lozinkom zaštićen prostor gdje mogu pregledavati i odabirati fotografije sa svojih sesija, a Boris dobiva konsolidiranu listu njihovih odabira.' }
+    ],
+    outcomes: [
+      { icon: '🔐', label: 'Private Client Portal', desc: 'Secure access code system for photo selection sessions' },
+      { icon: '🗂️', label: 'Self-Managed Categories', desc: 'Boris adds and manages project categories independently' },
+      { icon: '🎨', label: '4 Visual Themes', desc: 'White, light grey, dark grey, and black — visitor\'s choice' },
+      { icon: '🌐', label: 'Bilingual', desc: 'Full Croatian and English language support throughout' }
+    ],
+    outcomes_hr: [
+      { icon: '🔐', label: 'Privatni klijentski portal', desc: 'Sigurni sustav pristupnog koda za sesije odabira fotografija' },
+      { icon: '🗂️', label: 'Samostalno upravljanje kategorijama', desc: 'Boris samostalno dodaje i upravlja kategorijama projekata' },
+      { icon: '🎨', label: '4 vizualne teme', desc: 'Bijela, svjetlosiva, tamnosiva i crna — po izboru posjetitelja' },
+      { icon: '🌐', label: 'Dvojezičnost', desc: 'Potpuna podrška za hrvatski i engleski jezik' }
+    ]
+  },
+  poliklinika: {
+    label: 'Strategic Marketing Consultancy',
+    label_hr: 'Strateški marketing',
+    title: 'Poliklinika Grgić',
+    tags: ['Strategic Marketing', 'Healthcare', 'Brand Strategy'],
+    tags_hr: ['Strateški marketing', 'Zdravstvo', 'Brand strategija'],
+    logo: 'klijenti/poliklinika-grgic-logo.png',
+    images: [],
+    sections: [
+      { h: 'About the Client', p: 'Poliklinika Grgić is a private healthcare clinic offering a wide range of diagnostic and specialist services. In a sector where trust is everything, the clinic sought a marketing partner who understood both the sensitivity of healthcare communication and the need for strategic growth.' },
+      { h: 'Our Work Together', p: 'Amelo Design provided strategic marketing consultancy focused on growing the clinic\'s patient base and strengthening its reputation as a leading private healthcare provider. Our work spanned digital strategy, content direction, and brand communication.' }
+    ],
+    sections_hr: [
+      { h: 'O klijentu', p: 'Poliklinika Grgić je privatna zdravstvena klinika koja nudi širok spektar dijagnostičkih i specijalističkih usluga. U sektoru gdje je povjerenje sve, klinika je tražila marketinškog partnera koji razumije osjetljivost zdravstvene komunikacije i potrebu za strateškim rastom.' },
+      { h: 'Naša suradnja', p: 'Amelo Design pružio je stratešku marketinšku konzultantsku podršku usmjerenu na rast baze pacijenata klinike i jačanje njene reputacije kao vodećeg privatnog zdravstvenog pružatelja usluga. Naš rad obuhvatio je digitalnu strategiju, smjer sadržaja i brand komunikaciju.' }
+    ],
+    outcomes: [
+      { icon: '🏥', label: 'Healthcare Expertise', desc: 'Marketing strategy tailored to the healthcare sector\'s standards' },
+      { icon: '📣', label: 'Patient Growth', desc: 'Communications strategy targeting patient acquisition and retention' },
+      { icon: '🔒', label: 'Trust & Authority', desc: 'Positioning built on credibility and medical expertise' },
+      { icon: '📱', label: 'Digital Presence', desc: 'Strengthened online presence across key digital channels' }
+    ],
+    outcomes_hr: [
+      { icon: '🏥', label: 'Stručnost u zdravstvu', desc: 'Marketinška strategija prilagođena standardima zdravstvenog sektora' },
+      { icon: '📣', label: 'Rast broja pacijenata', desc: 'Komunikacijska strategija usmjerena na privlačenje i zadržavanje pacijenata' },
+      { icon: '🔒', label: 'Povjerenje i autoritet', desc: 'Pozicioniranje temeljeno na vjerodostojnosti i medicinskoj stručnosti' },
+      { icon: '📱', label: 'Digitalno prisustvo', desc: 'Ojačano online prisustvo na ključnim digitalnim kanalima' }
+    ]
+  },
+  laboro: {
+    label: 'Strategic Marketing · Digital · Design',
+    label_hr: 'Strateški marketing · Digitalno · Dizajn',
+    title: 'Laboro',
+    tags: ['Strategic Marketing', 'Digital Content', 'Brand Design'],
+    tags_hr: ['Strateški marketing', 'Digitalni sadržaj', 'Brand dizajn'],
+    logo: 'klijenti/laboro.png',
+    images: [],
+    sections: [
+      { h: 'About the Client', p: 'Laboro is a Croatian company operating in the staffing and employment services sector, connecting employers with quality candidates and helping individuals find the right career opportunities.' },
+      { h: 'Our Work Together', p: 'We developed a comprehensive marketing approach for Laboro spanning strategy, digital content, and brand design. Our focus was on building a clear, professional brand voice that would resonate with both employers and job seekers — positioning Laboro as the trusted partner in Croatia\'s dynamic employment market.' }
+    ],
+    sections_hr: [
+      { h: 'O klijentu', p: 'Laboro je hrvatska kompanija koja posluje u sektoru zapošljavanja i kadrovskih usluga, povezujući poslodavce s kvalitetnim kandidatima i pomažući pojedincima pronaći prave poslovne prilike.' },
+      { h: 'Naša suradnja', p: 'Razvili smo sveobuhvatan marketinški pristup za Laboro koji obuhvaća strategiju, digitalni sadržaj i brand dizajn. Fokus nam je bio na izgradnji jasnog, profesionalnog brand glasa koji će odjeknuti kod poslodavaca i tražitelja zaposlenja — pozicionirajući Laboro kao pouzdanog partnera na hrvatskom tržištu rada.' }
+    ],
+    outcomes: [
+      { icon: '💼', label: 'Employer Reach', desc: 'Targeted campaigns reaching key employer segments' },
+      { icon: '🎯', label: 'Brand Clarity', desc: 'Clear brand voice that speaks to both sides of the market' },
+      { icon: '📲', label: 'Digital Content', desc: 'Consistent digital content strategy across all channels' },
+      { icon: '📊', label: 'Growth Strategy', desc: 'Long-term strategic plan supporting Laboro\'s expansion' }
+    ],
+    outcomes_hr: [
+      { icon: '💼', label: 'Doseg poslodavaca', desc: 'Ciljane kampanje koje dosežu ključne segmente poslodavaca' },
+      { icon: '🎯', label: 'Jasnoća branda', desc: 'Jasan brand glas koji govori objema stranama tržišta' },
+      { icon: '📲', label: 'Digitalni sadržaj', desc: 'Dosljedna strategija digitalnog sadržaja na svim kanalima' },
+      { icon: '📊', label: 'Strategija rasta', desc: 'Dugoročni strateški plan koji podupire Laborovu ekspanziju' }
+    ]
+  },
+  antonio: {
+    label: 'Strategic Marketing · Digital · Design',
+    label_hr: 'Strateški marketing · Digitalno · Dizajn',
+    title: 'Antonio Hase Art',
+    tags: ['Digital Strategy', 'Art Marketing', 'Social Media', 'Brand Design'],
+    tags_hr: ['Digitalna strategija', 'Art marketing', 'Društvene mreže', 'Brand dizajn'],
+    logo: 'klijenti/antonio-hase.png',
+    images: [],
+    sections: [
+      { h: 'About the Client', p: 'Antonio Hase is a Croatian visual artist whose work spans painting, illustration, and digital art. Building a reputation as an artist in today\'s competitive creative market requires more than talent — it demands a strategic digital presence.' },
+      { h: 'Our Work Together', p: 'Amelo Design provided a full suite of marketing and digital services for Antonio Hase Art — from brand identity and social media strategy to content creation and audience development. Our goal was to build a compelling online presence that authentically represents his artistic vision while growing his collector base.' }
+    ],
+    sections_hr: [
+      { h: 'O klijentu', p: 'Antonio Hase je hrvatski vizualni umjetnik čiji rad obuhvaća slikarstvo, ilustraciju i digitalne umjetnosti. Izgradnja reputacije umjetnika na danas konkurentnom kreativnom tržištu zahtijeva više od talenta — potrebno je strateško digitalno prisustvo.' },
+      { h: 'Naša suradnja', p: 'Amelo Design pružio je kompletan set marketinških i digitalnih usluga za Antonio Hase Art — od brand identiteta i strategije društvenih mreža do kreiranja sadržaja i razvoja publike. Cilj nam je bio izgraditi uvjerljivo online prisustvo koje autentično predstavlja njegovu umjetničku viziju uz rast baze kolekcionara.' }
+    ],
+    outcomes: [
+      { icon: '🎨', label: 'Artist Brand Identity', desc: 'Visual identity that reflects and elevates Antonio\'s artistic work' },
+      { icon: '📸', label: 'Content Strategy', desc: 'Consistent content approach across digital channels' },
+      { icon: '🌍', label: 'Audience Growth', desc: 'Expanded reach among art collectors and enthusiasts' },
+      { icon: '📈', label: 'Digital Presence', desc: 'Strengthened online positioning in the art market' }
+    ],
+    outcomes_hr: [
+      { icon: '🎨', label: 'Artist brand identitet', desc: 'Vizualni identitet koji odražava i uzdiže Antoniov umjetnički rad' },
+      { icon: '📸', label: 'Strategija sadržaja', desc: 'Dosljedan pristup sadržaju na digitalnim kanalima' },
+      { icon: '🌍', label: 'Rast publike', desc: 'Prošireni doseg među kolekcionarima i ljubiteljima umjetnosti' },
+      { icon: '📈', label: 'Digitalno prisustvo', desc: 'Ojačano online pozicioniranje na tržištu umjetnosti' }
+    ]
+  },
+  fitstop: {
+    label: 'Digital Content and Social · Design',
+    label_hr: 'Digitalni sadržaj · Dizajn',
+    title: 'Fitstop',
+    tags: ['Digital Content', 'Social Media', 'Brand Design', 'Fitness'],
+    tags_hr: ['Digitalni sadržaj', 'Društvene mreže', 'Brand dizajn', 'Fitness'],
+    logo: 'klijenti/FITSTOP-300x300.png',
+    images: [],
+    sections: [
+      { h: 'About the Client', p: 'Fitstop is a fitness and wellness brand committed to helping people achieve their health goals through expert guidance, community, and quality programming. In the crowded fitness market, standing out requires more than a good product.' },
+      { h: 'Our Work Together', p: 'Amelo Design developed digital content and brand design solutions for Fitstop. From social media content strategy to visual identity refinements, our work focused on building a brand that converts followers into members and members into advocates.' }
+    ],
+    sections_hr: [
+      { h: 'O klijentu', p: 'Fitstop je fitness i wellness brand posvećen pomaganju ljudima da postignu svoje zdravstvene ciljeve kroz stručno vodstvo, zajednicu i kvalitetne programe. Na prepunom fitness tržištu, isticanje zahtijeva više od dobrog proizvoda.' },
+      { h: 'Naša suradnja', p: 'Amelo Design razvio je rješenja za digitalni sadržaj i brand dizajn za Fitstop. Od strategije sadržaja na društvenim mrežama do dorađivanja vizualnog identiteta, naš rad fokusirao se na izgradnju branda koji pretvara pratitelje u članove, a članove u zagovornika.' }
+    ],
+    outcomes: [
+      { icon: '💪', label: 'Community Building', desc: 'Content strategy that builds an engaged fitness community' },
+      { icon: '📱', label: 'Social Growth', desc: 'Consistent social media presence across all key platforms' },
+      { icon: '🎯', label: 'Conversion Focused', desc: 'Content designed to turn engagement into memberships' },
+      { icon: '🔥', label: 'Brand Energy', desc: 'Visual identity that captures the brand\'s motivational spirit' }
+    ],
+    outcomes_hr: [
+      { icon: '💪', label: 'Izgradnja zajednice', desc: 'Strategija sadržaja koja gradi angažiranu fitness zajednicu' },
+      { icon: '📱', label: 'Rast na društvenim mrežama', desc: 'Dosljedno prisustvo na svim ključnim platformama' },
+      { icon: '🎯', label: 'Fokus na konverziju', desc: 'Sadržaj dizajniran da pretvori angažman u članstva' },
+      { icon: '🔥', label: 'Energija branda', desc: 'Vizualni identitet koji hvata motivacijski duh branda' }
+    ]
+  },
+  labelage: {
+    label: 'Digital Content · PR · Design',
+    label_hr: 'Digitalni sadržaj · PR · Dizajn',
+    title: 'Labelage',
+    tags: ['Digital Content', 'PR', 'Brand Design', 'Fashion'],
+    tags_hr: ['Digitalni sadržaj', 'PR', 'Brand dizajn', 'Moda'],
+    logo: 'klijenti/labelage.png',
+    images: [],
+    sections: [
+      { h: 'About the Client', p: 'Labelage is a fashion brand operating in the competitive lifestyle and apparel market. Building brand recognition in fashion demands a combination of sharp visual identity, compelling storytelling, and strategic PR.' },
+      { h: 'Our Work Together', p: 'Amelo Design provided a full-spectrum service combining digital content, public relations, and brand design for Labelage. We developed content strategies that drove engagement, PR campaigns that earned visibility, and design work that kept the brand\'s aesthetic consistent.' }
+    ],
+    sections_hr: [
+      { h: 'O klijentu', p: 'Labelage je modni brand koji posluje na konkurentnom tržištu lifestyla i odjevnih predmeta. Izgradnja prepoznatljivosti u modi zahtijeva kombinaciju oštrog vizualnog identiteta, uvjerljivog pripovijedanja i strateškog PR-a.' },
+      { h: 'Naša suradnja', p: 'Amelo Design pružio je cjelovitu uslugu koja kombinira digitalni sadržaj, odnose s javnošću i brand dizajn za Labelage. Razvili smo strategije sadržaja koje su poticale angažman, PR kampanje koje su stekle vidljivost i dizajnerski rad koji je održavao estetiku branda dosljednom.' }
+    ],
+    outcomes: [
+      { icon: '👗', label: 'Fashion PR', desc: 'PR campaigns building visibility in the fashion market' },
+      { icon: '✨', label: 'Brand Design', desc: 'Consistent elevated aesthetic across all brand touchpoints' },
+      { icon: '📲', label: 'Digital Engagement', desc: 'Content strategy driving meaningful audience engagement' },
+      { icon: '📰', label: 'Media Coverage', desc: 'Earned media placements in relevant lifestyle publications' }
+    ],
+    outcomes_hr: [
+      { icon: '👗', label: 'Modni PR', desc: 'PR kampanje koje grade vidljivost na modnom tržištu' },
+      { icon: '✨', label: 'Brand dizajn', desc: 'Dosljedna uzdignuta estetika na svim brand touchpointima' },
+      { icon: '📲', label: 'Digitalni angažman', desc: 'Strategija sadržaja koja potiče smisleni angažman publike' },
+      { icon: '📰', label: 'Medijska pokrivenost', desc: 'Zasluženi medijski plasmani u relevantnim lifestyle publikacijama' }
+    ]
+  },
+  olivetree: {
+    label: 'Digital Content · Design',
+    label_hr: 'Digitalni sadržaj · Dizajn',
+    title: 'The Olive Tree Villa',
+    tags: ['Digital Content', 'Brand Design', 'Hospitality', 'Luxury'],
+    tags_hr: ['Digitalni sadržaj', 'Brand dizajn', 'Ugostiteljstvo', 'Luksuz'],
+    logo: 'klijenti/olive-tree-villa-logo.png',
+    images: [],
+    sections: [
+      { h: 'About the Client', p: 'The Olive Tree Villa is a premium vacation rental property offering an exceptional guest experience on the Dalmatian coast. In the competitive luxury hospitality market, a strong visual identity and digital presence are essential for attracting high-value guests.' },
+      { h: 'Our Work Together', p: 'Amelo Design developed the digital content strategy and brand design for The Olive Tree Villa — crafting visual content and a brand identity that positioned the villa as a premium destination for discerning travellers.' }
+    ],
+    sections_hr: [
+      { h: 'O klijentu', p: 'The Olive Tree Villa je premium vakacijska nekretnina koja nudi iznimno gostoprimstvo na dalmatinskoj obali. Na konkurentnom tržištu luksuznog ugostiteljstva, snažan vizualni identitet i digitalno prisustvo ključni su za privlačenje gostiju visoke vrijednosti.' },
+      { h: 'Naša suradnja', p: 'Amelo Design razvio je strategiju digitalnog sadržaja i brand dizajn za The Olive Tree Villa — kreirajući vizualni sadržaj i brand identitet koji je pozicionirao vilu kao premium destinaciju za zahtjevne putnike.' }
+    ],
+    outcomes: [
+      { icon: '🏡', label: 'Luxury Positioning', desc: 'Brand identity reflecting the villa\'s premium character' },
+      { icon: '📸', label: 'Visual Content', desc: 'Photography direction and digital content strategy' },
+      { icon: '✈️', label: 'Guest Acquisition', desc: 'Digital strategy targeting high-value travel audiences' },
+      { icon: '⭐', label: 'Premium Feel', desc: 'Consistent luxury aesthetic across all brand touchpoints' }
+    ],
+    outcomes_hr: [
+      { icon: '🏡', label: 'Luksuzno pozicioniranje', desc: 'Brand identitet koji odražava premium karakter vile' },
+      { icon: '📸', label: 'Vizualni sadržaj', desc: 'Fotografska direkcija i strategija digitalnog sadržaja' },
+      { icon: '✈️', label: 'Privlačenje gostiju', desc: 'Digitalna strategija usmjerena na putnike visoke vrijednosti' },
+      { icon: '⭐', label: 'Premium dojam', desc: 'Dosljedna luksuzna estetika na svim brand touchpointima' }
+    ]
+  },
+  sementa: {
+    label: 'Digital Content · Design',
+    label_hr: 'Digitalni sadržaj · Dizajn',
+    title: 'Sementa',
+    tags: ['Digital Content', 'Brand Design', 'Lifestyle'],
+    tags_hr: ['Digitalni sadržaj', 'Brand dizajn', 'Lifestyle'],
+    logo: 'klijenti/sementa-spavacice.png',
+    images: [],
+    sections: [
+      { h: 'About the Client', p: 'Sementa is a lifestyle brand in the home and wellness space, offering products designed to bring comfort and quality into everyday life. Building loyalty in this category requires a brand that feels personal, warm, and consistently trustworthy.' },
+      { h: 'Our Work Together', p: 'Amelo Design provided digital content and design support for Sementa, developing a visual language and content strategy that reflected the brand\'s commitment to quality and comfort — building a brand people genuinely connect with.' }
+    ],
+    sections_hr: [
+      { h: 'O klijentu', p: 'Sementa je lifestyle brand u prostoru doma i wellnessa, koji nudi proizvode osmišljene da unesu udobnost i kvalitetu u svakodnevni život. Izgradnja lojalnosti u ovoj kategoriji zahtijeva brand koji se osjeća osobnim, toplim i dosljedno pouzdanim.' },
+      { h: 'Naša suradnja', p: 'Amelo Design pružio je podršku u digitalnom sadržaju i dizajnu za Sementu, razvijajući vizualni jezik i strategiju sadržaja koji odražavaju brendovu posvećenost kvaliteti i udobnosti — gradeći brand s kojim se ljudi iskreno poistovjećuju.' }
+    ],
+    outcomes: [
+      { icon: '🌿', label: 'Authentic Brand Voice', desc: 'Content strategy with a warm, personal tone that resonates' },
+      { icon: '💤', label: 'Lifestyle Content', desc: 'Visual content positioning Sementa in the lifestyle space' },
+      { icon: '📈', label: 'Digital Growth', desc: 'Growing digital presence across key consumer channels' },
+      { icon: '🛍️', label: 'Brand Loyalty', desc: 'Identity that builds genuine connection and repeat customers' }
+    ],
+    outcomes_hr: [
+      { icon: '🌿', label: 'Autentičan brand glas', desc: 'Strategija sadržaja s toplim, osobnim tonom koji odzvanja' },
+      { icon: '💤', label: 'Lifestyle sadržaj', desc: 'Vizualni sadržaj koji pozicionira Sementu u lifestyle prostoru' },
+      { icon: '📈', label: 'Digitalni rast', desc: 'Rastuće digitalno prisustvo na ključnim potrošačkim kanalima' },
+      { icon: '🛍️', label: 'Lojalnost brandu', desc: 'Identitet koji gradi iskrenu vezu i vraća kupce' }
+    ]
+  },
+  majestic: {
+    label: 'PR and Communications',
+    label_hr: 'PR i komunikacije',
+    title: 'Majestic Gold',
+    tags: ['PR', 'Communications', 'Luxury', 'Finance'],
+    tags_hr: ['PR', 'Komunikacije', 'Luksuz', 'Financije'],
+    logo: 'klijenti/MAJESTIC-GOLD-logo.png',
+    images: [],
+    sections: [
+      { h: 'About the Client', p: 'Majestic Gold operates in the precious metals and investment sector, offering clients a trusted route to gold investments. In this highly regulated and trust-sensitive market, communications must be precise, credible, and reassuring.' },
+      { h: 'Our Work Together', p: 'Amelo Design provided strategic PR and communications support for Majestic Gold. Our work focused on building and protecting the brand\'s reputation — developing communications strategies that conveyed expertise and trustworthiness to both existing and potential investors.' }
+    ],
+    sections_hr: [
+      { h: 'O klijentu', p: 'Majestic Gold posluje u sektoru plemenitih metala i investicija, nudeći klijentima pouzdani put do ulaganja u zlato. Na ovom visoko reguliranom i osjetljivom tržištu, komunikacije moraju biti precizne, vjerodostojne i umirujuće.' },
+      { h: 'Naša suradnja', p: 'Amelo Design pružio je stratešku PR i komunikacijsku podršku za Majestic Gold. Naš rad bio je usmjeren na izgradnju i zaštitu reputacije branda — razvijajući komunikacijske strategije koje prenose stručnost i pouzdanost prema postojećim i potencijalnim investitorima.' }
+    ],
+    outcomes: [
+      { icon: '🥇', label: 'Trust Building', desc: 'Communications strategy reinforcing credibility and expertise' },
+      { icon: '📰', label: 'Media Relations', desc: 'Strategic media engagement in financial and investment press' },
+      { icon: '💼', label: 'Investor Communications', desc: 'Clear and compliant messaging for investment audiences' },
+      { icon: '🛡️', label: 'Reputation Management', desc: 'Proactive PR protecting and enhancing brand reputation' }
+    ],
+    outcomes_hr: [
+      { icon: '🥇', label: 'Izgradnja povjerenja', desc: 'Komunikacijska strategija koja jača vjerodostojnost i stručnost' },
+      { icon: '📰', label: 'Medijski odnosi', desc: 'Strateški medijski angažman u financijskom i investicijskom tisku' },
+      { icon: '💼', label: 'Komunikacija s investitorima', desc: 'Jasne i usklađene poruke za investicijsku publiku' },
+      { icon: '🛡️', label: 'Upravljanje reputacijom', desc: 'Proaktivni PR koji štiti i unapređuje reputaciju branda' }
+    ]
+  },
+  billich: {
+    label: 'PR and Communications',
+    label_hr: 'PR i komunikacije',
+    title: 'Billich',
+    tags: ['PR', 'Communications', 'Art', 'Culture'],
+    tags_hr: ['PR', 'Komunikacije', 'Umjetnost', 'Kultura'],
+    logo: 'klijenti/billich-logo.webp',
+    images: [],
+    sections: [
+      { h: 'About the Client', p: 'Billich is an internationally recognised art brand and gallery, representing one of Australia\'s most celebrated figurative painters. With galleries in Sydney, the Gold Coast, and beyond, Billich required PR support that matched the cultural prestige of the brand.' },
+      { h: 'Our Work Together', p: 'Amelo Design provided PR and communications services for Billich, supporting exhibition launches, media relations, and brand communications — reinforcing Billich\'s standing as a premier destination in the international art world.' }
+    ],
+    sections_hr: [
+      { h: 'O klijentu', p: 'Billich je međunarodno prepoznat art brand i galerija koja predstavlja jednog od najslavnijih figurativnih slikara Australije. S galerijama u Sydneyu, Gold Coastu i šire, Billich je trebao PR podršku koja odgovara kulturnom prestižu branda.' },
+      { h: 'Naša suradnja', p: 'Amelo Design pružio je PR i komunikacijske usluge za Billich, podupirući lansiranje izložbi, medijske odnose i brand komunikacije — učvršćujući Billichev status kao premijerne destinacije u međunarodnom umjetničkom svijetu.' }
+    ],
+    outcomes: [
+      { icon: '🖼️', label: 'Exhibition PR', desc: 'Media campaigns supporting gallery exhibitions and launches' },
+      { icon: '🌏', label: 'International Reach', desc: 'PR spanning Australian and international art media' },
+      { icon: '🎭', label: 'Cultural Positioning', desc: 'Communications reinforcing Billich\'s cultural authority' },
+      { icon: '🤝', label: 'Collector Relations', desc: 'Engagement strategies connecting the gallery with collectors' }
+    ],
+    outcomes_hr: [
+      { icon: '🖼️', label: 'PR za izložbe', desc: 'Medijske kampanje koje podupiru galerijske izložbe i lansiranja' },
+      { icon: '🌏', label: 'Međunarodni doseg', desc: 'PR koji obuhvaća australske i međunarodne art medije' },
+      { icon: '🎭', label: 'Kulturno pozicioniranje', desc: 'Komunikacije koje jačaju Billichev kulturni autoritet' },
+      { icon: '🤝', label: 'Odnosi s kolekcionarima', desc: 'Strategije angažmana koje povezuju galeriju s kolekcionarima' }
+    ]
+  },
+  dlm: {
+    label: 'PR and Communications',
+    label_hr: 'PR i komunikacije',
+    title: 'DLM Studio',
+    tags: ['PR', 'Communications', 'Architecture', 'Design'],
+    tags_hr: ['PR', 'Komunikacije', 'Arhitektura', 'Dizajn'],
+    logo: 'klijenti/dlm-studio-.jpeg',
+    images: [],
+    sections: [
+      { h: 'About the Client', p: 'DLM Studio is an architecture and interior design studio known for creating thoughtful, contemporary spaces. In the competitive design industry, a strong PR and communications presence is essential for attracting the right clients and building reputation.' },
+      { h: 'Our Work Together', p: 'Amelo Design provided PR and communications support for DLM Studio, developing strategies to showcase their projects to architecture and design media, potential clients, and industry networks — elevating the studio\'s profile.' }
+    ],
+    sections_hr: [
+      { h: 'O klijentu', p: 'DLM Studio je studio za arhitekturu i unutarnje uređenje poznat po stvaranju promišljenih, suvremenih prostora. U konkurentnoj dizajnerskoj industriji, snažno PR i komunikacijsko prisustvo ključno je za privlačenje pravih klijenata i izgradnju reputacije.' },
+      { h: 'Naša suradnja', p: 'Amelo Design pružio je PR i komunikacijsku podršku za DLM Studio, razvijajući strategije za prezentaciju njihovih projekata arhitektonskim i dizajnerskim medijima, potencijalnim klijentima i industrijskim mrežama — uzdižući profil studija.' }
+    ],
+    outcomes: [
+      { icon: '🏗️', label: 'Project Visibility', desc: 'PR campaigns showcasing completed projects to target audiences' },
+      { icon: '📐', label: 'Industry Recognition', desc: 'Positioning within architecture and design media networks' },
+      { icon: '🎨', label: 'Creative Communications', desc: 'Storytelling that captures the studio\'s design philosophy' },
+      { icon: '🔑', label: 'Client Acquisition', desc: 'PR strategy supporting new client enquiries and growth' }
+    ],
+    outcomes_hr: [
+      { icon: '🏗️', label: 'Vidljivost projekata', desc: 'PR kampanje koje prikazuju završene projekte ciljnoj publici' },
+      { icon: '📐', label: 'Industrijska prepoznatljivost', desc: 'Pozicioniranje unutar arhitektonskih i dizajnerskih medijskih mreža' },
+      { icon: '🎨', label: 'Kreativne komunikacije', desc: 'Pripovijedanje koje hvata dizajnersku filozofiju studija' },
+      { icon: '🔑', label: 'Privlačenje klijenata', desc: 'PR strategija koja podupire nove upite i rast' }
+    ]
+  }
+};
+
+let currentSlide = 0;
+let currentSlides = [];
+
+function openProject(id) {
+  const p = PROJECTS[id];
+  if (!p) return;
+  currentProjectId = id;
+
+  // Hide grid
+  document.getElementById('gridWrap').style.display = 'none';
+
+  // Logo
+  const logoWrap = document.getElementById('detailLogoWrap');
+  const logoImg = document.getElementById('detailLogo');
+  if (p.logoDark) logoWrap.classList.add('dark-bg');
+  else logoWrap.classList.remove('dark-bg');
+  logoImg.src = p.logo;
+  logoImg.alt = p.title;
+
+  // Slideshow
+  const ss = document.getElementById('slideshow');
+  const nav = document.getElementById('slideshowNav');
+  const dots = document.getElementById('slideDots');
+  ss.innerHTML = '';
+  dots.innerHTML = '';
+  currentSlides = p.images || [];
+  currentSlide = 0;
+
+  if (currentSlides.length > 0) {
+    currentSlides.forEach((img, i) => {
+      const div = document.createElement('div');
+      div.className = 'slide' + (i === 0 ? ' active' : '');
+      const el = document.createElement('img');
+      el.src = img.src;
+      el.alt = p.title;
+      if (img.cls) el.className = img.cls;
+      div.appendChild(el);
+      ss.appendChild(div);
+
+      const dot = document.createElement('button');
+      dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => goToSlide(i);
+      dots.appendChild(dot);
+    });
+    ss.style.display = 'block';
+    nav.style.display = currentSlides.length > 1 ? 'flex' : 'none';
+  } else {
+    ss.style.display = 'none';
+    nav.style.display = 'none';
+  }
+
+  // Text (language-aware)
+  renderDetailText(p);
+
+  // Show panel
+  const panel = document.getElementById('detailPanel');
+  panel.classList.add('open');
+  window.scrollTo({ top: document.getElementById('filterWrap').offsetTop - 80, behavior: 'smooth' });
+}
+
+let currentProjectId = null;
+
+function renderDetailText(p) {
+  const lang = localStorage.getItem('lang') || 'en';
+  const isHR = lang === 'hr';
+
+  document.getElementById('detailLabel').textContent = isHR && p.label_hr ? p.label_hr : p.label;
+  document.getElementById('detailTitle').textContent = p.title;
+
+  const tags = isHR && p.tags_hr ? p.tags_hr : p.tags;
+  document.getElementById('detailTags').innerHTML = tags.map(t => `<span class="detail-tag">${t}</span>`).join('');
+
+  const sections = isHR && p.sections_hr ? p.sections_hr : p.sections;
+  document.getElementById('detailSections').innerHTML = sections.map(s =>
+    `<div class="detail-section"><h3>${s.h}</h3><p>${s.p}</p></div>`).join('');
+
+  const outcomes = isHR && p.outcomes_hr ? p.outcomes_hr : p.outcomes;
+  document.getElementById('detailOutcomes').innerHTML = outcomes.map(o => `
+    <div class="outcome-chip">
+      <div class="outcome-icon">${o.icon}</div>
+      <div class="outcome-label">${o.label}</div>
+      <div class="outcome-desc">${o.desc}</div>
+    </div>`).join('');
+
+  document.querySelector('.detail-cta').textContent = isHR ? 'Pokrenimo projekt zajedno' : 'Start a project together';
+  document.querySelector('.back-btn').innerHTML = `<svg viewBox="0 0 24 24" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> ${isHR ? 'Natrag na projekte' : 'Back to Projects'}`;
+}
+
+function closeProject() {
+  document.getElementById('detailPanel').classList.remove('open');
+  document.getElementById('gridWrap').style.display = 'block';
+}
+
+function goToSlide(n) {
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.slide-dot');
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = (n + currentSlides.length) % currentSlides.length;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+function nextSlide() { goToSlide(currentSlide + 1); }
+function prevSlide() { goToSlide(currentSlide - 1); }
+
 function filterProjects(category, btn) {
+  // Close detail if open
+  document.getElementById('detailPanel').classList.remove('open');
+  document.getElementById('gridWrap').style.display = 'block';
+
   document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.project-card').forEach(card => {
@@ -476,18 +951,16 @@ function filterProjects(category, btn) {
 
 function openMobileNav() { document.getElementById('mobileNav').classList.add('open'); }
 function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); }
-
 function setLang(lang) {
-  document.querySelectorAll('[data-en]').forEach(el => {
-    el.innerHTML = lang === 'hr' ? el.dataset.hr : el.dataset.en;
-  });
-  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    if (btn.textContent.trim() === lang.toUpperCase()) btn.classList.add('active');
-  });
   localStorage.setItem('lang', lang);
+  document.querySelectorAll('[data-en]').forEach(el => { el.innerHTML = lang === 'hr' ? el.dataset.hr : el.dataset.en; });
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(b => { if(b.textContent.trim()===lang.toUpperCase()) b.classList.add('active'); });
+  // Re-render detail panel if open
+  if (currentProjectId && document.getElementById('detailPanel').classList.contains('open')) {
+    renderDetailText(PROJECTS[currentProjectId]);
+  }
 }
-
 const savedLang = localStorage.getItem('lang');
 if (savedLang && savedLang !== 'en') setLang(savedLang);
 </script>
