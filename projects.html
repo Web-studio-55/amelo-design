@@ -64,15 +64,19 @@
   .detail-panel.open { display: block; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
-  .back-btn { display: inline-flex; align-items: center; gap: 8px; color: var(--gray); font-size: 14px; font-weight: 600; background: none; border: none; cursor: pointer; padding: 0; margin-bottom: 40px; font-family: 'Inter', sans-serif; transition: color 0.2s; }
+  .back-btn { display: inline-flex; align-items: center; gap: 8px; color: var(--gray); font-size: 14px; font-weight: 600; background: none; border: none; cursor: pointer; padding: 0; margin-top: 32px; margin-bottom: 40px; font-family: 'Inter', sans-serif; transition: color 0.2s; }
   .back-btn:hover { color: var(--dark); }
   .back-btn svg { width: 16px; height: 16px; }
 
   .detail-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+  .detail-inner.logo-only { grid-template-columns: 1fr; }
+  .detail-inner.logo-only .detail-media { position: static; display: flex; justify-content: center; }
+  .detail-inner.logo-only .detail-logo-wrap { max-width: 300px; margin: 0; }
 
   /* LEFT: MEDIA */
   .detail-media { position: sticky; top: 100px; }
-  .detail-logo-wrap { background: var(--light); border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; min-height: 160px; }
+  .detail-logo-wrap { background: var(--light); border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; min-height: 200px; }
+  .detail-logo-wrap img { display: block; margin: 0 auto; }
   .detail-logo-wrap img { max-width: 200px; max-height: 100px; object-fit: contain; }
   .detail-logo-wrap.dark-bg { background: #0a0a0a; }
 
@@ -854,6 +858,13 @@ function openProject(id) {
   dots.innerHTML = '';
   currentSlides = p.images || [];
   currentSlide = 0;
+
+  const inner = document.querySelector('.detail-inner');
+  if (currentSlides.length === 0) {
+    inner.classList.add('logo-only');
+  } else {
+    inner.classList.remove('logo-only');
+  }
 
   if (currentSlides.length > 0) {
     currentSlides.forEach((img, i) => {
