@@ -859,35 +859,8 @@ function openProject(id) {
   currentSlides = p.images || [];
   currentSlide = 0;
 
-  const inner = document.querySelector('.detail-inner');
-  if (currentSlides.length === 0) {
-    inner.classList.add('logo-only');
-  } else {
-    inner.classList.remove('logo-only');
-  }
-
-  if (currentSlides.length > 0) {
-    currentSlides.forEach((img, i) => {
-      const div = document.createElement('div');
-      div.className = 'slide' + (i === 0 ? ' active' : '');
-      const el = document.createElement('img');
-      el.src = img.src;
-      el.alt = p.title;
-      if (img.cls) el.className = img.cls;
-      div.appendChild(el);
-      ss.appendChild(div);
-
-      const dot = document.createElement('button');
-      dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
-      dot.onclick = () => goToSlide(i);
-      dots.appendChild(dot);
-    });
-    ss.style.display = 'block';
-    nav.style.display = currentSlides.length > 1 ? 'flex' : 'none';
-  } else {
-    ss.style.display = 'none';
-    nav.style.display = 'none';
-  }
+  ss.style.display = 'none';
+  nav.style.display = 'none';
 
   // Text (language-aware)
   renderDetailText(p);
