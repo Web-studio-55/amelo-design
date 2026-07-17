@@ -244,6 +244,22 @@
 
   /* CONTACT */
   .contact { background: var(--light); }
+
+  /* Testimonials */
+  .testimonials { padding: 80px 0; background: #fff; }
+  .testimonials .section-label { text-align: center; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
+  .testimonials h2 { text-align: center; font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); color: var(--dark); margin-bottom: 48px; }
+  .testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  @media(min-width:768px){ .testimonials-grid { grid-template-columns: 1fr; } }
+  .t-card { background: var(--light); border-radius: 16px; padding: 36px 40px; position: relative; }
+  .t-card::before { content: '\201C'; font-family: 'Playfair Display', serif; font-size: 80px; color: var(--purple); opacity: 0.15; position: absolute; top: 12px; left: 28px; line-height: 1; }
+  .t-stars { display: flex; gap: 4px; margin-bottom: 16px; }
+  .t-stars svg { width: 18px; height: 18px; fill: #F59E0B; stroke: none; }
+  .t-text { font-size: 16px; line-height: 1.75; color: #374151; margin-bottom: 24px; font-style: italic; }
+  .t-author { display: flex; align-items: center; gap: 14px; }
+  .t-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--purple), #20B0E2); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #fff; flex-shrink: 0; }
+  .t-name { font-weight: 700; font-size: 15px; color: var(--dark); }
+  .t-role { font-size: 13px; color: var(--gray); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; max-width: 1200px; margin: 0 auto; align-items: start; }
   .contact-info p { color: var(--gray); font-size: 16px; line-height: 1.7; margin-bottom: 40px; }
   .contact-detail { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
@@ -527,6 +543,67 @@ function closeMobileNav(){ document.getElementById('mobileNav').classList.remove
   </div>
 </div>
 
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <p class="section-label" data-en="TESTIMONIALS" data-hr="RECENZIJE">TESTIMONIALS</p>
+    <h2 data-en="What Our Clients Say" data-hr="Što kažu naši klijenti">What Our Clients Say</h2>
+    <div class="testimonials-grid">
+      <div class="t-card">
+        <div class="t-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="t-text" data-en="I am absolutely thrilled with the Amelo team! Having worked with several different agencies on web projects in the past, I was used to a frustrating process where I had to micro-manage every detail for teams that acted as mere technical support. Working with Amelo was a completely different experience — it is incredibly refreshing to partner with professionals who take the lead, deeply understand the vision, and know exactly what they are doing. They took the project from start to finish, and I could finally relax. I wholeheartedly recommend them to everyone!" data-hr="Oduševljena sam suradnjom s Amelo timom! Radila sam s nekoliko različitih agencija na web projektima i proces je uvijek bio iscrpljujuć – osjećala sam da je sav teret na meni i da im moram 'crtati' svaki detalj, dok su oni djelovali isključivo kao pasivna tehnička podrška. Pravo je osvježenje raditi s profesionalcima koji preuzimaju vodstvo, u potpunosti razumiju viziju i točno znaju što rade. Amelo tim je preuzeo projekt od početka do kraja, a ja sam se napokon mogla opustiti. S punim povjerenjem ih preporučujem svima!">"I am absolutely thrilled with the Amelo team! Having worked with several different agencies on web projects in the past, I was used to a frustrating process where I had to micro-manage every detail for teams that acted as mere technical support. Working with Amelo was a completely different experience — it is incredibly refreshing to partner with professionals who take the lead, deeply understand the vision, and know exactly what they are doing. They took the project from start to finish, and I could finally relax. I wholeheartedly recommend them to everyone!"</p>
+        <div class="t-author">
+          <div class="t-avatar">PP</div>
+          <div>
+            <div class="t-name">Petra P.</div>
+            <div class="t-role" data-en="Client" data-hr="Klijentica">Client</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="t-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="t-text" data-en="Professionalism, smooth communication, and great energy. Collaborating with the Amelo team is a genuinely enjoyable process, and the results speak for themselves! They took complete ownership of the project from start to finish, and I cannot recommend them highly enough!" data-hr="Profesionalnost, lakoća komunikacije i sjajna energija. Suradnja s Amelo timom je proces u kojem se stvarno uživa, a rezultati to i dokazuju!">"Professionalism, smooth communication, and great energy. Collaborating with the Amelo team is a genuinely enjoyable process, and the results speak for themselves! They took complete ownership of the project from start to finish, and I cannot recommend them highly enough!"</p>
+        <div class="t-author">
+          <div class="t-avatar">ST</div>
+          <div>
+            <div class="t-name" data-en="Samadhi Team" data-hr="Samadhi tim">Samadhi Team</div>
+            <div class="t-role" data-en="Samadhi" data-hr="Samadhi">Samadhi</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="t-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="t-text" data-en="Top-tier professionalism and work of the highest quality! The Amelo team truly delivers outstanding results. 💪" data-hr="Vrhunska profesionalnost i rad na najvišoj razini! Amelo tim jednostavno rastura to što radi. 💪">"Top-tier professionalism and work of the highest quality! The Amelo team truly delivers outstanding results. 💪"</p>
+        <div class="t-author">
+          <div class="t-avatar">DZ</div>
+          <div>
+            <div class="t-name">Dževad Z.</div>
+            <div class="t-role" data-en="Client" data-hr="Klijent">Client</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- CONTACT -->
 <section id="contact" class="contact">

@@ -121,6 +121,28 @@
   .included-card p { font-size: 14px; color: var(--gray); line-height: 1.6; }
   .included-free { display: inline-block; background: rgba(16,185,129,0.1); color: #059669; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; margin-top: 12px; letter-spacing: 0.5px; text-transform: uppercase; }
 
+  /* PRIMJERI RADOVA */
+  .primjeri-section { background: white; }
+  .primjeri-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 72px; }
+  .primjer-card {
+    border: 1px solid rgba(109,40,217,0.12); border-radius: 24px; overflow: hidden;
+    text-decoration: none; color: var(--dark); display: block;
+    transition: all 0.3s; box-shadow: var(--shadow-md); background: white;
+  }
+  .primjer-card:hover { box-shadow: var(--shadow-purple); transform: translateY(-4px); }
+  .primjer-chrome {
+    background: #f1f0f7; padding: 12px 18px; display: flex; align-items: center; gap: 14px;
+    border-bottom: 1px solid rgba(109,40,217,0.08);
+  }
+  .primjer-dots { display: flex; gap: 6px; }
+  .primjer-dots span { width: 10px; height: 10px; border-radius: 50%; }
+  .primjer-url { flex: 1; background: white; border-radius: 100px; padding: 6px 16px; font-size: 12px; color: var(--gray); }
+  .primjer-preview { height: 230px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px; }
+  .primjer-body { padding: 32px 36px 36px; }
+  .primjer-body h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+  .primjer-body p { font-size: 15px; color: var(--gray); line-height: 1.7; margin-bottom: 20px; }
+  .primjer-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 700; color: var(--purple); }
+
   /* REVIEWS */
   .reviews-section { background: var(--light); }
   .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 72px; }
@@ -197,6 +219,8 @@
     .birthday-banner { font-size: 13px; padding: 14px 20px; }
     section { padding: 64px 24px; }
     .pain-grid { grid-template-columns: 1fr; gap: 20px; }
+    .primjeri-grid { grid-template-columns: 1fr; gap: 24px; }
+    .primjer-body { padding: 24px; }
     .hok-grid { grid-template-columns: 1fr; gap: 40px; }
     .included-grid { grid-template-columns: 1fr 1fr; }
     .reviews-grid { grid-template-columns: 1fr; }
@@ -388,6 +412,51 @@ function closeMobileNav(){ document.getElementById('mobileNav').classList.remove
   </div>
 </section>
 
+<!-- PRIMJERI RADOVA -->
+<section class="primjeri-section" id="primjeri">
+  <span class="section-label">Naši radovi</span>
+  <h2 class="section-title">Pogledajte stranice koje smo<br><span class="grad-text">izradili za odvjetnike</span></h2>
+  <p class="section-sub">Dva primjera uživo — kliknite i razgledajte. Obje stranice su javno objavljene i izrađene u skladu s pravilima HOK-a.</p>
+  <div class="primjeri-grid">
+
+    <a class="primjer-card" href="https://www.babic-law.com" target="_blank" rel="noopener">
+      <div class="primjer-chrome">
+        <div class="primjer-dots">
+          <span style="background:#f87171;"></span><span style="background:#fbbf24;"></span><span style="background:#34d399;"></span>
+        </div>
+        <div class="primjer-url">🔒 www.babic-law.com</div>
+      </div>
+      <div class="primjer-preview" style="background:#f5f2ec;">
+        <img src="klijenti/babic-law-clean.png" alt="Odvjetnica Marijana Babić — logo" style="max-height:150px;max-width:80%;object-fit:contain;">
+      </div>
+      <div class="primjer-body">
+        <h3>Odvjetnica Marijana Babić</h3>
+        <p>Elegantna i profesionalna stranica odvjetničkog ureda — dizajn, pravni copywriting i prijava prema HOK-u u našoj izvedbi.</p>
+        <span class="primjer-link">Posjetite stranicu →</span>
+      </div>
+    </a>
+
+    <a class="primjer-card" href="https://www.odvjetnikzahirovic.hr" target="_blank" rel="noopener">
+      <div class="primjer-chrome">
+        <div class="primjer-dots">
+          <span style="background:#f87171;"></span><span style="background:#fbbf24;"></span><span style="background:#34d399;"></span>
+        </div>
+        <div class="primjer-url">🔒 www.odvjetnikzahirovic.hr</div>
+      </div>
+      <div class="primjer-preview" style="background:#1a1a2e;">
+        <img src="klijenti/dzevad.svg" alt="Odvjetnik Dževad Zahirović — logo" style="height:72px;width:72px;">
+        <span style="font-family:Georgia,serif;font-size:18px;color:white;letter-spacing:1px;">Odvjetnik Zahirović</span>
+      </div>
+      <div class="primjer-body">
+        <h3>Odvjetnik Dževad Zahirović</h3>
+        <p>Stranica odvjetnika specijaliziranog za imovinske i zemljišnoknjižne predmete — od dizajna i tekstova do odobrenja HOK-a.</p>
+        <span class="primjer-link">Posjetite stranicu →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
 <!-- RECENZIJE -->
 <section class="reviews-section" id="recenzije">
   <span class="section-label">Recenzije</span>
@@ -442,6 +511,57 @@ function closeMobileNav(){ document.getElementById('mobileNav').classList.remove
         <div>
           <div class="review-name">Odvjetnica A. T.</div>
           <div class="review-role">Odvjetnički ured, Rijeka</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="review-text">"Oduševljena sam suradnjom s Amelo timom! Radila sam s nekoliko različitih agencija na web projektima i proces je uvijek bio iscrpljujuć – osjećala sam da je sav teret na meni i da im moram 'crtati' svaki detalj, dok su oni djelovali isključivo kao pasivna tehnička podrška. Pravo je osvježenje raditi s profesionalcima koji preuzimaju vodstvo, u potpunosti razumiju viziju i točno znaju što rade. Amelo tim je preuzeo projekt od početka do kraja, a ja sam se napokon mogla opustiti. S punim povjerenjem ih preporučujem svima!"</p>
+      <div class="review-author">
+        <div class="review-avatar">PP</div>
+        <div>
+          <div class="review-name">Petra P.</div>
+          <div class="review-role">Klijentica</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="review-text">"Profesionalnost, lakoća komunikacije i sjajna energija. Suradnja s Amelo timom je proces u kojem se stvarno uživa, a rezultati to i dokazuju!"</p>
+      <div class="review-author">
+        <div class="review-avatar">TS</div>
+        <div>
+          <div class="review-name">Samadhi tim</div>
+          <div class="review-role">Samadhi</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="review-text">"Vrhunska profesionalnost i rad na najvišoj razini! Amelo tim jednostavno rastura to što radi. 💪"</p>
+      <div class="review-author">
+        <div class="review-avatar">DZ</div>
+        <div>
+          <div class="review-name">Dževad Z.</div>
+          <div class="review-role">Klijent</div>
         </div>
       </div>
     </div>
