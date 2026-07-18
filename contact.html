@@ -372,6 +372,7 @@ function closeMobileNav(){ document.getElementById('mobileNav').classList.remove
 
 <script>
   function setLang(lang) {
+    localStorage.setItem('lang', lang);
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
     document.querySelectorAll('[data-en]').forEach(el => {
@@ -383,6 +384,8 @@ function closeMobileNav(){ document.getElementById('mobileNav').classList.remove
     });
     document.documentElement.lang = lang;
   }
+  const savedLang = localStorage.getItem('lang');
+  if (savedLang && savedLang !== 'en') setLang(savedLang);
 </script>
 
 <!-- Floating contact bar -->
