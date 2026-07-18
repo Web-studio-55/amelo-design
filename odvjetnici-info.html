@@ -136,6 +136,26 @@
   .primjer-body h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
   .primjer-body p { font-size: 15px; color: var(--gray); line-height: 1.7; margin-bottom: 20px; }
   .primjer-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 700; color: var(--purple); }
+  .carousel-btn {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
+    background: rgba(255,255,255,0.92); border: none; border-radius: 50%;
+    width: 36px; height: 36px; font-size: 22px; line-height: 1; cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); color: var(--dark);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .carousel-btn:hover { background: #fff; }
+  .carousel-prev { left: 10px; }
+  .carousel-next { right: 10px; }
+  .carousel-dots {
+    position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 6px;
+  }
+  .carousel-dots span {
+    width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.6);
+    transition: background 0.2s; cursor: pointer;
+  }
+  .carousel-dots span.active { background: #fff; }
 
   /* REVIEWS */
   .reviews-section { background: var(--light); }
@@ -428,8 +448,16 @@ function closeMobileNav(){ document.getElementById('mobileNav').classList.remove
         </div>
         <div class="primjer-url">🔒 www.babic-law.com</div>
       </div>
-      <div class="primjer-preview" style="padding:0;overflow-y:scroll;position:relative;display:block;height:320px;cursor:ns-resize;">
-        <img src="klijenti/babic-screenshot.png" alt="Odvjetnica Marijana Babić — screenshot" style="width:100%;display:block;">
+      <div class="carousel" style="position:relative;overflow:hidden;height:320px;">
+        <div class="carousel-track" style="display:flex;height:100%;transition:transform 0.4s ease;">
+          <img src="klijenti/babic-1.png" style="min-width:100%;height:100%;object-fit:cover;object-position:top;">
+          <img src="klijenti/babic-2.png" style="min-width:100%;height:100%;object-fit:cover;object-position:top;">
+          <img src="klijenti/babic-3.png" style="min-width:100%;height:100%;object-fit:cover;object-position:top;">
+          <img src="klijenti/babic-4.png" style="min-width:100%;height:100%;object-fit:cover;object-position:top;">
+        </div>
+        <button class="carousel-btn carousel-prev" onclick="carouselMove(this,-1)" aria-label="Prethodna">&#8249;</button>
+        <button class="carousel-btn carousel-next" onclick="carouselMove(this,1)" aria-label="Sljedeća">&#8250;</button>
+        <div class="carousel-dots"></div>
       </div>
       <div class="primjer-body">
         <h3>Odvjetnica Marijana Babić</h3>
@@ -444,8 +472,16 @@ function closeMobileNav(){ document.getElementById('mobileNav').classList.remove
         </div>
         <div class="primjer-url">🔒 www.odvjetnikzahirovic.hr</div>
       </div>
-      <div class="primjer-preview" style="padding:0;overflow-y:scroll;position:relative;display:block;height:320px;cursor:ns-resize;">
-        <img src="klijenti/dzevad-screenshot.png" alt="Odvjetnik Zahirović — screenshot" style="width:100%;display:block;">
+      <div class="carousel" style="position:relative;overflow:hidden;height:320px;">
+        <div class="carousel-track" style="display:flex;height:100%;transition:transform 0.4s ease;">
+          <img src="klijenti/dzevad-1.png" style="min-width:100%;height:100%;object-fit:cover;object-position:top;">
+          <img src="klijenti/dzevad-2.png" style="min-width:100%;height:100%;object-fit:cover;object-position:top;">
+          <img src="klijenti/dzevad-3.png" style="min-width:100%;height:100%;object-fit:cover;object-position:top;">
+          <img src="klijenti/dzevad-4.png" style="min-width:100%;height:100%;object-fit:cover;object-position:top;">
+        </div>
+        <button class="carousel-btn carousel-prev" onclick="carouselMove(this,-1)" aria-label="Prethodna">&#8249;</button>
+        <button class="carousel-btn carousel-next" onclick="carouselMove(this,1)" aria-label="Sljedeća">&#8250;</button>
+        <div class="carousel-dots"></div>
       </div>
       <div class="primjer-body">
         <h3>Odvjetnik Dževad Zahirović</h3>
@@ -561,7 +597,6 @@ function closeMobileNav(){ document.getElementById('mobileNav').classList.remove
 <!-- BIRTHDAY -->
 <section class="birthday-section">
   <div class="birthday-content">
-    <div class="birthday-icon">🎂</div>
     <h2>Slavimo 7 godina Amelo agencije</h2>
     <div class="birthday-badge">Poseban popust ovog mjeseca</div>
     <p>Uz jubilej naše agencije, nudimo posebnu cijenu za sve koji se odluče ovog mjeseca za izradu web stranice.</p>
@@ -600,6 +635,33 @@ function closeMobileNav(){ document.getElementById('mobileNav').classList.remove
   </div>
 </footer>
 
+<script>
+function carouselMove(btn, dir) {
+  const carousel = btn.closest('.carousel');
+  const track = carousel.querySelector('.carousel-track');
+  const imgs = track.querySelectorAll('img');
+  const total = imgs.length;
+  let idx = parseInt(carousel.dataset.idx || 0) + dir;
+  if (idx < 0) idx = total - 1;
+  if (idx >= total) idx = 0;
+  carousel.dataset.idx = idx;
+  track.style.transform = 'translateX(' + (-idx * 100) + '%)';
+  carousel.querySelectorAll('.carousel-dots span').forEach((d, i) => d.classList.toggle('active', i === idx));
+}
+
+document.querySelectorAll('.carousel').forEach(carousel => {
+  const track = carousel.querySelector('.carousel-track');
+  const imgs = track.querySelectorAll('img');
+  const dotsEl = carousel.querySelector('.carousel-dots');
+  imgs.forEach((_, i) => {
+    const d = document.createElement('span');
+    if (i === 0) d.classList.add('active');
+    d.onclick = () => { carousel.dataset.idx = i - 1; carouselMove(carousel.querySelector('.carousel-next'), 1); };
+    dotsEl.appendChild(d);
+  });
+  carousel.dataset.idx = 0;
+});
+</script>
 
 </body>
 </html>
