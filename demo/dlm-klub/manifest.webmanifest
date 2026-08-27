@@ -1,0 +1,16 @@
+{
+  "name": "DLM Klub",
+  "short_name": "DLM",
+  "description": "Rezervacije, kartica kose i podsjetnici DLM Studija.",
+  "lang": "hr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7F5F1",
+  "theme_color": "#2B2825",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DLM Klub</title>
+<meta name="description" content="Aplikacija DLM Studija — rezervacije, kartica kose i podsjetnici za boju i ekstenzije.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#2B2825">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DLM Klub">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Inter:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="frame">
+  <div class="device">
+    <main id="view" class="view" aria-live="polite"></main>
+
+    <nav id="tabs" class="tabs" aria-label="Glavna navigacija">
+      <a href="#/" data-tab="/">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+        <span>Početna</span>
+      </a>
+      <a href="#/rezerviraj" data-tab="/rezerviraj">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9m0 4v5l4 2"/></svg>
+        <span>Rezerviraj</span>
+      </a>
+      <a href="#/termini" data-tab="/termini">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v14H4zM8 3v4M16 3v4M4 11h16"/></svg>
+        <span>Termini</span>
+      </a>
+      <a href="#/klub" data-tab="/klub">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5 14 9l5 .6-3.6 3.4.9 4.9L12 15.6 7.7 17.9l.9-4.9L5 9.6 10 9z"/></svg>
+        <span>Klub</span>
+      </a>
+      <a href="#/profil" data-tab="/profil">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M5 20c0-3.3 3.1-5.5 7-5.5s7 2.2 7 5.5"/></svg>
+        <span>Profil</span>
+      </a>
+    </nav>
+  </div>
+  <p class="frame-note">Demo · DLM Klub · podaci se čuvaju samo u ovom pregledniku</p>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script type="module" src="app.js"></script>
+<script>
+  if ('serviceWorker' in navigator && location.protocol === 'https:') {
+    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+  }
+</script>
+</body>
+</html>
