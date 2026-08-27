@@ -344,8 +344,18 @@
   .atelier-facts .fact strong{font-size:1.9rem}
   @media(max-width:540px){.atelier-facts{grid-template-columns:1fr;gap:18px}}
   .atelier-logo{
-    display:block;margin:64px auto 0;width:min(320px,80%);height:auto;
+    display:block;margin:6px 0 48px;width:min(300px,80%);height:auto;
     mix-blend-mode:multiply;
+  }
+  .atelier-map{
+    margin-top:56px;aspect-ratio:16/7;
+    box-shadow:0 26px 60px rgba(28,26,23,.18);
+  }
+  @media(max-width:640px){.atelier-map{aspect-ratio:4/3}}
+  .atelier-map iframe{width:100%;height:100%;border:0;display:block;filter:sepia(.14) saturate(.9)}
+  .atelier-adresa{
+    margin-top:18px;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--muted);
   }
 
   /* ---------- KONTAKT ---------- */
@@ -593,6 +603,7 @@
   <div class="wrap">
     <p class="kicker reveal">Atelier</p>
     <h2 class="reveal">Izrada okvira <em>i uokviravanje</em></h2>
+    <img class="atelier-logo reveal" src="slike/atelier-logo.png" alt="Atelier za izradu okvira i slika — Hrvoje Puškarić" loading="lazy">
     <div class="atelier-cols reveal">
       <p>Atelier za izradu okvira i slika djeluje već četrdesetak godina u centru Zagreba, nedaleko od Britanskog trga. U našoj radionici nudimo preko 200 vrsta različitih okvira i paspartua, a među njima možete odabrati boju, uzorak i dimenzije koje najviše odgovaraju Vašim potrebama.</p>
       <p>Kod nas možete opremiti Vaše slike, fotografije, diplome, dokumente, plakate, ogledala, goblene te sve ostale uspomene i umjetničke predmete koje možete staviti pod okvir. Zahvaljujući dugogodišnjem iskustvu ističemo se kvalitetom izrade okvira i uokviravanja, brzinom izrade i optimalnom cijenom.</p>
@@ -602,7 +613,10 @@
       <div class="fact"><strong>200+</strong><span>vrsta okvira i paspartua</span></div>
       <div class="fact"><strong>Zagreb</strong><span>nedaleko od Britanskog trga</span></div>
     </div>
-    <img class="atelier-logo reveal" src="slike/atelier-logo.png" alt="Atelier za izradu okvira i slika — Hrvoje Puškarić" loading="lazy">
+    <div class="atelier-map reveal">
+      <iframe src="https://www.google.com/maps?q=Ilica+96,+10000+Zagreb&output=embed" title="Karta — Ilica 96, Zagreb" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <p class="atelier-adresa reveal">Ilica 96, 10000 Zagreb</p>
   </div>
 </section>
 
@@ -625,7 +639,7 @@
     <div class="contact-details">
       <div><strong>E-mail</strong><a href="mailto:croje306@hotmail.com">croje306@hotmail.com</a></div>
       <div><strong>Telefon</strong><a href="tel:+38598452362">+385 98 452 362</a></div>
-      <div><strong>Atelijer</strong>Zagreb, Hrvatska</div>
+      <div><strong>Atelier</strong>Ilica 96, 10000 Zagreb</div>
     </div>
   </div>
 </section>
