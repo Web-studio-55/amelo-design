@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hrvoje Puškarić — Akademski slikar</title>
+<meta name="description" content="Hrvoje Puškarić, akademski slikar iz Zagreba. Ciklusi baleta, flamenca, Havane i Mediterana. Više od pedeset izložbi u Hrvatskoj i inozemstvu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c1a17;
+    --paper:#f6f2ea;
+    --paper-warm:#efe8db;
+    --gold:#a8833f;
+    --gold-light:#c9a961;
+    --muted:#6f675c;
+    --line:rgba(28,26,23,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Jost',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.7;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Playfair Display',serif;font-weight:500}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(246,242,234,.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1120px;margin:0 auto;padding:18px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{font-family:'Playfair Display',serif;font-size:1.35rem;letter-spacing:.06em;text-decoration:none;color:var(--ink)}
+  .logo span{color:var(--gold);font-style:italic}
+  .nav-links{display:flex;gap:34px;list-style:none}
+  .nav-links a{
+    text-decoration:none;color:var(--ink);font-size:.78rem;
+    letter-spacing:.22em;text-transform:uppercase;font-weight:400;
+    transition:color .25s;
+  }
+  .nav-links a:hover{color:var(--gold)}
+  @media(max-width:760px){.nav-links{display:none}}
+
+  /* ---------- HERO ---------- */
+  header{
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(ellipse 60% 50% at 78% 30%, rgba(168,131,63,.16), transparent 60%),
+      radial-gradient(ellipse 45% 60% at 15% 85%, rgba(120,40,50,.08), transparent 65%),
+      var(--paper);
+  }
+  .hero-inner{padding-top:90px}
+  .hero-kicker{
+    font-size:.8rem;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:26px;font-weight:400;
+  }
+  h1{
+    font-size:clamp(3rem,8.5vw,6.4rem);
+    line-height:1.02;letter-spacing:.01em;font-weight:500;
+  }
+  h1 em{font-style:italic;color:var(--gold);font-weight:400}
+  .hero-sub{
+    margin-top:30px;max-width:540px;font-size:1.08rem;color:var(--muted);
+  }
+  .hero-cta{margin-top:44px;display:flex;gap:18px;flex-wrap:wrap}
+  .btn{
+    display:inline-block;padding:15px 36px;text-decoration:none;
+    font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;font-weight:400;
+    transition:all .3s;
+  }
+  .btn-solid{background:var(--ink);color:var(--paper)}
+  .btn-solid:hover{background:var(--gold);color:#fff}
+  .btn-line{border:1px solid var(--ink);color:var(--ink)}
+  .btn-line:hover{border-color:var(--gold);color:var(--gold)}
+  .hero-strokes{
+    position:absolute;right:-4%;top:12%;width:min(46vw,560px);height:76%;
+    pointer-events:none;opacity:.9;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:110px 0}
+  .kicker{
+    font-size:.75rem;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:16px;font-weight:400;
+  }
+  h2{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.12;margin-bottom:28px}
+  h2 em{font-style:italic;color:var(--gold);font-weight:400}
+
+  /* ---------- O UMJETNIKU ---------- */
+  .bio-grid{display:grid;grid-template-columns:5fr 6fr;gap:70px;align-items:start}
+  @media(max-width:860px){.bio-grid{grid-template-columns:1fr;gap:44px}}
+  .portrait{
+    aspect-ratio:4/5;position:relative;
+    background:
+      radial-gradient(circle at 35% 28%, rgba(201,169,97,.5), transparent 55%),
+      radial-gradient(circle at 70% 75%, rgba(90,30,40,.35), transparent 60%),
+      linear-gradient(160deg,#3a332b,#1c1a17);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .portrait::after{
+    content:'';position:absolute;inset:14px;border:1px solid rgba(246,242,234,.25);
+  }
+  .portrait-note{
+    color:rgba(246,242,234,.55);font-size:.72rem;letter-spacing:.26em;
+    text-transform:uppercase;text-align:center;padding:0 30px;
+  }
+  .bio-text p{margin-bottom:20px;color:#3d3830}
+  .bio-facts{
+    margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+    border-top:1px solid var(--line);padding-top:32px;
+  }
+  .fact strong{
+    display:block;font-family:'Playfair Display',serif;
+    font-size:2.2rem;font-weight:500;color:var(--gold);line-height:1.1;
+  }
+  .fact span{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+  /* ---------- CIKLUSI ---------- */
+  .dark{background:var(--ink);color:var(--paper)}
+  .dark .kicker{color:var(--gold-light)}
+  .dark h2 em{color:var(--gold-light)}
+  .cycles-intro{max-width:620px;color:rgba(246,242,234,.72);margin-bottom:40px}
+  .filters{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px}
+  .filter{
+    background:none;border:1px solid rgba(246,242,234,.3);color:rgba(246,242,234,.75);
+    padding:10px 24px;font-family:'Jost',sans-serif;font-size:.75rem;
+    letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .3s;
+  }
+  .filter:hover{border-color:var(--gold-light);color:var(--gold-light)}
+  .filter.active{background:var(--gold);border-color:var(--gold);color:#fff}
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  @media(max-width:960px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:540px){.gallery{grid-template-columns:1fr}}
+  .work{cursor:zoom-in}
+  .work.hidden{display:none}
+  .work figure{overflow:hidden;aspect-ratio:3/4;margin:0;background:#26221d}
+  .work img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .6s cubic-bezier(.2,.7,.3,1);
+  }
+  .work:hover img{transform:scale(1.05)}
+  .work-label{padding:16px 4px 0}
+  .work-label h3{font-size:1.3rem;font-weight:500;font-style:italic}
+  .work-label p{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(246,242,234,.55);margin-top:4px}
+  .cycles-note{
+    margin-top:48px;font-size:.8rem;color:rgba(246,242,234,.45);
+    letter-spacing:.06em;text-align:center;
+  }
+  .lightbox{
+    position:fixed;inset:0;z-index:200;background:rgba(15,13,11,.94);
+    display:none;align-items:center;justify-content:center;padding:44px;cursor:zoom-out;
+  }
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:100%;max-height:80vh;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .lightbox p{
+    position:absolute;bottom:24px;left:0;right:0;text-align:center;
+    color:rgba(246,242,234,.8);font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .lightbox span{
+    position:absolute;top:14px;right:26px;color:rgba(246,242,234,.7);font-size:2.2rem;line-height:1;
+  }
+
+  /* ---------- CITAT ---------- */
+  .quote{background:var(--paper-warm);text-align:center}
+  blockquote{
+    font-family:'Playfair Display',serif;font-style:italic;
+    font-size:clamp(1.5rem,3.4vw,2.3rem);line-height:1.4;max-width:820px;margin:0 auto;
+  }
+  .quote cite{
+    display:block;margin-top:26px;font-family:'Jost',sans-serif;font-style:normal;
+    font-size:.76rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);
+  }
+
+  /* ---------- IZLOŽBE ---------- */
+  .expo-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+  @media(max-width:860px){.expo-grid{grid-template-columns:1fr;gap:40px}}
+  .expo-list{list-style:none;border-top:1px solid var(--line)}
+  .expo-list li{
+    display:flex;gap:28px;padding:22px 0;border-bottom:1px solid var(--line);
+    align-items:baseline;
+  }
+  .expo-year{
+    font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);
+    min-width:74px;font-weight:500;
+  }
+  .expo-what{font-size:.98rem;color:#3d3830}
+  .expo-what small{display:block;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+
+  /* ---------- KONTAKT ---------- */
+  .contact{background:var(--ink);color:var(--paper);text-align:center}
+  .contact .kicker{color:var(--gold-light)}
+  .contact h2 em{color:var(--gold-light)}
+  .contact-lead{max-width:520px;margin:0 auto 46px;color:rgba(246,242,234,.7)}
+  .contact-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:60px}
+  .contact-links .btn-solid{background:var(--gold);color:#fff}
+  .contact-links .btn-solid:hover{background:var(--gold-light)}
+  .contact-links .btn-line{border-color:rgba(246,242,234,.4);color:var(--paper)}
+  .contact-links .btn-line:hover{border-color:var(--gold-light);color:var(--gold-light)}
+  .contact-details{
+    display:flex;justify-content:center;gap:60px;flex-wrap:wrap;
+    font-size:.85rem;color:rgba(246,242,234,.6);letter-spacing:.06em;
+  }
+  .contact-details strong{
+    display:block;font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--gold-light);margin-bottom:6px;font-weight:400;
+  }
+  .contact-details a{color:rgba(246,242,234,.85);text-decoration:none}
+  .contact-details a:hover{color:var(--gold-light)}
+
+  footer{
+    background:#141210;color:rgba(246,242,234,.45);
+    text-align:center;padding:30px 24px;font-size:.78rem;letter-spacing:.1em;
+  }
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.on{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#top">Hrvoje <span>Puškarić</span></a>
+    <ul class="nav-links">
+      <li><a href="#umjetnik">Umjetnik</a></li>
+      <li><a href="#galerija">Galerija</a></li>
+      <li><a href="#izlozbe">Izložbe</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="top">
+  <svg class="hero-strokes" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M60 520 C 140 380, 90 300, 200 220 S 340 120, 310 40" stroke="#a8833f" stroke-opacity=".35" stroke-width="60" stroke-linecap="round"/>
+    <path d="M170 560 C 230 460, 200 360, 290 290 S 380 180, 360 90" stroke="#7a2832" stroke-opacity=".18" stroke-width="90" stroke-linecap="round"/>
+    <path d="M20 420 C 90 340, 60 260, 150 200" stroke="#1c1a17" stroke-opacity=".12" stroke-width="34" stroke-linecap="round"/>
+  </svg>
+  <div class="wrap hero-inner">
+    <p class="hero-kicker">Akademski slikar · Zagreb</p>
+    <h1>Hrvoje<br>Puškarić<br><em>pokret na platnu</em></h1>
+    <p class="hero-sub">Slikar baleta, flamenca i mediteranskog svjetla. Više od pedeset izložbi u Hrvatskoj i inozemstvu — od Zagreba i Seville do Havane.</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="#galerija">Pogledajte djela</a>
+      <a class="btn btn-line" href="#kontakt">Upit za sliku</a>
+    </div>
+  </div>
+</header>
+
+<section id="umjetnik">
+  <div class="wrap bio-grid">
+    <div class="portrait reveal">
+      <span class="portrait-note">Portret umjetnika<br>· fotografija dolazi ·</span>
+    </div>
+    <div class="reveal">
+      <p class="kicker">O umjetniku</p>
+      <h2>Život posvećen <em>slikarstvu</em></h2>
+      <div class="bio-text">
+        <p>Hrvoje Puškarić rođen je u Zagrebu 1975. godine. Nakon Škole primijenjenih umjetnosti i dizajna, 1998. diplomirao je slikarstvo na Akademiji likovnih umjetnosti u Zagrebu, u klasi profesora Josipa Vasilija Jordana.</p>
+        <p>Školovanje nastavlja u Španjolskoj — kao stipendist Veleposlanstva Kraljevine Španjolske upisuje poslijediplomski studij na Akademiji lijepih umjetnosti u Sevilli, gdje 2000. godine završava doktorski studij slikarstva pejzaža u klasi profesorice Carmen Manero.</p>
+        <p>Najveću inspiraciju, uz Hrvatsku, pronalazi u španjolskim plesovima te na studijskim putovanjima po Andaluziji i Kubi. Iz suradnje s plesačima Kubanskog nacionalnog baleta nastao je njegov najpoznatiji ciklus — <em class="serif">Ballet Clásico y Pasión</em>. Njegova djela nalaze se u brojnim privatnim kolekcijama u zemlji i inozemstvu.</p>
+      </div>
+      <div class="bio-facts">
+        <div class="fact"><strong>50+</strong><span>izložbi</span></div>
+        <div class="fact"><strong>25+</strong><span>godina rada</span></div>
+        <div class="fact"><strong>3</strong><span>zemlje školovanja i inspiracije</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="galerija" class="dark">
+  <div class="wrap">
+    <p class="kicker reveal">Galerija</p>
+    <h2 class="reveal">Djela <em>iz ateljea</em></h2>
+    <p class="cycles-intro reveal">Figurativni izraz i snažan kolorizam — od svjetla Havane do dalmatinske obale.</p>
+    <div class="filters reveal">
+      <button class="filter active" data-cat="sve">Sve</button>
+      <button class="filter" data-cat="kuba">Kuba i ples</button>
+      <button class="filter" data-cat="mediteran">Mediteran</button>
+    </div>
+    <div class="gallery">
+      <div class="work reveal" data-cat="kuba">
+        <figure><img src="slike/ig-01.jpg" alt="Slika: žena u crvenoj haljini na stepenicama Havane" loading="lazy"></figure>
+        <div class="work-label">
+          <h3>Crvena haljina, Havana</h3>
+          <p>Kuba i ples</p>
+        </div>
+      </div>
+      <div class="work reveal" data-cat="kuba">
+        <figure><img src="slike/ig-09.jpg" alt="Slika: plesačica u ljubičastoj haljini u parku" loading="lazy"></figure>
+        <div class="work-label">
+          <h3>Ples u parku</h3>
+          <p>Kuba i ples</p>
+        </div>
+      </div>
+      <div class="work reveal" data-cat="kuba">
+        <figure><img src="slike/ig-11.jpg" alt="Slika: djevojka uz stup kolonijalnog dvorišta s palmama" loading="lazy"></figure>
+        <div class="work-label">
+          <h3>Kolonijalno dvorište</h3>
+          <p>Kuba i ples</p>
+        </div>
+      </div>
+      <div class="work reveal" data-cat="mediteran">
+        <figure><img src="slike/ig-08.jpg" alt="Slika: katedrala sv. Jakova u Šibeniku" loading="lazy"></figure>
+        <div class="work-label">
+          <h3>Katedrala sv. Jakova</h3>
+          <p>Mediteran · Šibenik</p>
+        </div>
+      </div>
+      <div class="work reveal" data-cat="mediteran">
+        <figure><img src="slike/ig-10.jpg" alt="Slika: krovovi staroga grada uz more s kupolom" loading="lazy"></figure>
+        <div class="work-label">
+          <h3>Krovovi staroga grada</h3>
+          <p>Mediteran</p>
+        </div>
+      </div>
+      <div class="work reveal" data-cat="mediteran">
+        <figure><img src="slike/ig-12.jpg" alt="Slika: panorama jadranske luke s jedrilicama" loading="lazy"></figure>
+        <div class="work-label">
+          <h3>Jadranska luka</h3>
+          <p>Mediteran</p>
+        </div>
+      </div>
+    </div>
+    <p class="cycles-note">Fotografije djela preuzete s umjetnikova Instagram profila · nazivi slika su radni</p>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <span>×</span>
+  <img src="" alt="">
+  <p></p>
+</div>
+
+<section class="quote">
+  <div class="wrap reveal">
+    <blockquote>„Želio sam kroz svoje oči prikazati ljepotu kubanskog baleta — i snagu boja prisutnih u svakodnevnom životu Kube."</blockquote>
+    <cite>— Hrvoje Puškarić</cite>
+  </div>
+</section>
+
+<section id="izlozbe">
+  <div class="wrap expo-grid">
+    <div class="reveal">
+      <p class="kicker">Izložbe i priznanja</p>
+      <h2>Od Zagreba <em>do svijeta</em></h2>
+      <p style="color:#3d3830;max-width:420px">Više od pedeset samostalnih i skupnih izložbi u Hrvatskoj i inozemstvu. Djela mu se nalaze u privatnim kolekcijama istaknutih osoba iz svijeta kulture i sporta.</p>
+    </div>
+    <ul class="expo-list reveal">
+      <li>
+        <span class="expo-year">····</span>
+        <span class="expo-what">Ballet Clásico y Pasión<small>Ciklus od 26 slika · Kubanski nacionalni balet</small></span>
+      </li>
+      <li>
+        <span class="expo-year">····</span>
+        <span class="expo-what">Samostalne izložbe u Hrvatskoj<small>Zagreb i drugi gradovi</small></span>
+      </li>
+      <li>
+        <span class="expo-year">····</span>
+        <span class="expo-what">Izložbe u inozemstvu<small>Španjolska · Kuba</small></span>
+      </li>
+      <li>
+        <span class="expo-year">····</span>
+        <span class="expo-what">Zastupljen u Galeriji A.L.M.<small>i privatnim kolekcijama</small></span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="kontakt" class="contact">
+  <div class="wrap reveal">
+    <p class="kicker">Kontakt</p>
+    <h2>Zainteresirani ste <em>za djelo?</em></h2>
+    <p class="contact-lead">Za upite o dostupnim slikama, narudžbama portreta ili izložbama, slobodno se javite.</p>
+    <div class="contact-links">
+      <a class="btn btn-solid" href="mailto:info@hrvojepuskaric.com">Pošaljite upit</a>
+      <a class="btn btn-line" href="https://www.instagram.com/hrvojepuskaric/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div class="contact-details">
+      <div><strong>E-mail</strong><a href="mailto:info@hrvojepuskaric.com">info@hrvojepuskaric.com</a></div>
+      <div><strong>Telefon</strong><a href="tel:+385000000000">+385 00 000 0000</a></div>
+      <div><strong>Atelijer</strong>Zagreb, Hrvatska</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Hrvoje Puškarić · Akademski slikar · Sva prava pridržana
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const filters = document.querySelectorAll('.filter');
+  const works = document.querySelectorAll('.work');
+  filters.forEach(btn=>btn.addEventListener('click',()=>{
+    filters.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.cat;
+    works.forEach(w=>w.classList.toggle('hidden', cat!=='sve' && w.dataset.cat!==cat));
+  }));
+
+  const lb = document.getElementById('lightbox');
+  const lbImg = lb.querySelector('img');
+  const lbCap = lb.querySelector('p');
+  works.forEach(w=>w.addEventListener('click',()=>{
+    lbImg.src = w.querySelector('img').src;
+    lbCap.textContent = w.querySelector('h3').textContent + ' · ' + w.querySelector('.work-label p').textContent;
+    lb.classList.add('open');
+  }));
+  lb.addEventListener('click',()=>lb.classList.remove('open'));
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') lb.classList.remove('open'); });
+</script>
+
+</body>
+</html>
