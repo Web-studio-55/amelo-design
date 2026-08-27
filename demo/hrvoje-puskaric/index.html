@@ -223,6 +223,11 @@
     margin-top:48px;font-size:.8rem;color:rgba(246,242,234,.45);
     letter-spacing:.06em;text-align:center;
   }
+  .gallery-empty{
+    padding:70px 0 10px;text-align:center;
+    font-family:'Playfair Display',serif;font-style:italic;font-size:1.25rem;
+    color:rgba(246,242,234,.55);
+  }
   .lightbox{
     position:fixed;inset:0;z-index:200;background:rgba(15,13,11,.94);
     display:none;align-items:center;justify-content:center;padding:44px;cursor:zoom-out;
@@ -405,53 +410,55 @@
     <p class="cycles-intro reveal">Figurativni izraz i snažan kolorizam — od svjetla Havane do dalmatinske obale.</p>
     <div class="filters reveal">
       <button class="filter active" data-cat="sve">Sve</button>
-      <button class="filter" data-cat="kuba">Kuba i ples</button>
-      <button class="filter" data-cat="mediteran">Mediteran</button>
+      <button class="filter" data-cat="gradovi">Gradovi</button>
+      <button class="filter" data-cat="ples">Ples</button>
+      <button class="filter" data-cat="apstrakcija">Apstrakcija</button>
     </div>
     <div class="gallery">
-      <div class="work reveal" data-cat="kuba">
+      <div class="work reveal" data-cat="ples">
         <figure><img src="slike/ig-01.jpg" alt="Slika: žena u crvenoj haljini na stepenicama Havane" loading="lazy"></figure>
         <div class="work-label">
           <h3>Crvena haljina, Havana</h3>
-          <p>Kuba i ples</p>
+          <p>Ples</p>
         </div>
       </div>
-      <div class="work reveal" data-cat="kuba">
+      <div class="work reveal" data-cat="ples">
         <figure><img src="slike/ig-09.jpg" alt="Slika: plesačica u ljubičastoj haljini u parku" loading="lazy"></figure>
         <div class="work-label">
           <h3>Ples u parku</h3>
-          <p>Kuba i ples</p>
+          <p>Ples</p>
         </div>
       </div>
-      <div class="work reveal" data-cat="kuba">
+      <div class="work reveal" data-cat="gradovi">
         <figure><img src="slike/ig-11.jpg" alt="Slika: djevojka uz stup kolonijalnog dvorišta s palmama" loading="lazy"></figure>
         <div class="work-label">
           <h3>Kolonijalno dvorište</h3>
-          <p>Kuba i ples</p>
+          <p>Gradovi · Havana</p>
         </div>
       </div>
-      <div class="work reveal" data-cat="mediteran">
+      <div class="work reveal" data-cat="gradovi">
         <figure><img src="slike/ig-08.jpg" alt="Slika: katedrala sv. Jakova u Šibeniku" loading="lazy"></figure>
         <div class="work-label">
           <h3>Katedrala sv. Jakova</h3>
-          <p>Mediteran · Šibenik</p>
+          <p>Gradovi · Šibenik</p>
         </div>
       </div>
-      <div class="work reveal" data-cat="mediteran">
+      <div class="work reveal" data-cat="gradovi">
         <figure><img src="slike/ig-10.jpg" alt="Slika: krovovi staroga grada uz more s kupolom" loading="lazy"></figure>
         <div class="work-label">
           <h3>Krovovi staroga grada</h3>
-          <p>Mediteran</p>
+          <p>Gradovi</p>
         </div>
       </div>
-      <div class="work reveal" data-cat="mediteran">
+      <div class="work reveal" data-cat="gradovi">
         <figure><img src="slike/ig-12.jpg" alt="Slika: panorama jadranske luke s jedrilicama" loading="lazy"></figure>
         <div class="work-label">
           <h3>Jadranska luka</h3>
-          <p>Mediteran</p>
+          <p>Gradovi</p>
         </div>
       </div>
     </div>
+    <p class="gallery-empty" hidden>Fotografije djela iz ovog ciklusa stižu uskoro.</p>
   </div>
 </section>
 
@@ -547,11 +554,18 @@
 
   const filters = document.querySelectorAll('.filter');
   const works = document.querySelectorAll('.work');
+  const galleryEmpty = document.querySelector('.gallery-empty');
   filters.forEach(btn=>btn.addEventListener('click',()=>{
     filters.forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     const cat = btn.dataset.cat;
-    works.forEach(w=>w.classList.toggle('hidden', cat!=='sve' && w.dataset.cat!==cat));
+    let visible = 0;
+    works.forEach(w=>{
+      const hide = cat!=='sve' && w.dataset.cat!==cat;
+      w.classList.toggle('hidden', hide);
+      if(!hide) visible++;
+    });
+    galleryEmpty.hidden = visible > 0;
   }));
 
   const lb = document.getElementById('lightbox');
