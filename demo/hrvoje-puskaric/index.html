@@ -73,6 +73,11 @@
     opacity:0;pointer-events:none;transition:opacity .35s ease;
   }
   body.menu-open .mobile-menu{opacity:1;pointer-events:auto}
+  body.menu-open nav{
+    z-index:210;background:transparent;backdrop-filter:none;
+    border-bottom-color:transparent;
+  }
+  body.menu-open .logo{color:var(--paper)}
   .mobile-menu a{
     font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:500;
     color:var(--paper);text-decoration:none;transition:color .3s;
