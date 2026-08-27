@@ -419,58 +419,9 @@
       <button class="filter" data-cat="gradovi">Gradovi</button>
       <button class="filter" data-cat="ples">Ples</button>
       <button class="filter" data-cat="apstrakcija">Apstrakcija</button>
+      <button class="filter" data-cat="atelje">Atelje</button>
     </div>
-    <div class="gallery">
-      <div class="work wide reveal" data-cat="ples">
-        <figure><img src="slike/salsa-havana.jpg" alt="Slika: par pleše salsu uz glazbenike u Havani" loading="lazy"></figure>
-        <div class="work-label">
-          <h3>Salsa u Havani</h3>
-          <p>Ples</p>
-        </div>
-      </div>
-      <div class="work reveal" data-cat="ples">
-        <figure><img src="slike/ig-01.jpg" alt="Slika: žena u crvenoj haljini na stepenicama Havane" loading="lazy"></figure>
-        <div class="work-label">
-          <h3>Crvena haljina, Havana</h3>
-          <p>Ples</p>
-        </div>
-      </div>
-      <div class="work reveal" data-cat="ples">
-        <figure><img src="slike/ig-09.jpg" alt="Slika: plesačica u ljubičastoj haljini u parku" loading="lazy"></figure>
-        <div class="work-label">
-          <h3>Ples u parku</h3>
-          <p>Ples</p>
-        </div>
-      </div>
-      <div class="work reveal" data-cat="gradovi">
-        <figure><img src="slike/ig-11.jpg" alt="Slika: djevojka uz stup kolonijalnog dvorišta s palmama" loading="lazy"></figure>
-        <div class="work-label">
-          <h3>Kolonijalno dvorište</h3>
-          <p>Gradovi · Havana</p>
-        </div>
-      </div>
-      <div class="work reveal" data-cat="gradovi">
-        <figure><img src="slike/ig-08.jpg" alt="Slika: katedrala sv. Jakova u Šibeniku" loading="lazy"></figure>
-        <div class="work-label">
-          <h3>Katedrala sv. Jakova</h3>
-          <p>Gradovi · Šibenik</p>
-        </div>
-      </div>
-      <div class="work reveal" data-cat="gradovi">
-        <figure><img src="slike/ig-10.jpg" alt="Slika: krovovi staroga grada uz more s kupolom" loading="lazy"></figure>
-        <div class="work-label">
-          <h3>Krovovi staroga grada</h3>
-          <p>Gradovi</p>
-        </div>
-      </div>
-      <div class="work reveal" data-cat="gradovi">
-        <figure><img src="slike/ig-12.jpg" alt="Slika: panorama jadranske luke s jedrilicama" loading="lazy"></figure>
-        <div class="work-label">
-          <h3>Jadranska luka</h3>
-          <p>Gradovi</p>
-        </div>
-      </div>
-    </div>
+    <div class="gallery"></div>
     <p class="gallery-empty" hidden>Fotografije djela iz ovog ciklusa stižu uskoro.</p>
   </div>
 </section>
@@ -565,6 +516,52 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
   },{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const DJELA = [
+    {f:'salsa-havana.jpg', n:'Salsa u Havani',            c:'ples',        s:'Ples',                 w:1},
+    {f:'ig-01.jpg',  n:'Crvena haljina, Havana',          c:'ples',        s:'Ples'},
+    {f:'ig-09.jpg',  n:'Ples u parku',                    c:'ples',        s:'Ples'},
+    {f:'p-036.jpg',  n:'Balerina na stubama',             c:'ples',        s:'Ples'},
+    {f:'p-067.jpg',  n:'Balerina u ljubičastom',          c:'ples',        s:'Ples'},
+    {f:'p-083.jpg',  n:'Ples na trgu',                    c:'ples',        s:'Ples · Havana'},
+    {f:'p-085.jpg',  n:'Balerina i Kapitol',              c:'ples',        s:'Ples · Havana'},
+    {f:'p-256.jpg',  n:'Crveni tutu',                     c:'ples',        s:'Ples'},
+    {f:'p-496.jpg',  n:'Plesni par',                      c:'ples',        s:'Ples'},
+    {f:'p-513.jpg',  n:'Kubanske plesačice',              c:'ples',        s:'Ples',                 w:1},
+    {f:'p-586.jpg',  n:'Labuđe jezero',                   c:'ples',        s:'Ples',                 w:1},
+    {f:'p-432.jpg',  n:'Flamenco u Havani',               c:'ples',        s:'Ples'},
+    {f:'p-638.jpg',  n:'Standardni ples',                 c:'ples',        s:'Ples'},
+    {f:'ig-08.jpg',  n:'Katedrala sv. Jakova',            c:'gradovi',     s:'Gradovi · Šibenik'},
+    {f:'ig-10.jpg',  n:'Krovovi staroga grada',           c:'gradovi',     s:'Gradovi'},
+    {f:'ig-12.jpg',  n:'Jadranska luka',                  c:'gradovi',     s:'Gradovi'},
+    {f:'ig-11.jpg',  n:'Kolonijalno dvorište',            c:'gradovi',     s:'Gradovi · Havana'},
+    {f:'p-108.jpg',  n:'Trogir',                          c:'gradovi',     s:'Gradovi'},
+    {f:'p-200.jpg',  n:'Split, zvonik sv. Duje',          c:'gradovi',     s:'Gradovi'},
+    {f:'p-215.jpg',  n:'Split u bojama',                  c:'gradovi',     s:'Gradovi',              w:1},
+    {f:'p-502.jpg',  n:'Zagreb noću',                     c:'gradovi',     s:'Gradovi',              w:1},
+    {f:'p-551.jpg',  n:'Crkva sv. Marka',                 c:'gradovi',     s:'Gradovi · Zagreb'},
+    {f:'p-527.jpg',  n:'Zagrebačka katedrala',            c:'gradovi',     s:'Gradovi'},
+    {f:'p-439.jpg',  n:'Makarska pod Biokovom',           c:'gradovi',     s:'Gradovi',              w:1},
+    {f:'p-438.jpg',  n:'Dubrovačka obala',                c:'gradovi',     s:'Gradovi',              w:1},
+    {f:'p-300.jpg',  n:'Havana u neonu',                  c:'gradovi',     s:'Gradovi · Havana'},
+    {f:'p-507.jpg',  n:'Stara Havana',                    c:'gradovi',     s:'Gradovi · Havana'},
+    {f:'p-071.jpg',  n:'Apstraktna kompozicija I',        c:'apstrakcija', s:'Apstrakcija'},
+    {f:'p-154.jpg',  n:'Apstraktna kompozicija II',       c:'apstrakcija', s:'Apstrakcija'},
+    {f:'p-191.jpg',  n:'Apstraktna kompozicija III',      c:'apstrakcija', s:'Apstrakcija',          w:1},
+    {f:'p-297.jpg',  n:'Apstraktna kompozicija IV',       c:'apstrakcija', s:'Apstrakcija'},
+    {f:'p-480.jpg',  n:'Apstraktni poliptih',             c:'apstrakcija', s:'Apstrakcija',          w:1},
+    {f:'p-483.jpg',  n:'Apstrakcija u boji',              c:'apstrakcija', s:'Apstrakcija'},
+    {f:'p-509.jpg',  n:'Zagreb, apstrakcija',             c:'apstrakcija', s:'Apstrakcija',          w:1},
+    {f:'p-510.jpg',  n:'Zagrebačka katedrala, apstrakcija', c:'apstrakcija', s:'Apstrakcija',        w:1},
+    {f:'p-020.jpg',  n:'Atelje Puškarić',                 c:'atelje',      s:'Atelje · Zagreb'},
+    {f:'p-308.jpg',  n:'Uz štafelaj',                     c:'atelje',      s:'Atelje'}
+  ];
+  const galleryEl = document.querySelector('.gallery');
+  galleryEl.innerHTML = DJELA.map(d=>
+    `<div class="work${d.w?' wide':''}" data-cat="${d.c}">`+
+    `<figure><img src="slike/${d.f}" alt="Slika: ${d.n}" loading="lazy"></figure>`+
+    `<div class="work-label"><h3>${d.n}</h3><p>${d.s}</p></div></div>`
+  ).join('');
 
   const filters = document.querySelectorAll('.filter');
   const works = document.querySelectorAll('.work');
