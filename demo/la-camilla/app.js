@@ -387,7 +387,7 @@ route(/^\/termini$/, () => {
     <div class="section-title"><h2>Zakazano</h2></div>
     ${up.length ? `<div class="list">${up.map(apptRow).join('')}</div>` : `<div class="empty">Nemaš zakazanih termina.</div>`}
     <div class="section">
-      <div class="section-title"><h2>Bilo</h2><span class="tiny muted">${past.length} tretmana</span></div>
+      <div class="section-title"><h2>Prošli termini</h2><span class="tiny muted">${past.length} tretmana</span></div>
       <div class="list">${past.map(apptRow).join('')}</div>
     </div>`;
 });
