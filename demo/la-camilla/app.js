@@ -522,7 +522,6 @@ route(/^\/klub$/, () => {
         <div class="card">
           <p class="eyebrow">Paketi</p>
           <p class="prog-title" style="margin-bottom:6px">10 tretmana, plaćaš 8</p>
-          <p class="tiny muted">Paket se plaća unaprijed i troši po tretmanu. Kartično plaćanje dolazi u drugoj fazi — zato je gumb ovdje zaključan.</p>
           <div class="btn-row"><button class="btn" disabled>Kupi paket · uskoro</button></div>
         </div>
       </div>
