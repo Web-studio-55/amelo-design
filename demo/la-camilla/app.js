@@ -281,7 +281,6 @@ route(/^\/rezerviraj$/, () => `
   <div class="top">
     <p class="eyebrow">Rezervacija</p>
     <h1>Što ti danas treba?</h1>
-    <p class="sub">Odaberi područje, pa uslugu. Nudimo samo termine u koje se tretman stvarno stane.</p>
   </div>
   <div class="list">
     ${CATEGORIES.map(c => `
