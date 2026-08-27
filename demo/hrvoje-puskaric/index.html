@@ -87,10 +87,14 @@
   .btn-solid:hover{background:var(--gold);color:#fff}
   .btn-line{border:1px solid var(--ink);color:var(--ink)}
   .btn-line:hover{border-color:var(--gold);color:var(--gold)}
-  .hero-strokes{
-    position:absolute;right:-4%;top:12%;width:min(46vw,560px);height:76%;
-    pointer-events:none;opacity:.9;
+  .hero-art{
+    position:absolute;right:7%;top:50%;transform:translateY(-50%) rotate(1.5deg);
+    width:min(32vw,410px);aspect-ratio:3/4;overflow:hidden;
+    box-shadow:0 34px 80px rgba(28,26,23,.35);
   }
+  .hero-art img{width:100%;height:100%;object-fit:cover;display:block}
+  .hero-art::after{content:'';position:absolute;inset:0;border:1px solid rgba(246,242,234,.4)}
+  @media(max-width:900px){.hero-art{display:none}}
 
   /* ---------- SECTIONS ---------- */
   section{padding:110px 0}
@@ -247,11 +251,9 @@
 </nav>
 
 <header id="top">
-  <svg class="hero-strokes" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M60 520 C 140 380, 90 300, 200 220 S 340 120, 310 40" stroke="#a8833f" stroke-opacity=".35" stroke-width="60" stroke-linecap="round"/>
-    <path d="M170 560 C 230 460, 200 360, 290 290 S 380 180, 360 90" stroke="#7a2832" stroke-opacity=".18" stroke-width="90" stroke-linecap="round"/>
-    <path d="M20 420 C 90 340, 60 260, 150 200" stroke="#1c1a17" stroke-opacity=".12" stroke-width="34" stroke-linecap="round"/>
-  </svg>
+  <div class="hero-art">
+    <img src="slike/ig-01.jpg" alt="Slika Hrvoja Puškarića: Crvena haljina, Havana">
+  </div>
   <div class="wrap hero-inner">
     <p class="hero-kicker">Akademski slikar · Zagreb</p>
     <h1>Hrvoje<br>Puškarić</h1>
