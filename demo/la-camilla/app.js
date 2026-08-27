@@ -692,7 +692,6 @@ route(/^\/salon\/klijentica\/([a-z]+)$/, id => {
             <p class="prog-title" style="margin-top:0">${esc(svc(cp.serviceId).name)}</p>
             <div class="pips">${Array.from({ length: cp.total }, (_, i) => `<i class="${i < cp.done ? 'on' : ''}"></i>`).join('')}</div>
             <p class="prog-count num"><b>${cp.done} od ${cp.total}</b> · ${esc(cp.label)} ${cp.from} → ${cp.to}</p>
-            <p class="tiny muted" style="margin-top:10px">Unos mjere i bilježenje tretmana rade na kartici Ane Horvat — u ovom prikazu program je samo za uvid.</p>
           </div>
         </div>` : `
         <div class="section">
