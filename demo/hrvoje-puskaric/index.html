@@ -308,13 +308,27 @@
   .expo-what{font-size:.98rem;color:#3d3830}
   .expo-what small{display:block;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:2px}
 
-  .press-links{display:flex;flex-direction:column;gap:14px;align-items:center;margin-top:52px}
-  .press-links a{
-    color:#3d3830;text-decoration:none;font-size:.95rem;
-    transition:color .25s;width:fit-content;border-bottom:1px solid rgba(168,131,63,.35);
-    padding-bottom:2px;
+  .press-cards{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
+    margin-top:56px;text-align:left;
   }
-  .press-links a:hover{color:var(--gold)}
+  @media(max-width:760px){.press-cards{grid-template-columns:1fr}}
+  .press-card{text-decoration:none;display:block}
+  .press-card figure{overflow:hidden;aspect-ratio:16/10;margin:0 0 16px;background:#26221d}
+  .press-card img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .6s cubic-bezier(.2,.7,.3,1);
+  }
+  .press-card:hover img{transform:scale(1.05)}
+  .press-src{
+    display:block;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:6px;
+  }
+  .press-title{
+    display:block;font-family:'Playfair Display',serif;font-size:1.25rem;
+    font-weight:500;color:var(--ink);line-height:1.3;transition:color .25s;
+  }
+  .press-card:hover .press-title{color:var(--gold)}
 
   /* ---------- ATELIER ---------- */
   .atelier{background:var(--paper-warm)}
@@ -348,10 +362,6 @@
   .socials{display:flex;gap:16px;align-items:center}
   @media(max-width:640px){
     .contact-links{flex-direction:column;gap:24px;align-items:center}
-    .float-contact{right:14px;bottom:14px;flex-direction:row;gap:10px}
-    .fab{width:46px;height:46px}
-    .fab svg{width:21px;height:21px}
-    footer{padding-bottom:88px}
   }
   .contact-details{
     display:flex;justify-content:center;gap:60px;flex-wrap:wrap;
@@ -389,6 +399,13 @@
   .fab-wa:hover{background:#1fb658}
   .fab-tel{background:var(--gold);box-shadow:0 10px 26px rgba(28,26,23,.32),0 0 0 2px rgba(246,242,234,.35)}
   .fab-tel:hover{background:var(--gold-light)}
+
+  @media(max-width:640px){
+    .float-contact{right:14px;bottom:14px;flex-direction:row;gap:10px}
+    .fab{width:46px;height:46px}
+    .fab svg{width:21px;height:21px}
+    footer{padding-bottom:88px}
+  }
 
   /* ---------- REVEAL ---------- */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
@@ -517,10 +534,22 @@
       <span class="play-btn" aria-hidden="true"></span>
     </a>
     <p class="video-cap reveal">Intervju i radovi · Adriana Calado TV</p>
-    <div class="press-links reveal">
-      <a href="https://www.vecernji.hr/vijesti/hrvoje-puskaric-odabrao-ulja-na-platnu-s-plesnim-pokretima-967525" target="_blank" rel="noopener">Večernji list — Ulja na platnu s plesnim pokretima</a>
-      <a href="https://www.kgz.hr/hr/dogadjanja/hrvoje-puskaric-jazz-na-platnu/27544" target="_blank" rel="noopener">Knjižnice grada Zagreba — Jazz na platnu</a>
-      <a href="https://www.cro-kultura.com/?p=5608" target="_blank" rel="noopener">Cro-kultura — Balet i figurativni pokreti kubanskih plesača</a>
+    <div class="press-cards reveal">
+      <a class="press-card" href="https://www.vecernji.hr/vijesti/hrvoje-puskaric-odabrao-ulja-na-platnu-s-plesnim-pokretima-967525" target="_blank" rel="noopener">
+        <figure><img src="slike/p-496.jpg" alt="Slika plesnog para" loading="lazy"></figure>
+        <span class="press-src">Večernji list</span>
+        <span class="press-title">Ulja na platnu s plesnim pokretima</span>
+      </a>
+      <a class="press-card" href="https://www.kgz.hr/hr/dogadjanja/hrvoje-puskaric-jazz-na-platnu/27544" target="_blank" rel="noopener">
+        <figure><img src="slike/p-395.jpg" alt="Slika glazbenika s gitarom" loading="lazy"></figure>
+        <span class="press-src">Knjižnice grada Zagreba</span>
+        <span class="press-title">Jazz na platnu</span>
+      </a>
+      <a class="press-card" href="https://www.cro-kultura.com/?p=5608" target="_blank" rel="noopener">
+        <figure><img src="slike/p-256.jpg" alt="Slika balerine u crvenom tutuu" loading="lazy"></figure>
+        <span class="press-src">Cro-kultura</span>
+        <span class="press-title">Balet i figurativni pokreti kubanskih plesača</span>
+      </a>
     </div>
   </div>
 </section>
