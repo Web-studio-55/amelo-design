@@ -337,14 +337,7 @@ route(/^\/$/, () => {
     </div>
 
     ${care ? `<div class="section"><div class="section-title"><h2>Njega nakon usluge</h2></div>${care}</div>` : ''}
-
-    <div class="section">
-      <div class="section-title"><h2>Slobodno danas</h2></div>
-      <div class="card">
-        <p class="tiny muted">Kad se termin otkaže, javimo prvoj osobi s liste čekanja — po želji uz popust.</p>
-        <div class="btn-row"><a class="btn ghost" href="#/rezerviraj">Odaberi uslugu</a></div>
-      </div>
-    </div>`;
+`;
 });
 
 /* --- moja kosa --- */
