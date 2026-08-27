@@ -104,7 +104,7 @@
     pointer-events:none;user-select:none;
   }
   .hero-inner{padding-top:90px;position:relative;z-index:2}
-  @media(min-width:901px){.hero-inner{padding-right:calc(min(34vw,440px) + 100px)}}
+  @media(min-width:901px){.hero-inner{padding-right:calc(min(46vw,760px) + 60px)}}
   .hero-kicker{
     font-size:.78rem;letter-spacing:.38em;text-transform:uppercase;
     color:var(--gold);margin-bottom:30px;font-weight:400;
@@ -133,23 +133,27 @@
   }
   .btn-line:hover{border-color:var(--gold);color:var(--gold)}
   .hero-art{
-    position:absolute;right:6.5%;top:50%;transform:translateY(-50%);z-index:2;
-    width:min(34vw,440px);
-    background:#fdfbf6;padding:16px 16px 14px;
-    border:1px solid rgba(168,131,63,.28);
-    box-shadow:0 50px 100px rgba(28,26,23,.28),0 14px 34px rgba(28,26,23,.16);
+    position:absolute;right:0;top:0;bottom:0;z-index:1;
+    width:min(46vw,760px);
   }
-  .art-inner{overflow:hidden;aspect-ratio:3/4;position:relative;background:#26221d}
+  .art-inner{position:absolute;inset:0;overflow:hidden}
   .art-inner img{
     width:100%;height:100%;object-fit:cover;display:block;
   }
-  .art-inner::after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 40px rgba(28,26,23,.18)}
+  .art-inner::before{
+    content:'';position:absolute;inset:0;z-index:1;
+    background:linear-gradient(90deg,#f8f5ee 0%,rgba(248,245,238,0) 22%);
+  }
+  .art-inner::after{
+    content:'';position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg,transparent 72%,rgba(18,16,13,.55) 100%);
+  }
   .art-cap{
-    margin-top:13px;text-align:center;font-size:.68rem;letter-spacing:.26em;
-    text-transform:uppercase;color:var(--muted);
+    position:absolute;left:0;right:0;bottom:26px;z-index:2;text-align:center;
+    font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(246,242,234,.75);
   }
   .art-cap em{font-family:'Playfair Display',serif;font-style:italic;text-transform:none;
-    font-size:.95rem;letter-spacing:.04em;color:var(--ink);display:block;margin-bottom:3px}
+    font-size:1.05rem;letter-spacing:.04em;color:#fff;display:block;margin-bottom:3px}
   @media(max-width:900px){.hero-art{display:none}}
 
   /* ---------- SECTIONS ---------- */
@@ -319,6 +323,14 @@
   .social-ico svg{width:22px;height:22px;fill:var(--paper);transition:fill .3s}
   .social-ico:hover{border-color:var(--gold);background:var(--gold)}
   .social-ico:hover svg{fill:#fff}
+  .socials{display:flex;gap:16px;align-items:center}
+  @media(max-width:640px){
+    .contact-links{flex-direction:column;gap:24px;align-items:center}
+    .float-contact{right:14px;bottom:14px;flex-direction:row;gap:10px}
+    .fab{width:46px;height:46px}
+    .fab svg{width:21px;height:21px}
+    footer{padding-bottom:88px}
+  }
   .contact-details{
     display:flex;justify-content:center;gap:60px;flex-wrap:wrap;
     font-size:.85rem;color:rgba(246,242,234,.6);letter-spacing:.06em;
@@ -517,12 +529,14 @@
     <p class="contact-lead">Za upite o dostupnim slikama, narudžbama portreta ili izložbama, slobodno se javite.</p>
     <div class="contact-links">
       <a class="btn btn-solid" href="mailto:croje306@hotmail.com">Pošaljite upit</a>
+      <div class="socials">
       <a class="social-ico" href="https://www.instagram.com/hrvojepuskaric/" target="_blank" rel="noopener" aria-label="Instagram">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.26.07 1.64.07 4.85s0 3.6-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38c-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.26.06-1.64.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.2 8.8 2.2 12 2.2m0-2.2C8.74 0 8.33 0 7.05.07 5.78.13 4.9.33 4.14.63a5.9 5.9 0 0 0-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05 0 8.33 0 8.74 0 12s0 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.13a5.9 5.9 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 24 8.74 24 12 24s3.67 0 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.07-1.28.07-1.69.07-4.95s0-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67 0 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.15A4 4 0 1 1 16 12a4 4 0 0 1-4 3.99zm7.84-10.4a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg>
       </a>
       <a class="social-ico" href="https://www.facebook.com/p/Art-by-Hrvoje-Pu%C5%A1kari%C4%87-100063526154525/" target="_blank" rel="noopener" aria-label="Facebook">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12a12 12 0 1 0-13.88 11.85v-8.38H7.08V12h3.04V9.36c0-3 1.79-4.67 4.53-4.67 1.31 0 2.68.24 2.68.24v2.95h-1.51c-1.49 0-1.95.92-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38A12 12 0 0 0 24 12z"/></svg>
       </a>
+      </div>
     </div>
     <div class="contact-details">
       <div><strong>E-mail</strong><a href="mailto:croje306@hotmail.com">croje306@hotmail.com</a></div>
