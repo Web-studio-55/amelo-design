@@ -264,7 +264,7 @@ function dueRow(r) {
       <span>
         <span class="t">${esc(r.name)}</span>
         <span class="s">${r.booked ? 'Termin je već zakazan.'
-          : late ? `Prošlo je ${days(Math.abs(r.left))} više nego što obično čekaš.`
+          : late ? `Prošlo je ${days(Math.abs(r.left))} od uobičajenog termina.`
           : `Za ${days(r.left)} — dodirni za termin.`}</span>
       </span>
     </a>`;
