@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naknada za usluge – Odvjetnik Zahirović Dževad</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a96e;
+      --gold-dim: rgba(201, 169, 110, 0.35);
+      --bg: #1a1a1a;
+      --bg2: #242424;
+      --bg3: #2c2c2c;
+      --white: #ffffff;
+      --text: rgba(255,255,255,0.75);
+      --text-dim: rgba(255,255,255,0.45);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: #111;
+      border-bottom: 1px solid var(--gold-dim);
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav__logo-mark {
+      width: 38px;
+      height: 38px;
+      background: #2a2a2a;
+      border: 1px solid var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .nav__name {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .nav__title {
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    /* ── HERO STRIP ── */
+    .hero-strip {
+      background: linear-gradient(135deg, #1e1e1e 0%, #252525 100%);
+      border-bottom: 1px solid var(--gold-dim);
+      padding: 60px 40px 50px;
+      text-align: center;
+    }
+    .hero-strip__label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .hero-strip__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .hero-strip__sub {
+      font-size: 0.95rem;
+      color: var(--text);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .hero-strip__line {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin: 24px auto 0;
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 40px 80px;
+    }
+
+    /* ── INFO BOX ── */
+    .info-box {
+      background: var(--bg2);
+      border-left: 3px solid var(--gold);
+      padding: 24px 28px;
+      margin-bottom: 48px;
+      border-radius: 0 2px 2px 0;
+    }
+    .info-box__title {
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .info-box p {
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      margin-bottom: 48px;
+    }
+    .section__heading {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .section__heading h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      color: var(--white);
+      white-space: nowrap;
+    }
+    .section__heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--gold-dim);
+    }
+
+    /* ── CARDS ── */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .card {
+      background: var(--bg2);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .card:hover {
+      border-color: var(--gold-dim);
+    }
+    .card__icon {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+    .card__name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+    .card__desc {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      line-height: 1.65;
+    }
+    .card__price {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      font-size: 0.8rem;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── TARIFF TABLE ── */
+    .tariff-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .tariff-table th {
+      background: var(--bg3);
+      text-align: left;
+      padding: 12px 18px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid var(--gold-dim);
+    }
+    .tariff-table td {
+      padding: 14px 18px;
+      font-size: 0.87rem;
+      color: var(--text);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      line-height: 1.5;
+    }
+    .tariff-table tr:last-child td {
+      border-bottom: none;
+    }
+    .tariff-table tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+    .tariff-table .td-bold {
+      color: var(--white);
+      font-weight: 700;
+    }
+    .tariff-table .td-price {
+      color: var(--gold);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* ── NOTE ── */
+    .note {
+      background: var(--bg2);
+      border: 1px solid var(--gold-dim);
+      padding: 20px 24px;
+      margin-top: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .note__icon {
+      color: var(--gold);
+      font-size: 1rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .note p {
+      font-size: 0.83rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+    .note p strong {
+      color: var(--text);
+    }
+
+    /* ── CTA ── */
+    .cta-block {
+      background: var(--bg2);
+      border: 1px solid var(--gold-dim);
+      padding: 40px;
+      text-align: center;
+      margin-top: 56px;
+    }
+    .cta-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .cta-block p {
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+    .cta-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 13px 32px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: #1a1a1a;
+    }
+    .btn-primary:hover { background: #b89860; }
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+    .btn-outline:hover { background: var(--gold); color: #1a1a1a; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      border-top: 1px solid var(--gold-dim);
+      padding: 20px 40px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+    footer span {
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      .hero-strip { padding: 44px 20px 36px; }
+      .hero-strip__title { font-size: 1.8rem; }
+      main { padding: 40px 20px 60px; }
+      .cards { grid-template-columns: 1fr; }
+      .cta-block { padding: 28px 20px; }
+      .tariff-table th, .tariff-table td { padding: 10px 12px; font-size: 0.8rem; }
+      footer { padding: 16px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav__logo-mark">Z</div>
+  <div>
+    <div class="nav__name">Zahirović Dževad</div>
+    <div class="nav__title">Odvjetnik</div>
+  </div>
+</nav>
+
+<!-- HERO STRIP -->
+<div class="hero-strip">
+  <div class="hero-strip__label">Transparentnost cijene</div>
+  <h1 class="hero-strip__title">Naknada za usluge</h1>
+  <p class="hero-strip__sub">Pravna naknada određuje se sukladno Odvjetničkoj tarifi. Svaki predmet je jedinstven — cijena ovisi o složenosti i opsegu posla.</p>
+  <div class="hero-strip__line"></div>
+</div>
+
+<main>
+
+  <!-- INFO BOX -->
+  <div class="info-box">
+    <div class="info-box__title">Kako se određuje naknada?</div>
+    <p>Odvjetnička naknada u Republici Hrvatskoj regulirana je <strong>Odvjetničkom tarifom Hrvatske odvjetničke komore</strong>. Tarifa propisuje minimalne iznose naknade prema vrsti i složenosti pravne usluge. Konačna cijena dogovara se individualno, a o svemu ćete biti pravovremeno i jasno informirani.</p>
+  </div>
+
+  <!-- USLUGE -->
+  <div class="section">
+    <div class="section__heading">
+      <h2>Područja usluga</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card__icon">⚖️</div>
+        <div class="card__name">Obiteljsko pravo</div>
+        <div class="card__desc">Razvod braka, skrbništvo nad djecom, dioba bračne stečevine.</div>
+        <div class="card__price">Prema Odvjetničkoj tarifi</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">🏠</div>
+        <div class="card__name">Nekretnine</div>
+        <div class="card__desc">Uknjižba, suvlasništvo, dioba, uređenje vlasništva.</div>
+        <div class="card__price">Prema Odvjetničkoj tarifi</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">📜</div>
+        <div class="card__name">Nasljedno pravo</div>
+        <div class="card__desc">Oporuke, ostavinski postupci, zaštita nasljednih prava.</div>
+        <div class="card__price">Prema Odvjetničkoj tarifi</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">🤝</div>
+        <div class="card__name">Ugovorni sporovi</div>
+        <div class="card__desc">Sastavljanje ugovora, zastupanje u sporovima.</div>
+        <div class="card__price">Prema Odvjetničkoj tarifi</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">⚡</div>
+        <div class="card__name">Ovršno pravo</div>
+        <div class="card__desc">Pokretanje i vođenje ovršnih postupaka.</div>
+        <div class="card__price">Prema Odvjetničkoj tarifi</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">🔒</div>
+        <div class="card__name">Kazneno pravo</div>
+        <div class="card__desc">Obrana u kaznenim i prekršajnim postupcima.</div>
+        <div class="card__price">Prema Odvjetničkoj tarifi</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORIJENTACIJSKA TABLICA -->
+  <div class="section">
+    <div class="section__heading">
+      <h2>Orijentacijski iznosi</h2>
+    </div>
+    <table class="tariff-table">
+      <thead>
+        <tr>
+          <th>Usluga</th>
+          <th>Opis</th>
+          <th>Od (EUR)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">Pravni savjet</td>
+          <td>Pisani ili usmeni, jednostavno pravno pitanje</td>
+          <td class="td-price">od 66 €</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Sastavljanje tužbe</td>
+          <td>Tužba za isplatu, razvod, naknadu štete…</td>
+          <td class="td-price">od 200 €</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Zastupanje na ročištu</td>
+          <td>Svako ročište pred sudom ili tijelima</td>
+          <td class="td-price">od 133 €</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Ugovor o kupoprodaji</td>
+          <td>Nekretnine, vozila, poslovna imovina</td>
+          <td class="td-price">od 133 €</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Ostavinski postupak</td>
+          <td>Zastupanje u ostavinskom postupku</td>
+          <td class="td-price">od 200 €</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Ovršni prijedlog</td>
+          <td>Prijedlog za ovrhu radi naplate</td>
+          <td class="td-price">od 100 €</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <div class="note__icon">ℹ️</div>
+      <p>Iznosi su <strong>okvirni i ne predstavljaju fiksnu ponudu</strong>. Konačna naknada ovisi o složenosti predmeta, trajanju postupka i opsegu potrebnih radnji. Sve se dogovara transparentno prije angažmana. Prema Odvjetničkoj tarifi, za kompleksne predmete iznosi mogu biti viši.</p>
+    </div>
+  </div>
+
+  <!-- TROŠKOVI -->
+  <div class="section">
+    <div class="section__heading">
+      <h2>Dodatni troškovi</h2>
+    </div>
+    <table class="tariff-table">
+      <thead>
+        <tr>
+          <th>Trošak</th>
+          <th>Napomena</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">Sudske pristojbe</td>
+          <td>Propisane Zakonom o sudskim pristojbama, plaća stranka</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Javnobilježničke naknade</td>
+          <td>Kod ovjere isprava, prema Javnobilježničkoj tarifi</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Putni troškovi</td>
+          <td>Za zastupanje izvan Zagreba, prema stvarnom trošku</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Prijevodi</td>
+          <td>Ovjereni prijevodi, prema sudskom tumaču</td>
+        </tr>
+        <tr>
+          <td class="td-bold">PDV</td>
+          <td>Odvjetnik nije u sustavu PDV-a — cijena je konačna</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h3>Besplatan prvi razgovor</h3>
+    <p>Dogovorite konzultaciju — procijenite predmet bez obveze i bez troška.</p>
+    <div class="cta-btns">
+      <a href="tel:+385992103025" class="btn btn-primary">📞 +385 99 210 3025</a>
+      <a href="mailto:odvjetnik@zahirovic.hr" class="btn btn-outline">✉️ Pišite nam</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 Odvjetnik Dževad Zahirović. Sva prava pridržana. &nbsp;|&nbsp;
+  Web stranicu izradio <span>Amelo Design</span>
+</footer>
+
+</body>
+</html>
