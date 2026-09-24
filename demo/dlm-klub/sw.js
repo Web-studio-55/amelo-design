@@ -1,6 +1,6 @@
 /* Minimalni service worker — offline prikaz aplikacije.
    Radi samo preko https (npr. na Vercelu), ne preko file:// */
-const CACHE = 'dlm-v1';
+const CACHE = 'dlm-v2';
 const ASSETS = ['./', './index.html', './styles.css', './app.js', './data.js', './icon.svg', './manifest.webmanifest'];
 
 self.addEventListener('install', e => {
