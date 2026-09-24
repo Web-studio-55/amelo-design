@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cjenik — DLM Studio</title>
+<meta name="description" content="Cjenik usluga DLM Studija, Sesvete — objavljen sukladno Odluci o objavi cjenika proizvoda i usluga (NN 101/2026).">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/znak.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="../assets/stil.css?v=5">
+<style>
+  .omot{width:min(100% - 2.5rem, 56rem);margin-inline:auto;padding:3.5rem 0 4.5rem;}
+  .omot h1{font-size:clamp(2.2rem,5vw,3.4rem);margin:.8rem 0 1.4rem;}
+  .info{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem 1.35rem;font-size:.9rem;color:var(--ink-2);}
+  .info strong{color:var(--ink);font-weight:500;}
+  .ogledno{margin-top:.8rem;background:var(--mjed-meka);border-radius:var(--r);padding:.9rem 1.35rem;font-size:.9rem;color:var(--ink-2);}
+  .ogledno strong{color:var(--ink);font-weight:500;}
+  .azurirano{font-size:.88rem;color:var(--ink-3);margin:1.2rem 0 0;}
+  .azurirano strong{color:var(--ink);font-weight:500;}
+  .skok{display:flex;flex-wrap:wrap;gap:.45rem;margin:1.8rem 0 0;}
+  .skok a{font-size:.85rem;text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:.35rem .85rem;color:var(--ink-2);}
+  .skok a:hover{border-color:var(--mjed);color:var(--mjed);}
+  h2.kategorija{font-size:1.7rem;margin:3rem 0 1rem;}
+  .tablica-omot{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);}
+  table{width:100%;border-collapse:collapse;min-width:34rem;}
+  th{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:.85rem 1.1rem;border-bottom:1px solid var(--line);}
+  td{padding:.75rem 1.1rem;border-top:1px solid var(--line);font-size:.95rem;vertical-align:top;}
+  tbody tr:first-child td{border-top:0;}
+  th:nth-child(3),th:nth-child(4),td.sidrena,td.trenutna{text-align:right;white-space:nowrap;}
+  td.naziv small{display:block;color:var(--ink-3);font-size:.8rem;}
+  td.dulj{color:var(--ink-2);font-size:.88rem;}
+  td.sidrena{color:var(--ink-3);font-variant-numeric:tabular-nums;}
+  td.sidrena em{font-style:italic;font-size:.85rem;}
+  td.trenutna{font-weight:500;font-variant-numeric:tabular-nums;}
+  .napomene{margin:2.6rem 0 0;padding-left:1.1rem;font-size:.88rem;color:var(--ink-2);}
+  .napomene li{margin:.3rem 0;}
+  .povratak{color:var(--mjed);text-decoration:none;font-size:.9rem;}
+  @media print{
+    .hdr,.ftr,.skok,.ogledno{display:none;}
+    body{background:#fff;}
+    .omot{padding:0;width:100%;}
+    .tablica-omot{border-radius:0;}
+  }
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="wrap">
+    <a class="logo" href="../" aria-label="DLM Studio — naslovnica">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4c9 12 16 21 16 32a16 16 0 0 1-32 0C16 25 23 16 32 4z" fill="#C9A261"/><path d="M32 20c4.6 6.6 8.4 11.7 8.4 17.8a8.4 8.4 0 0 1-16.8 0C23.6 31.7 27.4 26.6 32 20z" fill="#1E1B19"/></svg>
+      <span class="txt"><b>DLM</b><span>Studio</span></span>
+    </a>
+    <nav class="nav" style="display:flex"><a href="../">← Naslovnica</a></nav>
+  </div>
+</header>
+
+<main class="omot">
+  <p class="label">Cjenik</p>
+  <h1>Cjenik usluga</h1>
+  <div class="info">
+    Cjenik je objavljen sukladno <strong>Odluci o objavi cjenika proizvoda i usluga</strong> (NN 101/2026).
+    <strong>Dodatna (sidrena) cijena</strong> je cijena usluge zatečena na dan <strong>10. rujna 2026.</strong>,
+    istaknuta radi informiranja potrošača sukladno Odluci o isticanju dodatne cijene (NN 101/2026).
+    Usluge uvedene nakon tog datuma nemaju sidrenu cijenu (—).
+  </div>
+  <p class="ogledno"><strong>Ogledne cijene.</strong> Ovo je prijedlog nove stranice — cijene i sidrene cijene upisuje salon prije objave.</p>
+  <p class="azurirano">Cjenik ažuriran: <strong>21. 9. 2026.</strong> · <a class="povratak" href="../cjenik.csv">preuzmi kao CSV</a></p>
+  <nav class="skok" aria-label="Kategorije">
+    <a href="#sisanje">Šišanje i frizura</a><a href="#boja">Boja i pramenovi</a><a href="#njega">Njega</a>
+    <a href="#ekstenzije">Ekstenzije</a><a href="#mladenke">Mladenke i šminka</a><a href="#nokti">Nokti</a>
+    <a href="#obrve">Obrve i trepavice</a><a href="#solarij">Solarij</a>
+  </nav>
+
+  <h2 class="kategorija" id="sisanje">Šišanje i frizura</h2>
+  <div class="tablica-omot">
+    <table>
+      <thead><tr><th>Usluga</th><th>Duljina kose</th><th>Sidrena cijena (10. 9. 2026.)</th><th>Cijena</th></tr></thead>
+      <tbody>
+<tr><td class="naziv">Konzultacija<small>Dogovor boje, duljine i cijene</small></td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">bez naplate</td></tr>
+<tr><td class="naziv">Pranje kose i šišanje</td><td class="dulj">kratka</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">22,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">poluduga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">26,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">duga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">30,00 €</td></tr>
+<tr><td class="naziv">Pranje kose i frizura</td><td class="dulj">kratka</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">20,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">poluduga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">24,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">duga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">28,00 €</td></tr>
+<tr><td class="naziv">Pranje, šišanje i frizura</td><td class="dulj">kratka</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">30,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">poluduga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">36,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">duga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">42,00 €</td></tr>
+<tr><td class="naziv">Šišanje šiški</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">6,00 €</td></tr>
+<tr><td class="naziv">Izrada pletenice</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">10,00 €</td></tr>
+<tr><td class="naziv">Svečana frizura — spuštena kosa</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">30,00 €</td></tr>
+<tr><td class="naziv">Svečana frizura — dignuta kosa</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">45,00 €</td></tr>
+<tr><td class="naziv">Muško šišanje i pranje kose</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">15,00 €</td></tr>
+<tr><td class="naziv">Šišanje mašinom</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">10,00 €</td></tr>
+<tr><td class="naziv">Muško bojanje, pranje i šišanje</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">30,00 €</td></tr>
+<tr><td class="naziv">Dječje šišanje<small>do 12 godina</small></td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">12,00 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="kategorija" id="boja">Boja i pramenovi</h2>
+  <div class="tablica-omot">
+    <table>
+      <thead><tr><th>Usluga</th><th>Duljina kose</th><th>Sidrena cijena (10. 9. 2026.)</th><th>Cijena</th></tr></thead>
+      <tbody>
+<tr><td class="naziv">Bojanje, pranje i frizura<small>INOA — bez amonijaka</small></td><td class="dulj">kratka</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">45,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">poluduga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">52,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">duga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">60,00 €</td></tr>
+<tr><td class="naziv">Bojanje, pranje, šišanje i frizura</td><td class="dulj">kratka</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">55,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">poluduga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">62,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">duga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">70,00 €</td></tr>
+<tr><td class="naziv">HTO, pranje, šišanje i frizura<small>Osvježavanje tona</small></td><td class="dulj">kratka</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">30,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">poluduga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">36,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">duga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">42,00 €</td></tr>
+<tr><td class="naziv">Preljev / toner</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">20,00 €</td></tr>
+<tr><td class="naziv">Skidanje boje</td><td class="dulj">kratka</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">22,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">poluduga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">32,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">duga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">45,00 €</td></tr>
+<tr><td class="naziv">Pramenovi, pranje i frizura</td><td class="dulj">kratka</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">55,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">poluduga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">62,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">duga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">72,00 €</td></tr>
+<tr><td class="naziv">Pramenovi, pranje, šišanje i frizura</td><td class="dulj">kratka</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">62,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">poluduga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">72,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">duga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">85,00 €</td></tr>
+<tr><td class="naziv">Dvobojni pramenovi, šišanje i frizura</td><td class="dulj">kratka</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">70,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">poluduga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">80,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">duga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">92,00 €</td></tr>
+<tr><td class="naziv">Pramenovi cijelom dužinom, šišanje i frizura</td><td class="dulj">kratka</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">72,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">poluduga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">85,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">duga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">100,00 €</td></tr>
+<tr><td class="naziv">Balayage / airtouch<small>Uz preljev i njegu</small></td><td class="dulj">kratka</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">85,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">poluduga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">100,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">duga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">120,00 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="kategorija" id="njega">Njega kose</h2>
+  <div class="tablica-omot">
+    <table>
+      <thead><tr><th>Usluga</th><th>Duljina kose</th><th>Sidrena cijena (10. 9. 2026.)</th><th>Cijena</th></tr></thead>
+      <tbody>
+<tr><td class="naziv">Botoks tretman za kosu</td><td class="dulj">kratka</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">25,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">poluduga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">30,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">duga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">35,00 €</td></tr>
+<tr><td class="naziv">Keratinsko zaglađivanje</td><td class="dulj">kratka</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">90,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">poluduga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">110,00 €</td></tr>
+<tr><td class="naziv"></td><td class="dulj">duga</td><td class="sidrena"><em>upisati</em></td><td class="trenutna">130,00 €</td></tr>
+<tr><td class="naziv">Moroccanoil tretman</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">15,00 €</td></tr>
+<tr><td class="naziv">Maska za kosu</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">6,00 €</td></tr>
+<tr><td class="naziv">Ampula za kosu</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">10,00 €</td></tr>
+<tr><td class="naziv">Suho pranje kose</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">10,00 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="kategorija" id="ekstenzije">Ekstenzije</h2>
+  <div class="tablica-omot">
+    <table>
+      <thead><tr><th>Usluga</th><th>Duljina kose</th><th>Sidrena cijena (10. 9. 2026.)</th><th>Cijena</th></tr></thead>
+      <tbody>
+<tr><td class="naziv">Konzultacija za ekstenzije<small>Metoda, boja i količina</small></td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">bez naplate</td></tr>
+<tr><td class="naziv">Ugradnja — keratinski bondovi<small>Ovisi o količini kose</small></td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">250,00 €</td></tr>
+<tr><td class="naziv">Ugradnja — tape-in trake</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">180,00 €</td></tr>
+<tr><td class="naziv">Ugradnja — mikroringovi</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">220,00 €</td></tr>
+<tr><td class="naziv">Pomak / korekcija<small>Svakih 8–10 tjedana</small></td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">90,00 €</td></tr>
+<tr><td class="naziv">Skidanje ekstenzija</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">45,00 €</td></tr>
+<tr><td class="naziv">Pranje i njega ekstenzija</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">25,00 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="kategorija" id="mladenke">Mladenke i šminka</h2>
+  <div class="tablica-omot">
+    <table>
+      <thead><tr><th>Usluga</th><th>Duljina kose</th><th>Sidrena cijena (10. 9. 2026.)</th><th>Cijena</th></tr></thead>
+      <tbody>
+<tr><td class="naziv">Proba frizure i šminke<small>4–6 tjedana prije</small></td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">70,00 €</td></tr>
+<tr><td class="naziv">Mladenka — frizura i šminka</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">180,00 €</td></tr>
+<tr><td class="naziv">Dolazak na adresu<small>Unutar Zagreba</small></td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">60,00 €</td></tr>
+<tr><td class="naziv">Frizura ili šminka za pratnju<small>po osobi</small></td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">40,00 €</td></tr>
+<tr><td class="naziv">Dnevna šminka</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">30,00 €</td></tr>
+<tr><td class="naziv">Večernja šminka</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">40,00 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="kategorija" id="nokti">Nokti</h2>
+  <div class="tablica-omot">
+    <table>
+      <thead><tr><th>Usluga</th><th>Duljina kose</th><th>Sidrena cijena (10. 9. 2026.)</th><th>Cijena</th></tr></thead>
+      <tbody>
+<tr><td class="naziv">Manikura</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">15,00 €</td></tr>
+<tr><td class="naziv">SPA manikura</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">22,00 €</td></tr>
+<tr><td class="naziv">Manikura za muškarce</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">15,00 €</td></tr>
+<tr><td class="naziv">Trajni lak</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">25,00 €</td></tr>
+<tr><td class="naziv">Skidanje i stavljanje trajnog laka</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">32,00 €</td></tr>
+<tr><td class="naziv">Skidanje trajnog laka</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">12,00 €</td></tr>
+<tr><td class="naziv">Geliranje prirodnih noktiju</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">35,00 €</td></tr>
+<tr><td class="naziv">Ugradnja umjetnih noktiju</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">45,00 €</td></tr>
+<tr><td class="naziv">Produljivanje šablonom i tipsama</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">45,00 €</td></tr>
+<tr><td class="naziv">Korekcija (međunjega)</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">28,00 €</td></tr>
+<tr><td class="naziv">Skidanje gela</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">18,00 €</td></tr>
+<tr><td class="naziv">Popravak jednog nokta</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">5,00 €</td></tr>
+<tr><td class="naziv">Lakiranje</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">6,00 €</td></tr>
+<tr><td class="naziv">French s lakom</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">8,00 €</td></tr>
+<tr><td class="naziv">Ukrašavanje noktiju</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">3,00 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="kategorija" id="obrve">Obrve i trepavice</h2>
+  <div class="tablica-omot">
+    <table>
+      <thead><tr><th>Usluga</th><th>Duljina kose</th><th>Sidrena cijena (10. 9. 2026.)</th><th>Cijena</th></tr></thead>
+      <tbody>
+<tr><td class="naziv">Oblikovanje obrva</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">7,00 €</td></tr>
+<tr><td class="naziv">Bojanje obrva</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">7,00 €</td></tr>
+<tr><td class="naziv">Oblikovanje i bojanje obrva</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">12,00 €</td></tr>
+<tr><td class="naziv">Bojanje trepavica</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">9,00 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="kategorija" id="solarij">Solarij</h2>
+  <div class="tablica-omot">
+    <table>
+      <thead><tr><th>Usluga</th><th>Duljina kose</th><th>Sidrena cijena (10. 9. 2026.)</th><th>Cijena</th></tr></thead>
+      <tbody>
+<tr><td class="naziv">M-50 Basic</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">0,40 € / min</td></tr>
+<tr><td class="naziv">Avantgarde 600</td><td class="dulj"></td><td class="sidrena"><em>upisati</em></td><td class="trenutna">0,60 € / min</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="napomene">
+    <li>Sve cijene iskazane su u eurima (€) s uključenim PDV-om.</li>
+    <li>Kratka kosa — do brade; poluduga — do ramena; duga — ispod ramena.</li>
+    <li>Prije prvog bojanja obavezan je test na koži 48 sati ranije, bez naplate.</li>
+    <li>Plaćanje gotovinom ili karticama (American Express, Mastercard, Visa, Maestro); moguća obročna otplata bez kamata.</li>
+    <li>Cjenik se ažurira pri svakoj promjeni cijena.</li>
+  </ul>
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="donji" style="padding-top:0">
+      <span>DLM STUDIO j.d.o.o. · Ljudevita Posavskog 25F, 10360 Sesvete · OIB [upisati] · 01 4003 290</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
