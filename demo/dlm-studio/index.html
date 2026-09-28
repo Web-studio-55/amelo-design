@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="assets/stil.css?v=5">
+<link rel="stylesheet" href="assets/stil.css?v=12">
 <script src="assets/gate.js"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"HairSalon","name":"DLM Studio","telephone":"+38514003290",
@@ -45,29 +45,21 @@
 <main id="sadrzaj">
 
 <!-- ================= HERO ================= -->
-<section class="hero" aria-labelledby="h-hero">
+<section class="hero zrno" aria-labelledby="h-hero">
+  <div class="hero__slika"><img src="images/hero.jpg" alt="Duga plava kosa u pokretu, snimljena u toplom svjetlu" width="1600" height="1000" fetchpriority="high"></div>
   <div class="wrap">
-    <div>
-      <p class="label">Frizerski studio · Novi Jelkovec</p>
-      <h1 id="h-hero">Boja koja ti stoji. <em>Formula koju pamtimo mi.</em></h1>
-      <p class="lede">Šišanje, INOA boja i pramenovi, ekstenzije, frizure i šminka za mladenke, nokti i solarij — pod jednim krovom u Sesvetama. Prvi razgovor je uvijek besplatan.</p>
-      <div class="cta">
-        <a class="btn btn-mjed" href="https://www.amelodesign.com/demo/dlm-klub/#/rezerviraj">
-          <svg viewBox="0 0 24 24"><path d="M4 6h16v14H4zM8 3v4M16 3v4M4 11h16"/></svg>Rezerviraj termin</a>
-        <a class="btn btn-obrub" href="tel:+38514003290">
-          <svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>01 4003 290</a>
-      </div>
-      <ul class="cinjenice">
-        <li>Besplatne konzultacije</li>
-        <li>INOA — bez amonijaka</li>
-        <li>Gotovina, kartice, obroci bez kamata</li>
-      </ul>
+    <p class="label">Frizerski studio · Novi Jelkovec</p>
+    <h1 id="h-hero">Boja koja ti stoji. <em>Formula koju pamtimo mi.</em></h1>
+    <p class="lede">Šišanje, INOA boja i pramenovi, ekstenzije, frizure i šminka za mladenke, nokti i solarij — pod jednim krovom u Sesvetama. Prvi razgovor je uvijek besplatan.</p>
+    <div class="cta">
+      <a class="btn btn-mjed" href="https://www.amelodesign.com/demo/dlm-klub/">Rezerviraj termin</a>
+      <a class="btn btn-obrub" href="tel:+38514003290">01 4003 290</a>
     </div>
-    <div class="ogledala" id="ogledala" aria-label="Radovi iz salona">
-      <figure class="ogledalo"><img src="images/kosa-plavi-valovi.jpg" alt="Plavi pramenovi uvijeni u meke valove" width="341" height="500"><figcaption>Pramenovi</figcaption></figure>
-      <figure class="ogledalo"><img src="images/kosa-ombre-ravna.jpg" alt="Duga ravna kosa s prijelazom iz tamne u svijetlu" width="375" height="500"><figcaption>Ombre</figcaption></figure>
-      <figure class="ogledalo"><img src="images/kosa-plave-lokne.jpg" alt="Svijetloplava kosa u loknama" width="376" height="500"><figcaption>Lokne</figcaption></figure>
-    </div>
+    <ul class="cinjenice">
+      <li>Besplatne konzultacije</li>
+      <li>INOA — bez amonijaka</li>
+      <li>Gotovina, kartice, obroci</li>
+    </ul>
   </div>
 </section>
 
@@ -81,41 +73,49 @@
     </div>
     <div class="usluge pojavi">
       <a class="usluga" href="cjenik/#sisanje">
+        <span class="rb">01</span>
         <h3>Šišanje i frizura</h3>
         <p>Žensko, muško i dječje šišanje, fen, pletenice i svečane frizure — spuštene ili dignute.</p>
         <span class="od">pranje, šišanje, frizura<b class="num">od 30 €</b></span>
       </a>
       <a class="usluga" href="cjenik/#boja">
+        <span class="rb">02</span>
         <h3>Boja i pramenovi</h3>
         <p>INOA boja bez amonijaka i mirisa, pokriva sijede do zadnje vlasi. Pramenovi, dvobojni pramenovi, balayage, preljev.</p>
         <span class="od">bojanje<b class="num">od 45 €</b></span>
       </a>
       <a class="usluga" href="cjenik/#njega">
+        <span class="rb">03</span>
         <h3>Njega kose</h3>
         <p>Moroccanoil s arganovim uljem za kemijski tretiranu kosu, botoks, keratinsko zaglađivanje, maske i ampule.</p>
         <span class="od">Moroccanoil<b class="num">15 €</b></span>
       </a>
       <a class="usluga" href="cjenik/#ekstenzije">
+        <span class="rb">04</span>
         <h3>Ekstenzije</h3>
         <p>Keratinski bondovi, tape-in trake ili mikroringovi. Metodu, boju i količinu biramo zajedno, na besplatnoj konzultaciji.</p>
         <span class="od">ugradnja<b class="num">od 180 €</b></span>
       </a>
       <a class="usluga" href="cjenik/#mladenke">
+        <span class="rb">05</span>
         <h3>Šminka i mladenke</h3>
         <p>Dnevna i večernja šminka, proba prije vjenčanja i dolazak na adresu na dan vjenčanja.</p>
         <span class="od">dnevna šminka<b class="num">30 €</b></span>
       </a>
       <a class="usluga" href="cjenik/#nokti">
+        <span class="rb">06</span>
         <h3>Nokti</h3>
         <p>Manikura, SPA manikura, trajni lak, geliranje, ugradnja i korekcija, french i ukrasi.</p>
         <span class="od">trajni lak<b class="num">25 €</b></span>
       </a>
       <a class="usluga" href="cjenik/#obrve">
+        <span class="rb">07</span>
         <h3>Obrve i trepavice</h3>
         <p>Oblikovanje i bojanje obrva, bojanje trepavica.</p>
         <span class="od">oblikovanje<b class="num">od 7 €</b></span>
       </a>
       <a class="usluga" href="cjenik/#solarij">
+        <span class="rb">08</span>
         <h3>Solarij</h3>
         <p>Dva Ergoline uređaja, M-50 Basic i jači Avantgarde 600. Plaćaš samo minute koje odležiš.</p>
         <span class="od">po minuti<b class="num">od 0,40 €</b></span>
@@ -123,6 +123,11 @@
     </div>
   </div>
 </section>
+
+<figure class="traka-slika zrno pojavi">
+  <img src="images/pranje.jpg" alt="Pranje kose u salonu" width="1600" height="900" loading="lazy">
+  <figcaption><span>Svaki termin počinje pranjem i razgovorom o tome što kosa traži</span></figcaption>
+</figure>
 
 <!-- ================= DULJINA KOSE ================= -->
 <section class="duljina" id="cijene" aria-labelledby="h-duljina">
@@ -164,8 +169,8 @@
 <section class="boja" aria-labelledby="h-boja">
   <div class="wrap grid">
     <div class="par pojavi">
-      <img src="images/kosa-ombre.jpg" alt="Tamna kosa koja prelazi u svijetle vrhove" width="375" height="500" loading="lazy">
-      <img src="images/kosa-hladna-plava.jpg" alt="Hladna plava boja na dugoj kosi" width="375" height="500" loading="lazy">
+      <figure><img src="images/boja-pepeljasta.jpg" alt="Pepeljasto plava kosa u mekim valovima" width="1000" height="1333" loading="lazy"><figcaption>Hladni tonovi</figcaption></figure>
+      <figure><img src="images/boja-karamel.jpg" alt="Karamel boja na kosi do ramena" width="1000" height="1333" loading="lazy"><figcaption>Topli tonovi</figcaption></figure>
     </div>
     <div class="pojavi">
       <p class="label">Boja</p>
@@ -188,7 +193,7 @@
       <h2 id="h-mladenke">Od prvog dogovora do <em>jutra vjenčanja</em></h2>
       <p>Frizura i šminka iz istih ruku, s probom unaprijed. Na dan vjenčanja dolazimo k tebi — i ne zaboravljamo mamu i kume.</p>
     </div>
-    <ol class="crta pojavi">
+    <div class="grid"><ol class="crta pojavi">
       <li>
         <p class="kad">3–6 mjeseci prije</p>
         <h3>Dogovor</h3>
@@ -210,13 +215,15 @@
         <p class="kad">Isto jutro</p>
         <h3>Pratnja</h3>
         <p>Mama, kuma, djeveruše — frizura ili šminka po osobi, raspoređeno tako da svi stignu na vrijeme.</p>
-        <p class="cij num">40 € po osobi</p>
+        <p class="cij num">40 € / osoba</p>
       </li>
     </ol>
-    <div class="dno pojavi">
-      <img src="images/svecana-rep.jpg" alt="Visoki svečani rep s večernjom šminkom" width="388" height="500" loading="lazy">
-      <p>Javi se čim znaš datum — termin vjenčanja držimo odmah, a probu dogovaramo kasnije.</p>
-      <a class="btn btn-mjed" href="tel:+38514003290">Dogovori datum</a>
+    </ol>
+      <figure class="pojavi">
+        <img src="images/mladenka.jpg" alt="Niska punđa s ukrasnim ukosnicama" width="1200" height="1600" loading="lazy">
+        <figcaption>Javi se čim znaš datum — termin vjenčanja držimo odmah, a probu dogovaramo kasnije.</figcaption>
+        <a class="btn btn-mjed" href="tel:+38514003290">Dogovori datum</a>
+      </figure>
     </div>
   </div>
 </section>
@@ -230,8 +237,8 @@
     </div>
     <div class="tri pojavi">
       <article>
-        <img src="images/kosa-valovi-stolac.jpg" alt="Duga valovita kosa u stolcu salona" width="335" height="500" loading="lazy" style="object-position:50% 30%">
-        <div class="tekst">
+        <img src="images/ekstenzije.jpg" alt="Duga plava kosa s prijelazima, snimljena straga" width="1200" height="900" loading="lazy">
+        <div>
           <p class="label">Ekstenzije</p>
           <h3>Duljina koja se ne vidi</h3>
           <p>Keratinski bondovi, tape-in trake ili mikroringovi, u boji tvoje kose. Pomak svakih osam do deset tjedana drži ih neprimjetnima.</p>
@@ -239,8 +246,8 @@
         </div>
       </article>
       <article>
-        <img src="images/nokti-french.jpg" alt="Francuska manikura na prirodnim noktima" width="665" height="500" loading="lazy">
-        <div class="tekst">
+        <img src="images/nokti.jpg" alt="Njegovani nokti u nude tonu" width="1200" height="900" loading="lazy">
+        <div>
           <p class="label">Nokti</p>
           <h3>Trajni lak, gel, ugradnja</h3>
           <p>Od klasične manikure do produljivanja šablonom. Korekcija svaka tri tjedna, a popravak jednog nokta bez čekanja.</p>
@@ -248,10 +255,8 @@
         </div>
       </article>
       <article>
-        <div style="aspect-ratio:4/3;background:radial-gradient(120% 90% at 30% 20%,#F4D08E 0%,#C98A43 45%,#5B3A22 100%);display:flex;align-items:flex-end;padding:1.4rem" aria-hidden="true">
-          <span style="font-family:var(--f-display);font-size:3.2rem;line-height:1;color:#FFF6E6">0,40 €<small style="font-size:1rem;letter-spacing:.1em"> / min</small></span>
-        </div>
-        <div class="tekst">
+        <div class="zlatno" aria-hidden="true"><span>0,40 €<small> / min</small></span></div>
+        <div>
           <p class="label">Solarij</p>
           <h3>Ergoline, po minuti</h3>
           <p>M-50 Basic za početak i održavanje, Avantgarde 600 za brži ten. Između dva dolaska najmanje 48 sati.</p>
@@ -368,11 +373,12 @@
     <div class="donji">
       <span>DLM STUDIO j.d.o.o. · Ljudevita Posavskog 25F, 10360 Sesvete · OIB [upisati]</span>
       <span>Cjenik objavljen prema NN 101/2026 · <a href="cjenik.csv">cjenik.csv</a></span>
+      <span>Fotografije su privremene — zamjenjuju se fotografijama salona.</span>
     </div>
   </div>
 </footer>
 
 <script src="assets/cijene.js"></script>
-<script src="assets/skripta.js?v=5"></script>
+<script src="assets/skripta.js?v=12"></script>
 </body>
 </html>

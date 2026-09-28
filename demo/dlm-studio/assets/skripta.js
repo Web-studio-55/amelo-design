@@ -14,9 +14,12 @@
     });
   }
 
-  // ogledala se pale jedno za drugim
-  var og = document.getElementById('ogledala');
-  if (og) setTimeout(function () { og.classList.add('upaljeno'); }, reduce ? 0 : 350);
+  // zaglavlje dobiva podlogu kad se odmakne od vrha
+  if (document.querySelector('.hero')) {
+    var onScroll = function () { hdr.classList.toggle('uz-vrh', window.scrollY > 40); };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
 
   // pojavljivanje pri skrolanju
   var els = document.querySelectorAll('.pojavi');
