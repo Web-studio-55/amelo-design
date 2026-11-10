@@ -320,8 +320,48 @@ function closeMobileNav(){ document.getElementById('mobileNav').classList.remove
         <label data-en="Your message" data-hr="Vaša poruka">Vaša poruka</label>
         <textarea name="poruka" placeholder="Recite nam o svom projektu..."></textarea>
       </div>
+      <!-- Honeypot - boti ovo popune, pravi korisnici ne vide -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+      <!-- Anti-spam provjera -->
+      <div class="form-group" id="captcha-group">
+        <label id="captcha-label">Molimo odgovorite: <strong id="captcha-q"></strong></label>
+        <input type="text" id="captcha-input" placeholder="Unesite odgovor" autocomplete="off" inputmode="numeric">
+        <span id="captcha-err" style="display:none;color:#DC2626;font-size:12px;margin-top:4px;display:block;">Netočan odgovor. Pokušajte ponovo.</span>
+      </div>
+
       <button type="submit" class="btn-submit" data-en="Send Message" data-hr="Pošalji poruku">Pošalji poruku</button>
     </form>
+
+    <script>
+    (function(){
+      // Generiraj jednostavan zadatak
+      var a = Math.floor(Math.random()*9)+1;
+      var b = Math.floor(Math.random()*9)+1;
+      document.getElementById('captcha-q').textContent = a + ' + ' + b + ' = ?';
+      var expected = a + b;
+
+      document.querySelector('.contact-form').addEventListener('submit', function(e){
+        // Honeypot provjera
+        if(document.querySelector('input[name="_gotcha"]').value !== '') {
+          e.preventDefault(); return;
+        }
+        // Math provjera
+        var answer = parseInt(document.getElementById('captcha-input').value, 10);
+        if(answer !== expected){
+          e.preventDefault();
+          document.getElementById('captcha-err').style.display = 'block';
+          document.getElementById('captcha-input').focus();
+          // Novi zadatak
+          a = Math.floor(Math.random()*9)+1;
+          b = Math.floor(Math.random()*9)+1;
+          document.getElementById('captcha-q').textContent = a + ' + ' + b + ' = ?';
+          expected = a + b;
+          document.getElementById('captcha-input').value = '';
+        }
+      });
+    })();
+    </script>
   </div>
 </div>
 
